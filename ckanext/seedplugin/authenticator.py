@@ -38,7 +38,7 @@ class SEEDAuthenticator(UsernamePasswordAuthenticator):
         else:
            log.debug('Login as %r failed - password not valid', identity.get('login'))
 
-        
+
         ### farhan comment these out upon final implementation################
 
 #        if user.validate_password(identity.get('password')):

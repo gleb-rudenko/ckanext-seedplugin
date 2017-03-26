@@ -1,0 +1,88 @@
+{#
+Embeds a organization within the sidebar of a page.
+
+organization    - The organization dict.
+truncate - A max length for the organization description. If not provided the description
+           will be full length.
+has_context_title - Boolean for whether to display a module-heading for when
+                    this snippet appears within a non-organization template
+                    (e.g. dataset page sidebar)
+
+Example:
+
+    {% snippet 'snippets/organization, organization=c.group_dict %}
+
+#}
+
+{% set truncate = truncate or 0 %}
+
+{# this takes you to old search page#}
+{% set url = h.url_for(controller='organization', action='read', id=organization.name) %}
+
+{#takes to new search page #}
+{% set dataseturl="http://dev.edptest.info" %}
+{% set orgurl=organization.display_name|replace(" ","%20") %}
+
+  {% block info %}
+  <div class="module module-narrow module-shallow context-info">
+    {% if has_context_title %}
+      <h2 class="module-heading"><i class="icon-building"></i> {{ _('Organization') }}</h2>
+    {% endif %}
+    <section class="module-content">
+      {% block inner %}
+      {% block image %}
+        <div class="image">
+          {#<a href="{{ url }}">#}
+          <a href="{{dataseturl+"/edphome/SearchResults.aspx?q=&org="+orgurl }}">
+            <img src="{{ organization.image_display_url or h.url_for_static('/base/images/placeholder-organization.png') }}" width="200" alt="{{ organization.name }}" />
+          </a>
+        </div>
+      {% endblock %}
+      {% block heading %}
+      <h1 class="heading">{{ organization.title or organization.name }}
+        {% if organization.state == 'deleted' %}
+          [{{ _('Deleted') }}]
+        {% endif %}
+      </h1>
+      {% endblock %}
+      {% block description %}
+      {% if organization.description -%}
+      <p>
+    {#{{organization.description[:99]}}#}
+    {% if organization.description|length > 100 -%}
+           {% set text=h.render_markdown(organization.description) %}
+           {% set breakpoint =  text.find("</p>") %}
+           <span>{{ h.render_markdown(organization.description[:breakpoint]) }}</span>
+           <span id="aboutlonger" class="toggler" style="display:none;">{{ h.render_markdown(organization.description[breakpoint:])}}</span>
+       <br/>
+       <a id="readmore" onclick="$('.toggler').toggle();" href="#">read <span class="toggler"> more</span><span class="toggler" style="display:none;">less</a>
+    {%- endif %}
+        </p>
+      {% else %}
+        <p class="empty">{{ _('There is no description for this organization') }}</p>
+      {%- endif %}
+      {% endblock %}
+      {% if show_nums %}
+        {% block nums %}
+        <div class="nums">
+          <dl>
+            <dt>{{ _('Followers') }}</dt>
+            <dd>{{ h.SI_number_span(organization.num_followers) }}</dd>
+          </dl>
+          <dl>
+            <dt>{{ _('Datasets') }}</dt>
+            <dd>{{ h.SI_number_span(organization.package_count) }}</dd>
+          </dl>
+        </div>
+        {% endblock %}
+        {% block follow %}
+        <div class="follow_button">
+          {{ h.follow_button('group', organization.id) }}
+        </div>
+        {% endblock %}
+      {% endif %}
+      {% endblock %}
+    </section>
+  </div>
+  {% endblock %}
+

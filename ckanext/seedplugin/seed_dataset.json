@@ -1,0 +1,249 @@
+{
+  "scheming_version": 1,
+  "dataset_type": "dataset",
+  "about": "A reimplementation of the default CKAN dataset schema",
+  "about_url": "http://github.com/ckan/ckanext-scheming",
+  "dataset_fields": [
+    {
+      "field_name": "title",
+      "label": "Title",
+      "preset": "title",
+      "form_placeholder": "eg. A descriptive title"
+    },
+    {
+      "field_name": "name",
+      "label": "URL",
+      "preset": "dataset_slug",
+      "form_placeholder": "eg. my-dataset"
+    },
+    {
+      "field_name": "notes",
+      "label": "Description",
+      "form_snippet": "markdown.html",
+      "form_placeholder": "eg. Some useful notes about the data"
+    },
+    {
+      "field_name": "tag_string",
+      "label": "Tags",
+      "preset": "tag_string_autocomplete",
+      "form_placeholder": "eg. economy, mental health, government"
+    },
+    {
+      "field_name": "custodian",
+      "label": "Custodian",
+      "form_placeholder": "Joe Bloggs",
+      "display_property": "dc:creator"
+    },
+    {
+      "field_name": "author_email",
+      "label": "Author Email",
+      "form_placeholder": "joe@example.com",
+      "display_property": "dc:creator",
+      "display_snippet": "email.html"
+    },
+    {
+      "field_name": "license_id",
+      "label": "License",
+      "form_snippet": "license.html",
+      "help_text": "License definitions and additional information can be found at http://opendefinition.org/"
+    },
+    {
+      "field_name": "owner_org",
+      "label": "Organization",
+      "preset": "dataset_organization",
+      "display_snippet": "text.html"
+    },
+    {
+      "field_name": "url",
+      "label": "Landing Page",
+      "form_placeholder": "http://example.com/dataset.json",
+      "display_property": "foaf:homepage",
+      "display_snippet": "link.html"
+    },
+    {
+      "field_name": "spatial",
+      "label": "Extent",
+      "display_snippet": "spatial.html"
+    },
+    {
+      "field_name": "temporal_extent",
+      "label": "Temporal Coverage",
+      "display_snippet": "text.html"
+    },
+    {
+      "field_name": "topic",
+      "label": "Topic and category",
+      "preset": "select",
+      "choices": [
+        {
+          "value": "Farming",
+          "label": "Farming"
+        },
+        {
+          "value": "Biota",
+          "label": "Biota"
+        },
+        {
+          "value": "Boundaries",
+          "label": "Boundaries"
+        },
+        {
+          "value": "Climatology Meteorology Atmosphere",
+          "label": "Climatology Meteorology Atmosphere"
+        },
+        {
+          "value": "Economy",
+          "label": "Economy"
+        },
+        {
+          "value": "Elevation",
+          "label": "Elevation"
+        },
+        {
+          "value": "Environment",
+          "label": "Environment"
+        },
+        {
+          "value": "Geoscientific Information",
+          "label": "Geoscientific Information"
+        },
+        {
+          "value": "Health",
+          "label": "Health"
+        },
+        {
+          "value": "Imagery Basemaps Earthcover",
+          "label": "Imagery Basemaps Earthcover"
+        },
+        {
+          "value": "Intelligence Military",
+          "label": "Intelligence Military"
+        },
+        {
+          "value": "Inland Waters",
+          "label": "Inland Waters"
+        },
+        {
+          "value": "Location",
+          "label": "Location"
+        },
+        {
+          "value": "Oceans",
+          "label": "Oceans"
+        },
+        {
+          "value": "Planning Cadastre",
+          "label": "Planning Cadastre"
+        },
+        {
+          "value": "Society",
+          "label": "Society"
+        },
+        {
+          "value": "Structure",
+          "label": "Structure"
+        },
+        {
+          "value": "Transportation",
+          "label": "Transportation"
+        },
+        {
+          "value": "Utilities Communication",
+          "label": "Utilities Communication"
+        }
+      ]
+    },
+    {
+      "field_name": "update_frequency",
+      "label": "Frequency of change",
+      "display_snippet": "text.html"
+    },
+    {
+      "field_name": "type",
+      "label": "Type",
+      "display_snippet": "text.html"
+    },
+    {
+      "field_name": "created",
+      "label": "Date Created",
+      "form_placeholder": "yyyy/mm/dd or yyyy-mm-dd",
+      "preset": "seed_date"
+    },
+    {
+      "field_name": "last_modified",
+      "label": "Last updated",
+      "display_snippet": "date.html"
+    },
+    {
+      "field_name": "map_service_id",
+      "label": "Map Service ID",
+      "form_placeholder": "the corresponding Map Service ID from geocortex",
+      "form_snippet": "text.html"
+    },
+    {
+      "field_name": "layer_id",
+      "label": "Layer ID",
+      "form_placeholder" : "the corresponding layer ID from geocortex, compulsory for Geoserver WMS layers",
+      "form_snippet": "text.html"
+    },
+    {
+      "field_name": "map_type",
+      "label": "Map Type",
+      "preset": "select",
+      "choices": [
+        {
+          "value": "MapServiceLayer",
+          "label": "Map Service and Layer"
+        },
+        {
+          "value": "Layer",
+          "label": "WMS Layer"
+        },
+        {
+          "value": "MapService",
+          "label": "Map Service"
+        }
+      ]
+    },
+    {
+      "field_name": "workflow_type",
+      "label": "Workflow type",
+      "form_snippet": null,
+      "validators": "workflow_type_validator"
+    },
+    {
+      "field_name": "workflow_stage",
+      "label": "Workflow state",
+      "form_snippet": null,
+      "validators": "workflow_stage_validator"
+    },
+    {
+      "field_name": "original_id_of_revision",
+      "label": "Original dataset",
+      "preset": "revision_field"
+    }
+  ],
+  "resource_fields": [
+    {
+      "field_name": "url",
+      "label": "URL",
+      "preset": "resource_url_upload"
+    },
+    {
+      "field_name": "name",
+      "label": "Name",
+      "form_placeholder": "eg. January 2011 Gold Prices"
+    },
+    {
+      "field_name": "description",
+      "label": "Description",
+      "form_snippet": "markdown.html",
+      "form_placeholder": "Some useful notes about the data"
+    },
+    {
+      "field_name": "format",
+      "label": "Format",
+      "preset": "resource_format_autocomplete"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{#
+render a list of tags linking to the dataset search page
+tags: list of tags
+#}
+
+{% set _class = _class or 'tag-list' %}
+{% block tag_list %}
+  <ul class="{{ _class }}">
+    {% for tag in tags %}
+      <li>
+        <a class="{% block tag_list_item_class %}tag{% endblock %}"
+        {# href="{% url_for controller='package', action='search', tags=tag.name %} #}
+        href="{{"http://dev.edptest.info/edphome/SearchResults.aspx?q=&tag="+tag.display_name|replace(" ","%20")}}">
+        {{ h.truncate(tag.display_name, 22) }}
+       </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

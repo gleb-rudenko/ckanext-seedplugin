@@ -1,0 +1,30 @@
+{% ckan_extends %}
+
+{% block primary_content %}
+  <article class="module">
+    <div class="module-content" >
+      {% block primary_content_inner %}
+      <h1 class="page-heading">{{ _('Reset your password') }}</h1>
+      {% block form %}
+   <p>{% trans %}Please contact your system administrator to reset your password.{% endtrans %}</p>
+        <form action="" method="post" class="form-inline control-medium" style="display:none;">
+          <label for="field-username">{{ _('Username') }}</label>
+          <input id="field-username" name="user" value="" type="text" />
+          {% block form_button %}
+          <button class="btn btn-primary" type="submit" name="reset">{{ _("Request reset") }}</button>
+          {% endblock %}
+        </form>
+      {% endblock %}
+      {% endblock %}
+    </div>
+  </article>
+{% endblock %}
+
+{% block help_inner %}
+<h2 class="module-heading">{{ _('How does this work?') }}</h2>
+<div class="module-content">
+  <p style="display:none;">{% trans %}Enter your username into the box and we will send you
+  an email with a link to enter a new password.{% endtrans %}</p>
+   <p>{% trans %}Please contact your system administrator to reset your password.{% endtrans %}</p>
+</div>
+{% endblock %}
