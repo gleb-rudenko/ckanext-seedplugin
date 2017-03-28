@@ -1,0 +1,15 @@
+{
+  "scheming_presets_version": 1,
+  "about": "seedplugin scheming field presets",
+  "about_url": "http://github.com/ckan/ckanext-scheming#preset",
+  "presets": [
+    {
+      "preset_name": "seed_date",
+      "values": {
+        "form_snippet": "date.html",
+        "display_snippet": "date_ddmmyyyy.html",
+        "validators": "scheming_required seed_isodate convert_to_json_if_date"
+      }
+    }
+  ]
+}
