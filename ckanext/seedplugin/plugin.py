@@ -125,6 +125,7 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IFacets)
 
     def __init__(self, **kwargs):
         authenticator.intercept_authenticator()
@@ -173,3 +174,24 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     def get_helpers(self):
 
         return get_helpers()
+
+    # IFacets
+    def dataset_facets(self, facets_dict, package_type):
+        # We will actually remove all the core facets and add our own
+        facets_dict.clear()
+        facets_dict['topic'] = toolkit._('Topic Category')
+        facets_dict['tags'] = toolkit._('Tags')
+        facets_dict['organization'] = toolkit._('Organisation')
+        facets_dict['res_format'] = toolkit._('Formats')
+        #facets_dict['license'] = p.toolkit._('Licenses')
+        return facets_dict
+
+    def organization_facets(self, facets_dict, organization_type, package_type):
+        #facets_dict.clear()
+        facets_dict.clear()
+        facets_dict['topic'] = toolkit._('Topic Category')
+        facets_dict['tags'] = toolkit._('Tags')
+        facets_dict['organization'] = toolkit._('Organisation')
+        facets_dict['res_format'] = toolkit._('Formats')
+        #facets_dict['license'] = p.toolkit._('Licenses')
+        return facets_dict
