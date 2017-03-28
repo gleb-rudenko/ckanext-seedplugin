@@ -142,9 +142,17 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         """ Use our custom controller, and disable some unwanted URLs
         """
         controller = 'ckanext.seedplugin.controller:SEEDController'
+
         routeMap.connect('/user/logged_in', controller=controller, action='logged_in')
-        routeMap.connect('/user/edit/{id:.*}', controller='ckanext.seedplugin.controller:SEEDUserController', action='edit')
+        routeMap.connect('/user/login', controller='user', action='login')
+        routeMap.connect('/user/register', controller='user', action='register')
+        routeMap.connect('/user/logged_out', controller='user', action='logged_out')
+        routeMap.connect('/user/logged_out_redirect', controller='user', action='logged_out_redirect')
+        routeMap.connect('/user/me', controller='user', action='me')
+        routeMap.connect('/user/reset', controller='user', action='request_reset')
         routeMap.connect('/user/_logout', controller='ckanext.seedplugin.controller:SEEDUserController', action='logout')
+
+        routeMap.connect('/user/edit/{id:.*}', controller='ckanext.seedplugin.controller:SEEDUserController', action='edit')
         routeMap.connect('/user/{id:.*}', controller='ckanext.seedplugin.controller:SEEDUserController', action='read')
 
         # block unwanted content
