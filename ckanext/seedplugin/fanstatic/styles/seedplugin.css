@@ -1571,10 +1571,16 @@ button.close {
     display: inline-block;
     font-size: 14px;
     line-height: 20px;
+    color: #29a8f1;
     margin-bottom: 0;
     padding: 4px 12px;
     text-align: center;
     vertical-align: middle;
+    border: none;
+    text-shadow: none;
+    background-image: none;
+    box-shadow: none;
+    border-radius: 0;
 }
 .btn:hover, .btn:focus, .btn:active, .btn.active, .btn.disabled, .btn[disabled] {
     background-color: #eaeaea;
@@ -4172,7 +4178,7 @@ a.tag:hover {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background: #fbfbfb url("../../../base/images/bg.png") repeat scroll 0 0;
+    background: #fbfbfb url("/base/images/bg.png") repeat scroll 0 0;
     border-color: #dddddd;
     border-image: none;
     border-style: solid;
@@ -4303,7 +4309,7 @@ a.tag:hover {
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background: #fbfbfb url("../../../base/images/bg.png") repeat scroll 0 0;
+    background: #fbfbfb url("/base/images/bg.png") repeat scroll 0 0;
     border-color: #dddddd;
     border-image: none;
     border-style: solid;
@@ -4480,7 +4486,7 @@ a.tag:hover {
 }
 @media (min-width: 768px) {
 .nav-item.active > a::before, .nav-aside li.active a::before {
-    background-image: url("../../../base/images/nav-active.png?1");
+    background-image: url("/base/images/nav-active.png?1");
     content: " ";
     height: 34px;
     position: absolute;
@@ -4516,7 +4522,7 @@ a.tag:hover {
     z-index: 2;
 }
 .nav-facet .nav-item > a:hover::after, .nav-facet .nav-item.active > a::after {
-    background-image: url("../../../base/images/sprite-ckan-icons.png");
+    background-image: url("/base/images/sprite-ckan-icons.png");
     background-position: 16px 16px;
     background-repeat: no-repeat;
     content: "";
@@ -4583,7 +4589,7 @@ a.tag:hover {
     position: relative;
 }
 .nav-facet-tertiary .nav li.active > a:hover::after, .nav-facet-tertiary .nav li.active > a::after {
-    background-image: url("../../../base/images/sprite-ckan-icons.png");
+    background-image: url("/base/images/sprite-ckan-icons.png");
     background-position: 0 -16px;
     background-repeat: no-repeat;
     content: "";
@@ -5140,7 +5146,7 @@ textarea {
     z-index: 1;
 }
 .resource-upload-field.loading {
-    background: rgba(0, 0, 0, 0) url("../../../base/images/loading-spinner.gif") no-repeat scroll right center;
+    background: rgba(0, 0, 0, 0) url("/base/images/loading-spinner.gif") no-repeat scroll right center;
     display: inline-block;
     padding-right: 5px;
 }
@@ -5870,7 +5876,7 @@ h1 small, h2 small, h3 small, h4 small {
     white-space: nowrap;
 }
 .ckan-icon {
-    background-image: url("../../../base/images/sprite-ckan-icons.png");
+    background-image: url("/base/images/sprite-ckan-icons.png");
     background-position: 16px 16px;
     background-repeat: no-repeat;
     display: inline-block;
@@ -6151,11 +6157,13 @@ h1 small, h2 small, h3 small, h4 small {
     width: 32px;
 }
 .format-label[data-format="wms"], .format-label[data-format*="wms"] {
+    background: rgba(0, 0, 0, 0) url("../images/sprite-resource-icons.png") no-repeat scroll 0 0;
     background-position: -544px -62px;
     height: 35px;
     width: 32px;
 }
 .format-label[data-format="wmts"], .format-label[data-format*="wmts"] {
+    background: rgba(0, 0, 0, 0) url("../images/sprite-resource-icons.png") no-repeat scroll 0 0;
     background-position: -576px -62px;
     height: 35px;
     width: 32px;
@@ -6324,7 +6332,7 @@ h1 small, h2 small, h3 small, h4 small {
 }
 @media (min-width: 768px) {
 .hero {
-    background: rgba(0, 0, 0, 0) url("../../../base/images/background-tile.png") repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("/base/images/background-tile.png") repeat scroll 0 0;
 }
 }
 .hero::after {
@@ -6526,7 +6534,7 @@ h1 small, h2 small, h3 small, h4 small {
 }
 }
 .account-masthead {
-    background: #20478f url("../../../base/images/bg.png") repeat scroll 0 0;
+    background: #20478f url("/base/images/bg.png") repeat scroll 0 0;
     color: #ffffff;
     min-height: 30px;
 }
@@ -6730,7 +6738,7 @@ h1 small, h2 small, h3 small, h4 small {
 }
 }
 .site-footer {
-    background: #005d7a url("../../../base/images/bg.png") repeat scroll 0 0;
+    background: #005d7a url("/base/images/bg.png") repeat scroll 0 0;
     color: #ffffff;
     min-height: 55px;
     padding: 20px 0;
@@ -6870,7 +6878,7 @@ footer > *{
     font-size: 12px;
 }
 .attribution .ckan-footer-logo {
-    background: rgba(0, 0, 0, 0) url("../../../base/images/ckan-logo-footer.png") no-repeat scroll left top;
+    background: rgba(0, 0, 0, 0) url("/base/images/ckan-logo-footer.png") no-repeat scroll left top;
     display: block;
     height: 21px;
     margin-top: 2px;
@@ -6936,7 +6944,7 @@ footer > *{
     display: table-row;
 }
 .js .table-toggle-more .toggle-seperator td {
-    background-image: url("../../../base/images/table-seperator.png");
+    background-image: url("/base/images/table-seperator.png");
     height: 11px;
     padding: 0;
 }
@@ -6957,7 +6965,7 @@ footer > *{
     margin-bottom: 20px;
 }
 .activity {
-    background: transparent url("../../../base/images/dotted.png") repeat-y scroll 14px 0;
+    background: transparent url("/base/images/dotted.png") repeat-y scroll 14px 0;
     list-style-type: none;
     margin: 10px 0;
     padding: 0;
@@ -7183,7 +7191,7 @@ footer > *{
     margin-bottom: 10px;
 }
 .dashboard-context .arrow {
-    background: transparent url("../../../base/images/dashboard-followee-related.png") repeat scroll 0 0;
+    background: transparent url("/base/images/dashboard-followee-related.png") repeat scroll 0 0;
     content: " ";
     height: 21px;
     position: absolute;
@@ -7450,11 +7458,11 @@ iframe {
     float: right;
 }
 .ie8 [role="main"], .ie7 [role="main"], .ie8 .main, .ie7 .main {
-    background: #eeeeee url("../../../base/images/bg.png") repeat scroll 0 0;
+    background: #eeeeee url("/base/images/bg.png") repeat scroll 0 0;
     padding-top: 10px;
 }
 .ie8 .hero, .ie7 .hero {
-    background: rgba(0, 0, 0, 0) url("../../../base/images/background-tile.png") repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) url("/base/images/background-tile.png") repeat scroll 0 0;
 }
 .ie8 .hero .hero-primary.module-popup .box, .ie7 .hero .hero-primary.module-popup .box {
     margin-bottom: 0 !important;
@@ -7566,7 +7574,7 @@ iframe {
     content: "x";
 }
 .ie7 .toolbar .breadcrumb li {
-    background: transparent url("../../../base/images/breadcrumb-slash-ie7.png") no-repeat scroll 100% 50%;
+    background: transparent url("/base/images/breadcrumb-slash-ie7.png") no-repeat scroll 100% 50%;
     margin-right: 5px;
     padding-right: 10px;
 }
@@ -8272,3 +8280,7 @@ a[data-toggle="modal"] {
  }
 
 .pull-left{float:left;padding-top:17px;}
+
+.btn-group>.btn:first-child {
+    border-radius: 0;
+}
