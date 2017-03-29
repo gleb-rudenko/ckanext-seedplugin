@@ -155,6 +155,7 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
 
         routeMap.connect('/user/edit/{id:.*}', controller='ckanext.seedplugin.controller:SEEDUserController', action='edit')
         routeMap.connect('/user/{id:.*}', controller='ckanext.seedplugin.controller:SEEDUserController', action='read')
+        routeMap.connect('/download_results', controller='ckanext.seedplugin.controller:SEEDController', action='download_results')
 
         # block unwanted content
         #routeMap.connect('/user', controller='error', action='404')

@@ -4653,6 +4653,12 @@ textarea {
     position: relative;
     top: -2px;
 }
+
+.control-group .btn.seed-download-results {
+    top: 0;
+    margin-left: 5px;
+}
+
 .control-full input, .control-full select, .control-full textarea {
     box-sizing: border-box;
     height: auto;
@@ -8284,3 +8290,4 @@ a[data-toggle="modal"] {
 .btn-group>.btn:first-child {
     border-radius: 0;
 }
+
