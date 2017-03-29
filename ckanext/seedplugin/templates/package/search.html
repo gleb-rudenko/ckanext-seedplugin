@@ -18,3 +18,15 @@
     %}
     {% snippet 'snippets/search_form.html', form_id='dataset-search-form', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
 {% endblock %}
+
+
+{% block page_primary_action %}
+  {% if h.check_access('package_create') %}
+    <div class="page_primary_action">
+      {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
+      {% if h.check_access('sysadmin') %}
+        {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController', action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %}
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
