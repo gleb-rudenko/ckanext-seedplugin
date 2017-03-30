@@ -6,7 +6,7 @@ from ckanext.seedplugin.authenticator import SEEDUser
 import ckan.logic as logic
 import ckan.lib.authenticator as authenticator
 import ckan.lib.helpers as h
-from ckan.common import _, response, g, OrderedDict
+from ckan.common import _, g, OrderedDict
 import ckan.lib.navl.dictization_functions as dictization_functions
 import ckan.plugins as p
 import ckan.model as model
@@ -36,16 +36,17 @@ unflatten = dictization_functions.unflatten
 class SEEDController(BaseController):
 
     def logged_in(self):
-        #log.debug("insde-------------------")
         controller = UserController()
         if not c.user:
             # a number of failed login attempts greater than 10
             # indicates that the locked user is associated with the current request
-            seedUser = Session.query(SEEDUser).filter(SEEDUser.login_attempts > 5).first()
+            seedUser = Session.query(SEEDUser).filter(
+                SEEDUser.login_attempts > 5).first()
             if seedUser:
                 seedUser.login_attempts = 5
                 Session.commit()
-                return controller.login('Login Failed: Bad username or password')
+                return controller.login(
+                    'Login Failed: Bad username or password')
         return controller.logged_in()
 
     def _guess_package_type(self, expecting_name=False):
@@ -183,7 +184,6 @@ class SEEDUserController(UserController):
         context['with_related'] = True
 
         try:
-            #check_access('user_show', context, data_dict)
             check_access('user_list', context, data_dict)
         except NotAuthorized:
             abort(401, _('Not authorized to see this page'))
@@ -199,7 +199,8 @@ class SEEDUserController(UserController):
         return render('user/read.html')
 
     def edit(self, id=None, data=None, errors=None, error_summary=None):
-        return super(SEEDUserController, self).edit(id, data, errors, error_summary)
+        return super(SEEDUserController, self).edit(
+            id, data, errors, error_summary)
 
     def _save_edit(self, id, context):
         try:
@@ -222,11 +223,11 @@ class SEEDUserController(UserController):
 
             user = get_action('user_update')(context, data_dict)
             h.flash_success(_('Profile updated'))
-            #h.redirect_to(controller='user', action='read', id=user['name'])
 
             #if the updated profile has been saved successfully, we check if user has entered a password. if yes, password has been changed, logout current user
             if data_dict['password1']:
-                h.redirect_to(controller='user', action='logout', __ckan_no_root=True)
+                h.redirect_to(controller='user', action='logout',
+                              __ckan_no_root=True)
             #if not, redirect to user/<username> page
             h.redirect_to(controller='user', action='read', id=user['name'])
 
@@ -253,9 +254,3 @@ class SEEDUserController(UserController):
                         __ckan_no_root=True)
         h.redirect_to(self._get_repoze_handler('logout_handler_path') +
                       '?came_from=' + url)
-
-        #log.debug('session '+session)
-        #session.invalidate()
-        #session.clear()
-        #log.debug('session '+session)
-        #session.clear()

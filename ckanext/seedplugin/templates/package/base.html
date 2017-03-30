@@ -1,17 +1,10 @@
 {% extends "page.html" %}
 {% set pkg = c.pkg_dict or pkg_dict %}
-{#takes to new search page #}
 {% set dataseturl="http://dev.edptest.info" %}
-{#{% set orgurl=pkg.organization.title|replace(" ","%20") %}#}
-
 
 {% block breadcrumb_content_selected %} class="active"{% endblock %}
 
 {% block subtitle %}{{ _('Datasets') }}{% endblock %}
-
-{% block help_button %}
-          {# how to find out what content is currently being displayed? #}
-{% endblock %}
 
 {% block breadcrumb_content %}
   {% if pkg %}
@@ -21,7 +14,6 @@
       {% set orgurl=pkg.organization.title|replace(" ","%20") %}
       <li>{% link_for _('Organizations'), controller='organization', action='index' %}</li>
       <li><a href="{{dataseturl+"/edphome/SearchResults.aspx?q=&org="+orgurl }}">{{pkg.organization.title|truncate(30)}}</a></li>
-      {#<li>{% link_for organization|truncate(30), controller='organization', action='read', id=pkg.organization.name %}</li>#}
     {% else %}
       <li>{% link_for _('Datasets'), controller='package', action='search' %}</li>
     {% endif %}

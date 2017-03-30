@@ -20,6 +20,7 @@ def seed_isodate(value, context):
         return None
     try:
         date = h.date_str_to_datetime(value)
-    except (TypeError, ValueError), e:
-        raise Invalid(_('Date format incorrect. Date must be yyyy/mm/dd or yyyy-mm-dd11111111111'))
+    except (TypeError, ValueError):
+        raise Invalid(_('Date format incorrect. Date must be yyyy/mm/dd or\
+                        yyyy-mm-dd11111111111'))
     return date
