@@ -4,9 +4,6 @@ import authenticator
 from ckanext.seedplugin.logic.validators import (
     get_validators
 )
-from ckanext.seedplugin.helpers import (
-    get_helpers
-)
 import ckan.lib.formatters as formatters
 from ckan.common import _, ungettext
 import datetime
@@ -117,6 +114,7 @@ def seed_localised_nice_date(datetime_, show_date=False, with_hours=False):
             # We reformatted date to dd/mm/yyyy
             _('{day_n}/{month_n}/{year}').format(**details))
 
+
 formatters.localised_nice_date = seed_localised_nice_date
 
 
@@ -124,7 +122,6 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IValidators)
-    plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets)
 
     def __init__(self, **kwargs):
@@ -143,25 +140,29 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         """ Use our custom controller, and disable some unwanted URLs
         """
         controller = 'ckanext.seedplugin.controller:SEEDController'
+        controllerUser = 'ckanext.seedplugin.controller:SEEDUserController'
 
-        routeMap.connect('/user/logged_in', controller=controller, action='logged_in')
+        routeMap.connect('/user/logged_in', controller=controller,
+                         action='logged_in')
         routeMap.connect('/user/login', controller='user', action='login')
-        routeMap.connect('/user/register', controller='user', action='register')
-        routeMap.connect('/user/logged_out', controller='user', action='logged_out')
-        routeMap.connect('/user/logged_out_redirect', controller='user', action='logged_out_redirect')
+        routeMap.connect('/user/register', controller='user',
+                         action='register')
+        routeMap.connect('/user/logged_out', controller='user',
+                         action='logged_out')
+        routeMap.connect('/user/logged_out_redirect', controller='user',
+                         action='logged_out_redirect')
         routeMap.connect('/user/me', controller='user', action='me')
-        routeMap.connect('/user/reset', controller='user', action='request_reset')
-        routeMap.connect('/user/_logout', controller='ckanext.seedplugin.controller:SEEDUserController', action='logout')
+        routeMap.connect('/user/reset', controller='user',
+                         action='request_reset')
+        routeMap.connect('/user/_logout', controller=controllerUser,
+                         action='logout')
+        routeMap.connect('/user/edit/{id:.*}', controller=controllerUser,
+                         action='edit')
+        routeMap.connect('/user/{id:.*}', controller=controllerUser,
+                         action='read')
+        routeMap.connect('/download_results', controller=controller,
+                         action='download_results')
 
-        routeMap.connect('/user/edit/{id:.*}', controller='ckanext.seedplugin.controller:SEEDUserController', action='edit')
-        routeMap.connect('/user/{id:.*}', controller='ckanext.seedplugin.controller:SEEDUserController', action='read')
-        routeMap.connect('/download_results', controller='ckanext.seedplugin.controller:SEEDController', action='download_results')
-
-        # block unwanted content
-        #routeMap.connect('/user', controller='error', action='404')
-        #routeMap.connect('/user/register', controller='error', action='404')
-        #routeMap.connect('/user/followers/{username:.*}', controller='error', action='404')
-        #routeMap.connect('/api/action/follow{action:.*}', controller='error', action='404')
         return routeMap
 
     # IValidators
@@ -169,12 +170,6 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     def get_validators(self):
 
         return get_validators()
-
-    # ITemplateHelpers
-
-    def get_helpers(self):
-
-        return get_helpers()
 
     # IFacets
     def dataset_facets(self, facets_dict, package_type):
@@ -184,15 +179,13 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         facets_dict['tags'] = toolkit._('Tags')
         facets_dict['organization'] = toolkit._('Organisation')
         facets_dict['res_format'] = toolkit._('Formats')
-        #facets_dict['license'] = p.toolkit._('Licenses')
         return facets_dict
 
-    def organization_facets(self, facets_dict, organization_type, package_type):
-        #facets_dict.clear()
+    def organization_facets(self, facets_dict, organization_type,
+                            package_type):
         facets_dict.clear()
         facets_dict['topic'] = toolkit._('Topic Category')
         facets_dict['tags'] = toolkit._('Tags')
         facets_dict['organization'] = toolkit._('Organisation')
         facets_dict['res_format'] = toolkit._('Formats')
-        #facets_dict['license'] = p.toolkit._('Licenses')
         return facets_dict
