@@ -1,86 +1,4 @@
 {% block header_wrapper %}
-{% block header_account %}
-{#<header class="account-masthead">
-  <header class="navbar navbar-fixed-top masthead">
-    <div class="container">
-     The .header-image class hides the main text and uses image replacement for the title
-     <hgroup class="{{ g.header_class }} pull-left">
-
-       {% block header_logo2 %}
-         {% if g.site_logo %}
-            <a class="logo" href="{{ h.url('home') }}"><img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="{{ g.site_title }}" title="{{ g.site_title }}" /></a>
-         {% else %}
-            <h1>
-              <a href="{{ h.url('home') }}">{{ g.site_title }}</a>
-            </h1>
-            {% if g.site_description %}<h2>{{ g.site_description }}</h2>{% endif %}
-         {% endif %}
-       {% endblock %}
-
-      </hgroup>
-      {% block header_account_container_content %}
-        {% if c.userobj %}
-          <div class="account avatar authed" data-module="me" data-me="{{ c.userobj.id }}">
-            <ul class="unstyled">
-              {% block header_account_logged %}
-              {% if c.userobj.sysadmin %}
-                <li>
-                  <a href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
-                    <i class="icon-legal" aria-hidden="true"></i>
-                    <span class="text">{{ _('Admin') }}</span>
-                  </a>
-                </li>
-              {% endif %}
-              <li>
-                <a href="{{ h.url_for(controller='user', action='read', id=c.userobj.name) }}" class="image" title="{{ _('View profile') }}">
-                  {{ h.gravatar((c.userobj.email_hash if c and c.userobj else ''), size=22) }}
-                  <span class="username">{{ c.userobj.display_name }}</span>
-                </a>
-              </li>
-              {% set new_activities = h.new_activities() %}
-              <li class="notifications {% if new_activities > 0 %}notifications-important{% endif %}">
-                {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
-                <a href="{{ h.url_for(controller='user', action='dashboard') }}" title="{{ notifications_tooltip }}">
-                  <i class="icon-dashboard" aria-hidden="true"></i>
-                  <span class="text">{{ _('Dashboard') }}</span>
-                  <span class="badge">{{ new_activities }}</span>
-                </a>
-              </li>
-              {% block header_account_settings_link %}
-                <li>
-                  <a href="{{ h.url_for(controller='user', action='edit', id=c.userobj.name) }}" title="{{ _('Edit settings') }}">
-                    <i class="icon-cog" aria-hidden="true"></i>
-                    <span class="text">{{ _('Settings') }}</span>
-                  </a>
-                </li>
-              {% endblock %}
-              {% block header_account_log_out_link %}
-                <li>
-                  <a href="{{ h.url_for('/user/_logout') }}" title="{{ _('Log out') }}">
-                    <i class="icon-signout" aria-hidden="true"></i>
-                    <span class="text">{{ _('Log out') }}</span>
-                  </a>
-                </li>
-              {% endblock %}
-              {% endblock %}
-            </ul>
-          </div>
-        {% else %}
-          <nav class="account not-authed">
-            <ul class="unstyled">
-              {% block header_account_notlogged %}
-              <li>{% link_for _('Log in'), controller='user', action='login' %}</li>
-              {% if h.check_access('user_create') %}
-                <li>{% link_for _('Register'), controller='user', action='register', class_='sub' %}</li>
-              {% endif %}
-              {% endblock %}
-            </ul>
-          </nav>
-        {% endif %}
-      {% endblock %}
-    </div>
-  </header>#}
-{% endblock %}
 <header class="navbar navbar-static-top masthead">
   {% block header_debug %}
     {% if g.debug and not g.debug_supress_header %}
@@ -88,12 +6,6 @@
     {% endif %}
   {% endblock %}
   <div class="container">
-    {#<button data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>#}
-    {# The .header-image class hides the main text and uses image replacement for the title #}
     <hgroup class="{{ g.header_class }}" style="padding-left:30px;">
 
       {% block header_logo %}
@@ -109,38 +21,6 @@
       {% endblock %}
 
     </hgroup>
-    {#<div style="margin:25px 0">
-       <button class="btn btn-danger" data-target="#demo" data-toggle="collapse" type="button" aria-expanded="true">Click Me</button>
-        <div id="demo" class="collapse in" aria-expanded="true" style=""> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </div>
-    </div>#}
-    {#<div class="nav-collapse collapse">
-
-      {% block header_site_navigation %}
-        <nav class="section navigation">
-          <ul class="nav nav-pills">
-            {% block header_site_navigation_tabs %}
-              {{ h.build_nav_main(
-                ('search', _('Datasets')),
-                ('organizations_index', _('Organizations')),
-                ('group_index', _('Groups')),
-                ('about', _('About'))
-              ) }}
-            {% endblock %}
-          </ul>
-        </nav>
-      {% endblock %}
-
-      {% block header_site_search %}
-        <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}" method="get">
-          <div class="field">
-            <label for="field-sitewide-search">{% block header_site_search_label %}{{ _('Search Datasets') }}{% endblock %}</label>
-            <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search') }}" />
-            <button class="btn-search" type="submit"><i class="icon-search"></i></button>
-          </div>
-        </form>
-      {% endblock %}
-
-    </div>#}
     <script>
       var _prum = [['id', '57e874d57585f0dc6bf625ab'],
       ['mark', 'firstbyte', (new Date()).getTime()]];
@@ -154,9 +34,6 @@
     </script>
   </div>
 </header>
-{#<header class="page-header"><div class="container">
-  <h1>Environmental Data Portal<small>Subtext for header</small></h1>
-</div></header>#}
 <header class="navbar navbar-static-top masthead sticky">
   <div class="container">
     <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar" type="button">
@@ -165,17 +42,9 @@
       <span class="icon-bar"></span>
     </a>
     <div class="nav-collapse collapse" style="width:100%;padding-left:15px;padding-right:15px;">
-
       {% block header_site_navigation %}
         <nav class="section navigation" style="width:100%; font-weight: bold;">
           <ul class="nav nav-pills" style="display:none;">
-            {#{% block header_site_navigation_tabs %}
-              {{ h.build_nav_main(
-                ('search', _('Datasets')),
-                ('about', _('Map')),
-                ('group_list', _('bla')),
-              )}}
-            {% endblock %}#}
             <li>
               <a href="http://dev.edptest.info/edphome/home.aspx">ENVIRONMENTAL DATA PORTAL</a>
             </li>
@@ -197,22 +66,9 @@
             <li>
               <a href="http://dev.edptest.info/edphome/about.aspx">ABOUT</a>
             </li>
-            {#{{request.url.split("/")[2]}}http://dev.edptest.info/edphome/SearchResults.aspx http://ckan.dev.edptest.info/dataset#}
-            {#{{request.url.split("/")[0]+request.url.split("/")[1]+request.url.split("/")[2]|replace(".ckan", "")}}#}
             </ul>
         </nav>
       {% endblock %}
-
-      {#{% block header_site_search %}
-        <form class="section site-search simple-input" action="{% url_for controller='package', action='search' %}" method="get">
-          <div class="field">
-            <label for="field-sitewide-search">{% block header_site_search_label %}{{ _('Search Datasets') }}{% endblock %}</label>
-            <input id="field-sitewide-search" type="text" name="q" placeholder="{{ _('Search') }}" />
-            <button class="btn-search" type="submit"><i class="icon-search"></i></button>
-          </div>
-        </form>
-      {% endblock %}#}
-
     </div>
   </div>
 </header>
