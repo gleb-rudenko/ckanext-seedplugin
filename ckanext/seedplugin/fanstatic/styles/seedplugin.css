@@ -8290,4 +8290,51 @@ a[data-toggle="modal"] {
 .btn-group>.btn:first-child {
     border-radius: 0;
 }
+}
 
+
+.seed-datasets .seed-accordion .seed-dataset-item .dataset-content .dataset-heading {
+    display: inline-block;
+}
+
+.seed-datasets .seed-accordion .seed-dataset-item .dataset-content .seed-dataset-accordion-btn {
+    float: right;
+}
+
+.seed-datasets .accordion-buttons {
+    position: relative;
+}
+
+.seed-datasets .accordion-buttons .seed-datasets-toggle-all {
+    position: absolute;
+    right: 0;
+}
+
+.seed-datasets .accordion-buttons .btn-collapse-all,
+.seed-datasets .a-expand {
+    background-color: #085871;
+}
+
+.seed-datasets .a-collapse {
+    background-color: #c04deb;
+}
+
+.seed-datasets .a-expand i,
+.seed-datasets .a-collapse i {
+    display: block;
+    width: 14px;
+    height: 2px;
+}
+
+.seed-datasets .a-expand i {
+    background: url("../images/minus_accordion.png") no-repeat;
+}
+
+.seed-datasets .a-collapse i {
+    background: url("../images/plus_accordion.png") no-repeat;
+}
+
+
+.seed-datasets .seed-dataset-accordion-btn a {
+    padding: 12px 12px;
+}

@@ -18,3 +18,11 @@
       </div>
     {% endif %}
 {% endblock %}
+
+{% block search_facets %}
+    {{ super() }}
+    <div class="accordion-buttons">
+        <a class="btn btn-primary seed-datasets-toggle-checked">{{ _('Collapse selected') }}</a>
+        <a class="btn btn-primary seed-datasets-toggle-all">{{ _('Collapse expanded all') }}</a>
+    </div>
+{% endblock%}
