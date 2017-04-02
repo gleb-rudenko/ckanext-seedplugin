@@ -8292,6 +8292,7 @@ a[data-toggle="modal"] {
 }
 }
 
+// Custom css for search page OEHXCECF-44
 
 .seed-datasets .seed-accordion .seed-dataset-item .dataset-content .dataset-heading {
     display: inline-block;
@@ -8315,12 +8316,7 @@ a[data-toggle="modal"] {
     background-color: #085871;
 }
 
-.seed-datasets .a-collapse {
-    background-color: #c04deb;
-}
-
-.seed-datasets .a-expand i,
-.seed-datasets .a-collapse i {
+.seed-datasets .a-expand i {
     display: block;
     width: 14px;
     height: 2px;
@@ -8330,11 +8326,54 @@ a[data-toggle="modal"] {
     background: url("../images/minus_accordion.png") no-repeat;
 }
 
-.seed-datasets .a-collapse i {
+.seed-datasets .a-expand.collapsed i {
     background: url("../images/plus_accordion.png") no-repeat;
 }
 
-
 .seed-datasets .seed-dataset-accordion-btn a {
-    padding: 12px 12px;
+    padding: 11px 5px;
+}
+
+.seed-datasets .a-expand.collapsed i {
+    height: 14px;
+}
+
+.seed-datasets .seed-dataset-accordion-btn a.collapsed {
+    padding: 5px 5px;
+    background-color: #c04deb;
+}
+
+.seed-dataset-item input[type=checkbox] {
+    top: -1px;
+}
+
+.seed-dataset-item .checkbox-dataset {
+    display: inline-block;
+}
+
+
+.seed-dataset-item .checkbox-dataset label {
+    cursor: pointer;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    left: 0;
+    background: #eee;
+    border:1px solid #ccc;
+}
+
+.seed-dataset-item .checkbox-dataset label:after {
+    opacity: 0.2;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 5px;
+    background: transparent;
+    top: 6px;
+    left: 7px;
+    border: 3px solid red;
+    border-top: none;
+    border-right: none;
+    transform: rotate(-45deg);
 }

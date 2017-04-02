@@ -28,9 +28,9 @@ function toogle_all_datasets(action) {
 function toogle_dataset(action, index, elem) {
     var dataset = $('.seed-dataset' + index);
     var resource = $('.seed-dataset-resource' + index);
-    console.log(dataset, resource);
-    console.log(action);
-    console.log(elem);
+    // console.log(dataset, resource);
+    // console.log(action);
+    // console.log(elem);
     if (action == 'collapse') {
         $(dataset).removeClass('in');
         $(elem).removeClass('a-expand').addClass('a-collapse');
@@ -45,19 +45,19 @@ function toogle_dataset(action, index, elem) {
 jQuery(document).ready(function () {
     var btn_toogle_all = $('.seed-datasets-toggle-all');
     check_toggle_all_btn();
-    $(btn_toogle_all).on('click', function(event) {
-        if ($(btn_toogle_all).hasClass('btn-expand-all')) {
-            toogle_all_datasets('collapse')
-        } else if ($(btn_toogle_all).hasClass('btn-collapse-all')) {
-            toogle_all_datasets('expand')
-        }
-        check_toggle_all_btn();
-    });
+    // $(btn_toogle_all).on('click', function(event) {
+    //     if ($(btn_toogle_all).hasClass('btn-expand-all')) {
+    //         toogle_all_datasets('collapse')
+    //     } else if ($(btn_toogle_all).hasClass('btn-collapse-all')) {
+    //         toogle_all_datasets('expand')
+    //     }
+    //     check_toggle_all_btn();
+    // });
     $('.seed-dataset-accordion-btn a.btn').on('click', function(event) {
         var index = $(this).data('index');
-        console.log(index);
-        console.log(this);
+        // console.log(index);
+        // console.log(this);
         var action = $(this).hasClass('a-expand') ? 'collapse' : 'expand';
-        toogle_dataset(action, index, this);
+        // toogle_dataset(action, index, this);
     });
 });

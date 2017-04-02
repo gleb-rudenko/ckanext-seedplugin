@@ -23,6 +23,6 @@
     {{ super() }}
     <div class="accordion-buttons">
         <a class="btn btn-primary seed-datasets-toggle-checked">{{ _('Collapse selected') }}</a>
-        <a class="btn btn-primary seed-datasets-toggle-all">{{ _('Collapse expanded all') }}</a>
+        <a class="btn btn-primary seed-datasets-toggle-all" data-toggle="collapse" data-target="{{ h.get_datasets_targets()}}">{{ _('Collapse expanded all') }}</a>
     </div>
 {% endblock%}
