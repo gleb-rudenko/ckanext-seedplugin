@@ -150,7 +150,7 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         routeMap.connect('/user/logged_out', controller='user',
                          action='logged_out')
         routeMap.connect('/user/logged_out_redirect', controller='user',
-                         action='logged_out_redirect')
+                         action='logged_out_page')
         routeMap.connect('/user/me', controller='user', action='me')
         routeMap.connect('/user/reset', controller='user',
                          action='request_reset')

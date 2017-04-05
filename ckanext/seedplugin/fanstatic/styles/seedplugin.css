@@ -6540,7 +6540,7 @@ h1 small, h2 small, h3 small, h4 small {
 }
 }
 .account-masthead {
-    background: #20478f url("/base/images/bg.png") repeat scroll 0 0;
+    background: #1a63e8 url("/base/images/bg.png") repeat scroll 0 0;
     color: #ffffff;
     min-height: 30px;
 }
@@ -6566,12 +6566,12 @@ h1 small, h2 small, h3 small, h4 small {
     clear: both;
 }
 .account-masthead .account ul li {
-    border-left: 1px solid #00232e;
+    border-left: 1px solid #1a63e8;
     display: block;
     float: left;
 }
 .account-masthead .account ul li a {
-    color: #bfd7de;
+    color: #fff;
     display: block;
     font-size: 13px;
     font-weight: bold;
@@ -6587,25 +6587,26 @@ h1 small, h2 small, h3 small, h4 small {
     top: -9999px;
 }
 .account-masthead .account ul li a:hover {
-    background-color: #00232e;
+    background-color: #003647;
     color: #d9e7eb;
     text-decoration: none;
 }
 .account-masthead .account ul li a.sub {
-    font-weight: 300;
+    font-weight: bold;
 }
 .account-masthead .account ul li a .btn {
     margin-left: 3px;
     vertical-align: 1px;
 }
 .account-masthead .account .notifications a span.badge {
-    background-color: #00232e;
+    background-color: #20478f;
     border-radius: 4px;
     color: #bfd7de;
     font-size: 12px;
     margin-left: 3px;
-    padding: 1px 6px;
+    padding: 2px 6px;
     text-shadow: none;
+    line-height: 13px;
 }
 .account-masthead .account .notifications a:hover span {
     background-color: #000f14;
@@ -6620,7 +6621,7 @@ h1 small, h2 small, h3 small, h4 small {
 }
 .account-masthead .account.authed .image img {
     border-radius: 4px;
-    vertical-align: -6px;
+    vertical-align: -7px;
 }
 .masthead.sticky{
     background: #1a63e8 none repeat scroll 0 0;
