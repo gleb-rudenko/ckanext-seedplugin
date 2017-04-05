@@ -118,7 +118,7 @@
                       <ul class="nav nav-pills">
             <li>
               {% set dataseturl=request.url.split("/")[2]|replace("ckan.","") %}
-              <a href={{"http://dev.edptest.info/edphome/SearchResults.aspx"}}>DATASETS</a>
+              <a href="/dataset">DATASETS</a>
             </li>
             <li>
               <a href="http://geo.dev.edptest.info/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer">MAP</a>
@@ -130,7 +130,7 @@
               <a href="http://dev.edptest.info/edphome/using-seed.aspx" target="_blank">HELP</a>
             </li>
             <li>
-              <a href="http://dev.edptest.info/edphome/about.aspx">ABOUT</a>
+              <a href="/about">ABOUT</a>
             </li>
             </ul>
         </nav>
