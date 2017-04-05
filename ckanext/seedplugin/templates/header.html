@@ -52,7 +52,8 @@
                       <ul class="nav nav-pills">
             <li>
               {% set dataseturl=request.url.split("/")[2]|replace("ckan.","") %}
-              <a href={{"http://dev.edptest.info/edphome/SearchResults.aspx"}}>DATASETS</a>
+              <!-- <a href={{"http://dev.edptest.info/edphome/SearchResults.aspx"}}>DATASETS</a> -->
+              <a href="{{ g.site_url }}/dataset">DATASETS</a>
             </li>
             <li>
               <a href="http://geo.dev.edptest.info/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer">MAP</a>
