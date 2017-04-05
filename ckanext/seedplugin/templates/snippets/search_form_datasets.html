@@ -1,5 +1,4 @@
-{% ckan_extends %}
-
+{% extends "snippets/search_form.html" %}
 
 {% block search_sortby %}
     {% if sorting %}
@@ -21,4 +20,12 @@
 
 {% block search_facets %}
     {{ super() }}
+    <div class="accordion-buttons">
+        <div class="checkbox-datasets">
+            <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" name="" />
+            <label for="checkbox-dataset{{counter}}"></label>
+        </div>
+        <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled">{{ _('Expand') }}<i></i></a>
+        <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled">{{ _('Collapse') }}<i></i></a>
+    </div>
 {% endblock%}

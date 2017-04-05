@@ -5,15 +5,24 @@ function check_toggle_all_btn() {
         $('.seed-datasets-toggle-all').removeClass('btn-collapse-all').addClass('btn-expand-all').text('Collapse all');
     } else {
         $(ul_datasets).removeClass('collapsed-all').addClass('expanded-all');
-        $('.seed-datasets-toggle-all').removeClass('btn-expand-all').addClass('btn-collapse-all').text('Expand all');
+        $('.seed-datasets-toggle-all').removeClass('bt n-expand-all').addClass('btn-collapse-all').text('Expand all');
     }
 }
 
-function toogle_all_datasets(action) {
+function change_expand_collapse_btns(index) {
+    var dataset = $('.seed-dataset' + index);
+    var resource = $('.seed-dataset-resource' + index);
+    console.log(dataset, resource);
+    if ($(dataset).hasClass('in')) {
+        $('.seed-datasets-collapse-checked').attr('disabled', false);
+    }
+}
+
+function toogle_all_datasets() {
     var datasets = $('.seed-dataset');
     var resources = $('.seed-dataset-resource');
     for (var i = 0; i<datasets.length; i++) {
-        if (action == 'collapse') {
+        if ($(datasets[i]).hasClass('in')) {
             $(datasets[i]).removeClass('in');
             $(resources[i]).removeClass('in');
         } else if (action == 'expand') {
@@ -23,41 +32,79 @@ function toogle_all_datasets(action) {
             }
         }
     }
+
 }
 
 function toogle_dataset(action, index, elem) {
     var dataset = $('.seed-dataset' + index);
     var resource = $('.seed-dataset-resource' + index);
-    // console.log(dataset, resource);
-    // console.log(action);
-    // console.log(elem);
+    console.log(dataset, resource);
+    console.log(elem);
     if (action == 'collapse') {
-        $(dataset).removeClass('in');
-        $(elem).removeClass('a-expand').addClass('a-collapse');
+        $(dataset).collapse('hide');
+        $(resource).collapse('hide');
+        $(elem).addClass('a-collapse');
+        $(elem).find('span').text('Expand');
     } else if (action == 'expand') {
-        if (!$(dataset).hasClass('in')) {
-            $(dataset).addClass('in');
-            $(elem).removeClass('a-collapse').addClass('a-expand');
-        }
+        $(dataset).collapse('show');
+        $(resource).collapse('show');
+        $(elem).removeClass('a-collapse');
+        $(elem).find('span').text('Collapse');
     }
 }
 
 jQuery(document).ready(function () {
-    var btn_toogle_all = $('.seed-datasets-toggle-all');
-    check_toggle_all_btn();
-    // $(btn_toogle_all).on('click', function(event) {
-    //     if ($(btn_toogle_all).hasClass('btn-expand-all')) {
-    //         toogle_all_datasets('collapse')
-    //     } else if ($(btn_toogle_all).hasClass('btn-collapse-all')) {
-    //         toogle_all_datasets('expand')
-    //     }
-    //     check_toggle_all_btn();
-    // });
-    $('.seed-dataset-accordion-btn a.btn').on('click', function(event) {
+    $('.all-datasets-checkbox').on('click', function(event) {
+        console.log('click checkbox');
+        var checkboxes = $('.checkbox-dataset input[type=checkbox]');
+        if ($(this).hasClass('datasets-not-checked')) {
+            for (var i = 0; i < checkboxes.length; i++) {
+                $(checkboxes[i]).prop('checked', true);
+            }
+            $('.all-datasets-checkbox').removeClass('datasets-not-checked');
+        } else {
+            for (var i = 0; i < checkboxes.length; i++) {
+                $(checkboxes[i]).prop('checked', false);
+                $('.all-datasets-checkbox').addClass('datasets-not-checked');
+            }
+            if ($('.all-datasets-checkbox').prop('checked')) {
+                $('.all-datasets-checkbox').prop('checked', false);
+            }
+        }
+
+    });
+    $('.checkbox-dataset input[type=checkbox]').on('click', function(event) {
+        console.log($(this));
+        console.log('all checkbox = ', $('.checkbox-dataset input[type=checkbox]').length);
+        console.log('checked checkbox = ', $('.checkbox-dataset input[type=checkbox]:checked').length);
+
+        var state_checked = $(this).prop('checked');
+        if (state_checked) {
+            $('.all-datasets-checkbox').removeClass('datasets-not-checked');
+        } else {
+            if ($('.checkbox-dataset input[type=checkbox]:checked').length == 0) {
+                $('.all-datasets-checkbox').addClass('datasets-not-checked');
+                if ($('.all-datasets-checkbox').prop('checked')) {
+                    $('.all-datasets-checkbox').prop('checked', false);
+                }
+            }
+        }
+        var index = $(this).val();
+        console.log(index);
+        change_expand_collapse_btns(index);
+        // if ($(btn_toogle_all).hasClass('btn-expand-all')) {
+        //     toogle_all_datasets('collapse')
+        // } else if ($(btn_toogle_all).hasClass('btn-collapse-all')) {
+        //     toogle_all_datasets('expand')
+        // }
+        check_toggle_all_btn();
+    });
+    $('.seed-dataset-accordion-btn a.a-expand').on('click', function(event) {
+        console.log('this = ', this);
+        console.log('event.target = ', event.target);
+        var action = $(this).hasClass('a-collapse') ? 'expand' : 'collapse';
         var index = $(this).data('index');
-        // console.log(index);
-        // console.log(this);
-        var action = $(this).hasClass('a-expand') ? 'collapse' : 'expand';
-        // toogle_dataset(action, index, this);
+        console.log(action, index);
+        toogle_dataset(action, index, this);
     });
 });
