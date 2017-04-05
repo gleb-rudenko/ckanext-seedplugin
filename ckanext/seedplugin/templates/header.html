@@ -121,6 +121,10 @@
               <a href="/dataset">DATASETS</a>
             </li>
             <li>
+              {% set dataseturl=request.url.split("/")[2]|replace("ckan.","") %}
+              <a href="/organization">ORGANISATIONS</a>
+            </li>
+            <li>
               <a href="http://geo.dev.edptest.info/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer">MAP</a>
             </li>
             <li>
