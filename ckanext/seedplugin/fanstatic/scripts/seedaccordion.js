@@ -66,9 +66,12 @@ jQuery(document).ready(function () {
             for (var i = 0; i < checkboxes.length; i++) {
                 $(checkboxes[i]).prop('checked', false);
                 $('.all-datasets-checkbox').addClass('datasets-not-checked');
+                $('.seed-datasets-expand-checked').attr('disabled', true);
+                $('.seed-datasets-collapse-checked').attr('disabled', true);
             }
             if ($('.all-datasets-checkbox').prop('checked')) {
                 $('.all-datasets-checkbox').prop('checked', false);
+                $('.all-datasets-checkbox').removeClass('checked_minus');
             }
         }
 
@@ -79,14 +82,25 @@ jQuery(document).ready(function () {
         console.log('checked checkbox = ', $('.checkbox-dataset input[type=checkbox]:checked').length);
 
         var state_checked = $(this).prop('checked');
+        var datasets_checkbox_checked = $('.checkbox-dataset input[type=checkbox]:checked').length;
+        var datasets_checkbox = $('.checkbox-dataset input[type=checkbox]').length;
         if (state_checked) {
             $('.all-datasets-checkbox').removeClass('datasets-not-checked');
+            if (datasets_checkbox_checked != datasets_checkbox) {
+                $('.all-datasets-checkbox').addClass('checked_minus');
+                $('.all-datasets-checkbox').prop('checked', true);
+            } else if (datasets_checkbox_checked == datasets_checkbox) {
+                $('.all-datasets-checkbox').removeClass('checked_minus');
+            }
         } else {
             if ($('.checkbox-dataset input[type=checkbox]:checked').length == 0) {
                 $('.all-datasets-checkbox').addClass('datasets-not-checked');
                 if ($('.all-datasets-checkbox').prop('checked')) {
                     $('.all-datasets-checkbox').prop('checked', false);
                 }
+                $('.all-datasets-checkbox').removeClass('checked_minus');
+                $('.seed-datasets-expand-checked').attr('disabled', true);
+                $('.seed-datasets-collapse-checked').attr('disabled', true);
             }
         }
         var index = $(this).val();

@@ -23,6 +23,7 @@
                 <div class="checkbox-dataset">
       		        <input type="checkbox" value="{{counter}}" id="checkbox-dataset{{counter}}" name="dataset{{counter}}" />
       	            <label for="checkbox-dataset{{counter}}"></label>
+                    <span class="datasets-tooltip">Add to selection</span>
                 </div>
               {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
             {% endblock %}
