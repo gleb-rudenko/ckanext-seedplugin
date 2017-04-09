@@ -8291,4 +8291,269 @@ a[data-toggle="modal"] {
 .btn-group>.btn:first-child {
     border-radius: 0;
 }
+}
 
+// Custom css for search page OEHXCECF-44
+
+.seed-datasets .seed-accordion .seed-dataset-item .dataset-content .dataset-heading {
+    display: inline-block;
+}
+
+.seed-datasets .seed-accordion .seed-dataset-item .dataset-content .seed-dataset-accordion-btn {
+    float: right;
+}
+
+.seed-datasets .accordion-buttons {
+    position: relative;
+}
+
+.seed-datasets .accordion-buttons .checkbox-datasets {
+    display: inline-block;
+    background: #f7f7f7;
+    padding-bottom: 3px;
+    padding-top: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #ddd;
+}
+
+.seed-datasets .accordion-buttons .checkbox-datasets label:after {
+    content: '';
+}
+
+/*.seed-datasets .accordion-buttons .seed-datasets-expand-checked,
+.seed-datasets .accordion-buttons .seed-datasets-collapse-checked {
+    padding: 2px 7px;
+}*/
+
+.seed-datasets .accordion-buttons .seed-datasets-expand-checked,
+.seed-datasets .accordion-buttons .seed-datasets-collapse-checked,
+.seed-datasets .a-expand.a-collapse {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    color: #29a8f1;
+}
+
+.seed-datasets li.dataset-item {
+    padding-left: 10px;
+}
+
+.seed-datasets .a-expand {
+    background-color: #eee;
+    border: 1px solid #ddd;
+}
+
+.seed-datasets .a-expand i {
+    display: block;
+    width: 14px;
+    height: 2px;
+}
+
+.accordion-buttons .seed-datasets-collapse-checked i,
+.seed-datasets .a-expand i {
+    background: url("../images/minus_accordion.png") no-repeat;
+}
+
+.accordion-buttons .seed-datasets-expand-checked i,
+.seed-datasets .a-expand.a-collapse i {
+    background: url("../images/plus_accordion.png") no-repeat;
+}
+
+.accordion-buttons .seed-datasets-expand-checked,
+.accordion-buttons .seed-datasets-collapse-checked {
+    position: relative;
+    padding: 2px 7px;
+}
+
+.accordion-buttons .seed-datasets-expand-checked {
+    line-height: 26px;
+    width: 91px;
+    height: 24px;
+    padding: 0;
+}
+
+.accordion-buttons .seed-datasets-expand-checked i,
+.accordion-buttons .seed-datasets-collapse-checked i {
+    display: inline-block;
+    width: 14px;
+    height: 5px;
+    margin-left: 12px;
+}
+
+.accordion-buttons .seed-datasets-expand-checked i {
+    height: 14px;
+    margin-top: 4px;
+}
+
+.seed-datasets .search-form {
+    padding-bottom: 10px;
+}
+
+.seed-datasets .seed-dataset-accordion-btn a {
+    padding: 11px 10px;
+}
+
+.seed-datasets .a-expand.a-collapse i {
+    height: 14px;
+}
+
+.seed-datasets .seed-dataset-accordion-btn a.a-collapse {
+    padding: 5px 10px;
+}
+
+.seed-dataset-item .seed-dataset,
+.seed-dataset-item .seed-dataset-resource {
+    padding-left: 24px;
+}
+
+.seed-dataset-item input[type=checkbox],
+.checkbox-datasets input[type=checkbox] {
+    top: -1px;
+}
+
+.seed-dataset-item .checkbox-dataset {
+    display: inline-block;
+    position: relative;
+    width: 12px;
+    height: 12px;
+    background: transparent;
+    margin-right: 7px;
+}
+
+.accordion-buttons .checkbox-datasets label,
+.seed-dataset-item .checkbox-dataset label {
+    cursor: pointer;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 3px;
+    left: 0;
+    background: #eee;
+    border:1px solid #ccc;
+}
+
+.accordion-buttons .checkbox-datasets {
+    margin-right: 6px;
+}
+
+.accordion-buttons .checkbox-datasets label {
+    top: 7px;
+    left: 10px;
+}
+
+.accordion-buttons .checkbox-datasets label:after,
+.accordion-buttons .checkbox-datasets .checked_minus + label:after,
+.seed-dataset-item .checkbox-dataset label:after {
+     content: '';
+     width: 10px;
+     height: 7px;
+     position: absolute;
+     top: 2px;
+     background: url(../images/tick_checkbox.png) no-repeat;
+     opacity: 0;
+}
+
+.accordion-buttons .checkbox-datasets .checked_minus + label:after {
+    background: url(../images/remove_checkbox.png) no-repeat;
+    top: 4px;
+    left: 1px;
+}
+
+.accordion-buttons .checkbox-datasets input[type=checkbox],
+.seed-dataset-item input[type=checkbox] {
+    visibility: hidden;
+    width: 12px;
+    height: 12px;
+}
+
+.accordion-buttons .checkbox-datasets input[type=checkbox]:checked + label,
+.accordion-buttons .checkbox-datasets .checked_minus + label,
+.seed-dataset-item input[type=checkbox]:checked + label {
+    background: #fff;
+}
+
+.accordion-buttons .checkbox-datasets input[type=checkbox]:checked + label:after,
+.accordion-buttons .checkbox-datasets .checked_minus + label:after,
+.seed-dataset-item input[type=checkbox]:checked + label:after {
+    opacity: 1;
+}
+
+.seed-dataset-accordion-btn a {
+    position: relative;
+}
+
+.datasets-tooltip {
+    display: none;
+    position: absolute;
+    width: 64px;
+    background-color: #000;
+    color: #fff;
+    top: 37px;
+    left: -15px;
+    z-index: 1;
+    font-size: 13px;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    text-align: center;
+}
+
+.seed-datasets .checkbox-datasets,
+.seed-datasets .seed-dataset-item .checkbox-dataset {
+    position: relative;
+}
+
+.accordion-buttons .seed-datasets-expand-checked .datasets-tooltip {
+    left: -7px;
+}
+
+.accordion-buttons .seed-datasets-expand-checked .datasets-tooltip:after {
+    left: 48px;
+}
+
+.accordion-buttons .seed-datasets-collapse-checked {
+    left: -5px;
+}
+
+.accordion-buttons .seed-datasets-collapse-checked .datasets-tooltip:after {
+    left: 54px;
+}
+
+.accordion-buttons .seed-datasets-expand-checked .datasets-tooltip {
+    width: 112px;
+}
+
+.accordion-buttons .seed-datasets-collapse-checked .datasets-tooltip {
+    width: 124px;
+}
+
+.seed-datasets .seed-dataset-item .checkbox-dataset .datasets-tooltip {
+    width: 110px;
+    top: 30px;
+    left: -49px;
+}
+
+.seed-datasets .seed-dataset-item .checkbox-dataset .datasets-tooltip:after {
+    left: 47px;
+}
+
+.accordion-buttons .checkbox-datasets:hover .datasets-tooltip,
+.accordion-buttons .seed-datasets-expand-checked:hover .datasets-tooltip,
+.accordion-buttons .seed-datasets-collapse-checked:hover .datasets-tooltip,
+.seed-datasets .seed-dataset-item .checkbox-dataset:hover .datasets-tooltip,
+.seed-dataset-accordion-btn a:hover .datasets-tooltip {
+    display: block;
+}
+
+.datasets-tooltip::after {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    display: block;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #000;
+    top: -8px;
+    left: 24px;
+}

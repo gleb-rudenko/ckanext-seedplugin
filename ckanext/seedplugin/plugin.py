@@ -4,6 +4,7 @@ import authenticator
 from ckanext.seedplugin.logic.validators import (
     get_validators
 )
+import ckanext.seedplugin.helpers as seed_helpers
 import ckan.lib.formatters as formatters
 from ckan.common import _, ungettext
 import datetime
@@ -123,6 +124,7 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.IFacets)
+    plugins.implements(plugins.ITemplateHelpers)
 
     def __init__(self, **kwargs):
         authenticator.intercept_authenticator()
@@ -141,6 +143,7 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         """
         controller = 'ckanext.seedplugin.controller:SEEDController'
         controllerUser = 'ckanext.seedplugin.controller:SEEDUserController'
+        # controllerPackage = 'ckanext.seedplugin.controller:SEEDPackageController'
 
         routeMap.connect('/user/logged_in', controller=controller,
                          action='logged_in')
@@ -162,8 +165,15 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
                          action='read')
         routeMap.connect('/download_results', controller=controller,
                          action='download_results')
+        # routeMap.connect('/dataset', controller=controllerPackage,
+        #                  action='search', highlight_actions='index search')
 
         return routeMap
+
+    # ITemplateHelpers
+
+    def get_helpers(self):
+        return seed_helpers.get_seed_helpers()
 
     # IValidators
 
