@@ -1,39 +1,43 @@
-function check_toggle_all_btn() {
-    var ul_datasets = $('.seed-accordion');
-    if ($(ul_datasets).hasClass('expanded-all')) {
-        $(ul_datasets).removeClass('expanded-all').addClass('collapsed-all');
-        $('.seed-datasets-toggle-all').removeClass('btn-collapse-all').addClass('btn-expand-all').text('Collapse all');
-    } else {
-        $(ul_datasets).removeClass('collapsed-all').addClass('expanded-all');
-        $('.seed-datasets-toggle-all').removeClass('btn-expand-all').addClass('btn-collapse-all').text('Expand all');
-    }
-}
-
 function get_selected_expand_datasets() {
-    console.log('get_selected_expand_datasets');
-    var return_datasets = [];
+    var return_indexes = [];
     var checkboxes_selected = $('.checkbox-dataset input[type=checkbox]:checked');
     for (var i = 0; i < checkboxes_selected.length; i++) {
-        console.log($(checkboxes_selected[i]).val());
-        // return_datasets.push($(datasets[i]));
+        var index = $(checkboxes_selected[i]).val();
+        if ($('.seed-dataset' + index).hasClass('in')) {
+          return_indexes.push(index);
+        }
     }
+    return return_indexes;
 }
 
-function change_expand_collapse_btns(index) {
-    var dataset = $('.seed-dataset' + index);
-    var resource = $('.seed-dataset-resource' + index);
-    console.log(dataset, resource);
-    console.log('change_expand_collapse_btns');
-    if ($(dataset).hasClass('in')) {
-        $('.seed-datasets-collapse-checked').attr('disabled', false);
-    } else {
-        $('.seed-datasets-expand-checked').attr('disabled', false);
+function get_selected_collapse_datasets() {
+    var return_indexes = [];
+    var checkboxes_selected = $('.checkbox-dataset input[type=checkbox]:checked');
+    for (var i = 0; i < checkboxes_selected.length; i++) {
+        var index = $(checkboxes_selected[i]).val();
+        if (!$('.seed-dataset' + index).hasClass('in')) {
+          return_indexes.push(index);
+        }
     }
+    return return_indexes;
+}
+
+function change_expand_collapse_btns() {
     if ($('.all-datasets-checkbox').hasClass('datasets-not-checked')) {
         $('.seed-datasets-expand-checked').attr('disabled', true);
         $('.seed-datasets-collapse-checked').attr('disabled', true);
+        return;
     }
-    get_selected_expand_datasets();
+    if (get_selected_expand_datasets().length == 0) {
+        $('.seed-datasets-collapse-checked').attr('disabled', true);
+    } else {
+        $('.seed-datasets-collapse-checked').attr('disabled', false);
+    }
+    if (get_selected_collapse_datasets().length == 0) {
+        $('.seed-datasets-expand-checked').attr('disabled', true);
+    } else {
+        $('.seed-datasets-expand-checked').attr('disabled', false);
+    }
 }
 
 function toogle_all_datasets() {
@@ -55,8 +59,6 @@ function toogle_all_datasets() {
 function toogle_dataset(action, index, elem) {
     var dataset = $('.seed-dataset' + index);
     var resource = $('.seed-dataset-resource' + index);
-    console.log(dataset, resource);
-    console.log(elem);
     if (action == 'collapse') {
         $(dataset).collapse('hide');
         $(resource).collapse('hide');
@@ -68,13 +70,14 @@ function toogle_dataset(action, index, elem) {
         $(elem).removeClass('a-collapse');
         $(elem).find('span').text('Collapse');
     }
+    change_expand_collapse_btns();
 }
 
 jQuery(document).ready(function () {
     var all_checkbox = $('.all-datasets-checkbox');
     var expand_selected = $('.seed-datasets-expand-checked');
+    var collapse_selected = $('.seed-datasets-collapse-checked');
     $(all_checkbox).on('click', function(event) {
-        console.log('click checkbox');
         var checkboxes = $('.checkbox-dataset input[type=checkbox]');
         if ($(this).hasClass('datasets-not-checked')) {
             for (var i = 0; i < checkboxes.length; i++) {
@@ -90,13 +93,12 @@ jQuery(document).ready(function () {
             }
             if ($(all_checkbox).prop('checked')) {
                 $(all_checkbox).prop('checked', false);
-                $(all_checkbox).removeClass('checked_minus');
             }
+            $(all_checkbox).removeClass('checked_minus');
         }
-
+        change_expand_collapse_btns();
     });
     $('.checkbox-dataset input[type=checkbox]').on('click', function(event) {
-        console.log($('.checkbox-dataset input[type=checkbox]'));
         var state_checked = $(this).prop('checked');
         var datasets_checkbox_checked = $('.checkbox-dataset input[type=checkbox]:checked').length;
         var datasets_checkbox = $('.checkbox-dataset input[type=checkbox]').length;
@@ -122,18 +124,26 @@ jQuery(document).ready(function () {
                 $(all_checkbox).addClass('checked_minus');
             }
         }
-        var index = $(this).val();
-        console.log(index);
-        change_expand_collapse_btns(index);
-        check_toggle_all_btn();
+        change_expand_collapse_btns();
     });
     $('.seed-dataset-accordion-btn a.a-expand').on('click', function(event) {
-        console.log('this = ', this);
-        console.log('event.target = ', event.target);
         var action = $(this).hasClass('a-collapse') ? 'expand' : 'collapse';
         var index = $(this).data('index');
-        console.log(action, index);
         toogle_dataset(action, index, this);
+        change_expand_collapse_btns();
     });
-
+    $(expand_selected).on('click', function(event) {
+      var indexes = get_selected_collapse_datasets();
+        for (var i = 0; i < indexes.length; i++) {
+          var elem = $('a.a-expand').filter("[data-index='" + indexes[i] + "']");
+            toogle_dataset('expand', indexes[i], elem);
+        }
+    });
+    $(collapse_selected).on('click', function(event) {
+      var indexes = get_selected_expand_datasets();
+        for (var i = 0; i < indexes.length; i++) {
+          var elem = $('a.a-expand').filter("[data-index='" + indexes[i] + "']");
+            toogle_dataset('collapse', indexes[i], elem);
+        }
+    });
 });
