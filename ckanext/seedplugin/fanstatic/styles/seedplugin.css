@@ -8495,6 +8495,7 @@ a[data-toggle="modal"] {
     padding-top: 3px;
     padding-bottom: 2px;
     text-align: center;
+    font-weight: bold;
 }
 
 .seed-datasets .checkbox-datasets,
@@ -8529,7 +8530,7 @@ a[data-toggle="modal"] {
 .seed-datasets .seed-dataset-item .checkbox-dataset .datasets-tooltip {
     width: 110px;
     top: 30px;
-    left: -49px;
+    left: -69px;
 }
 
 .seed-datasets .seed-dataset-item .checkbox-dataset .datasets-tooltip:after {
@@ -8555,4 +8556,26 @@ a[data-toggle="modal"] {
     border-bottom: 8px solid #000;
     top: -8px;
     left: 24px;
+}
+
+.accordion-buttons .checkbox-datasets .datasets-tooltip {
+    width: 80px;
+    left: -24px;
+}
+
+.accordion-buttons .checkbox-datasets .datasets-tooltip::after {
+    left: 32px;
+}
+
+.seed-datasets .accordion-buttons .seed-datasets-collapse-checked[disabled='disabled'],
+.seed-datasets .accordion-buttons .seed-datasets-expand-checked[disabled='disabled'] {
+    color: #aaa;
+}
+
+.seed-datasets .accordion-buttons .seed-datasets-collapse-checked[disabled='disabled'] i {
+    background: url("../images/minus_collapse_disabled.png") no-repeat;
+}
+
+.seed-datasets .accordion-buttons .seed-datasets-expand-checked[disabled='disabled'] i {
+    background: url("../images/plus_expand_disabled.png") no-repeat;
 }
