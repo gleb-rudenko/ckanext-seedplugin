@@ -23,7 +23,7 @@
                 <div class="checkbox-dataset">
       		        <input type="checkbox" value="{{counter}}" id="checkbox-dataset{{counter}}" name="dataset{{counter}}" />
       	            <label for="checkbox-dataset{{counter}}"></label>
-                    <span class="datasets-tooltip">Add to selection</span>
+                    <span class="datasets-tooltip span-checkbox-dataset{{counter}}">Add to selection</span>
                 </div>
               {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
             {% endblock %}
@@ -36,7 +36,6 @@
               {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
             {% endblock %}
             <div class="seed-dataset-accordion-btn">
-                {# <a class="btn a-expand" data-toggle="collapse" data-target=".seed-dataset{{counter}},.seed-dataset-resource{{counter}}"><i></i></a> #}
                 <a class="btn a-expand" data-index="{{counter}}">
                     <i></i>
                     <span class="datasets-tooltip">Collapse</span>
