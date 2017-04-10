@@ -8365,7 +8365,6 @@ a[data-toggle="modal"] {
 }
 
 .accordion-buttons .seed-datasets-expand-checked {
-    line-height: 26px;
     width: 91px;
     height: 24px;
     padding: 0;
