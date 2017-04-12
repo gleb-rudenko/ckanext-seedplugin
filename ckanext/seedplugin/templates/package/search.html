@@ -31,3 +31,9 @@
     </div>
   {% endif %}
 {% endblock %}
+
+{% block help_button %}
+ {{ super() }}
+ {# how to find out what content is currently being displayed? #}
+ <a type="button" href="https://www.seed.nsw.gov.au/edphome/using-seed/refining-search.aspx" target= "_blank" style="color:#505050" class="btn pull-right"><i class="icon-info-sign"></i>How to Refine Search </a>
+{% endblock %}
