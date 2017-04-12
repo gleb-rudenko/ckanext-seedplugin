@@ -1,6 +1,7 @@
 import ckan.lib.base as base
 from ckan.lib.base import BaseController, c, render, request
 from ckan.controllers.user import UserController
+from ckan.controllers.package import PackageController
 from ckan.model import Session
 from ckanext.seedplugin.authenticator import SEEDUser
 import ckan.logic as logic
@@ -254,3 +255,10 @@ class SEEDUserController(UserController):
                         __ckan_no_root=True)
         h.redirect_to(self._get_repoze_handler('logout_handler_path') +
                       '?came_from=' + url)
+
+
+# class SEEDPackageController(PackageController):
+#
+#     def search(self):
+#         result = super(SEEDPackageController, self).search()
+#         return result
