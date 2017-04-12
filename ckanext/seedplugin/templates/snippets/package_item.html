@@ -63,13 +63,13 @@
             {% if package.resources and not hide_resources %}
               {% block resources_outer %}
                 <ul class="dataset-resources unstyled">
-                  {% block resources_inner %}
-                    {% for resource in h.dict_list_reduce(package.resources, 'format') %}
-                    <li>
-                      <a href="{{ h.url_for(controller='package', action='read', id=package.name) }}" class="label" data-format="{{ resource.lower() }}">{{ resource }}</a>
-                    </li>
-                    {% endfor %}
-                  {% endblock %}
+                    {% block resources_inner %}
+                          {% for resource in h.dict_list_reduce(package.resources, 'format') %}
+                             <li>
+                                <p class="label" data-format="{{ resource.lower() }}">{{ resource }}</p>
+                             </li>
+                          {% endfor %}
+                    {% endblock %}
                 </ul>
               {% endblock %}
             {% endif %}
