@@ -6647,6 +6647,14 @@ h1 small, h2 small, h3 small, h4 small {
     padding-right: 15px;
     box-sizing: border-box;
 }
+.masthead.sticky {
+    z-index: 1005;
+}
+.sticky.sticky-scrolled {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
 .masthead a {
     color: #ffffff;
 }
@@ -8291,4 +8299,6 @@ a[data-toggle="modal"] {
 .btn-group>.btn:first-child {
     border-radius: 0;
 }
-
+.modal.fade {
+    top: -50%;
+}

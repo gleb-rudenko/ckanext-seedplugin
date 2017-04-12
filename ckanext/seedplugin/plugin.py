@@ -5,9 +5,25 @@ from ckanext.seedplugin.logic.validators import (
     get_validators
 )
 import ckan.lib.formatters as formatters
-from ckan.common import _, ungettext
+from ckan.common import _, ungettext, request
 import datetime
 import pytz
+import pylons.config as config
+import logging
+import ckan.lib.helpers as h
+import ckan.model as model
+
+
+log = logging.getLogger(__name__)
+var = []
+
+
+def user_list(context, data_dict):
+    user = context['user']
+    if user:
+        return {'success': True}
+    else:
+        h.redirect_to('/user/login')
 
 
 def seed_localised_nice_date(datetime_, show_date=False, with_hours=False):
@@ -73,7 +89,7 @@ def seed_localised_nice_date(datetime_, show_date=False, with_hours=False):
                          months / 12).format(years=months / 12)
 
 
-#handle singular numbers in date and month
+# handle singular numbers in date and month
     def day_i(day):
         if day > 9:
             return str(day)
@@ -96,7 +112,7 @@ def seed_localised_nice_date(datetime_, show_date=False, with_hours=False):
         'day_n': day_i(datetime_.day),
         'year': datetime_.year,
         'month': formatters._MONTH_FUNCTIONS[datetime_.month - 1](),
-        #we render month as its atual number
+        # we render month as its atual number
         'month_n': month_i(datetime_.month),
         'timezone': datetime_.tzinfo.zone,
     }
@@ -123,6 +139,9 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IRoutes, inherit=True)
     plugins.implements(plugins.IValidators)
     plugins.implements(plugins.IFacets)
+    plugins.implements(plugins.IAuthenticator, inherit=True)
+    plugins.implements(plugins.IAuthFunctions, inherit=True)
+    plugins.implements(plugins.IResourceController, inherit=True)
 
     def __init__(self, **kwargs):
         authenticator.intercept_authenticator()
@@ -141,6 +160,8 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         """
         controller = 'ckanext.seedplugin.controller:SEEDController'
         controllerUser = 'ckanext.seedplugin.controller:SEEDUserController'
+
+        routeMap.redirect('/user/register', config.get('ckan.site_url'))
 
         routeMap.connect('/user/logged_in', controller=controller,
                          action='logged_in')
@@ -189,3 +210,54 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         facets_dict['organization'] = toolkit._('Organisation')
         facets_dict['res_format'] = toolkit._('Formats')
         return facets_dict
+
+    # IAuthenticator
+    def login(self):
+        pass
+
+    def identify(self):
+        log.debug(request.environ['CKAN_CURRENT_URL'].split('?'))
+        if request.environ['CKAN_CURRENT_URL'].split('?')[0] == '/user/logged_in':
+            if var:
+                log.debug("var has value once logged in, clearing var")
+                del var[:]
+                return var
+            else:
+                pass
+        if hasattr(toolkit.c.userobj, 'password'):
+            upassword = getattr(toolkit.c.userobj, 'password')
+            if var:
+                log.debug('existing var')
+                log.debug(var)
+                if upassword == var[0]:
+                    log.debug("same, pass")
+                    # log.debug(upassword)
+                    pass
+                else:
+                    var[0] = upassword
+                    log.debug("different, do stuff")
+                    # this toolkit redirect does not do what user expects)
+                    toolkit.redirect_to(controller='user', action='logout', __ckan_no_root=True, id=None)
+                    # h.redirect_to('http://ckan.dev.edptest.info/user/logout')
+                    # to do - this logs the user out, but does not redirect user to the "you have been logged out" page.
+                    # return render('user/logout.html')
+            else:
+                log.debug("var is appended")
+                var.append(upassword)
+        else:
+            pass
+
+    def logout(self):
+        pass
+
+    # IAuthfunctions
+    def get_auth_functions(self):
+        return {'user_list': user_list}
+
+    # IResource controller - dynamic urls for resources with Seed web map
+    def before_show(self, resource_dict):
+        pkg = model.Package.get(resource_dict['package_id'])
+        seedwebmap = 'SEED Web Map'
+        if resource_dict['format'].lower() == seedwebmap.lower():
+            resource_dict['url'] = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='+pkg.extras['map_type']+":map_service_id="+pkg.extras['map_service_id'].replace("&","+")+";layer_id="+pkg.extras['layer_id'].replace("&","+")
+        return resource_dict
