@@ -1,0 +1,273 @@
+body {
+  background-color: #fff;
+  color: #6a6a6a;
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.42857;
+  margin: 0;
+}
+a {
+  color: #29a8f1;
+}
+a:hover,
+a:focus {
+  color: #29a8f1;
+}
+h4 {
+  font-size: 19px;
+}
+hr {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-color: #eee -moz-use-text-color #fff;
+  border-image: none;
+  border-style: solid none;
+  border-width: 1px 0;
+  margin: 20px 0;
+}
+.table-condensed th,
+.table-condensed td {
+  padding: 10px;
+}
+.table-striped tbody tr:nth-child(2n) td,
+.table-striped tbody tr:nth-child(2n) th {
+  background-color: #f1f6fc;
+}
+.table-bordered {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-collapse: separate;
+  border: solid #d4d4d4;
+  border-width: 1px 1px 1px 0;
+}
+.dropdown-submenu > .dropdown-menu {
+  border-radius: 0 6px 6px;
+}
+.well {
+  background-color: #f1f6fc;
+}
+.btn {
+  color: #29a8f1;
+  border: none;
+  text-shadow: none;
+  background-image: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+.btn-large [class^="icon-"],
+.btn-large [class*=" icon-"] {
+  margin-top: 4px;
+}
+.btn-small [class^="icon-"],
+.btn-small [class*=" icon-"] {
+  margin-top: 0;
+}
+.btn-mini [class^="icon-"],
+.btn-mini [class*=" icon-"] {
+  margin-top: -1px;
+}
+.btn-primary {
+  background-color: #c04deb;
+  color: #fff;
+}
+.btn-success {
+  color: #fff;
+}
+.nav-list [class^="icon-"],
+.nav-list [class*=" icon-"] {
+  margin-right: 2px;
+}
+.nav-pills > li > a {
+  border-radius: 0px;
+}
+.tabs-below > .nav-tabs > .active > a,
+.tabs-below > .nav-tabs > .active > a:hover,
+.tabs-below > .nav-tabs > .active > a:focus {
+  border-color: transparent #ddd #ddd;
+}
+.navbar-static-top .container,
+.navbar-fixed-top .container,
+.navbar-fixed-bottom .container {
+  width: 1170px;
+}
+.navbar .nav > li > a {
+  padding: 19.5px 15px;
+  line-height: 21px;
+  margin: 0px;
+}
+.navbar .btn-navbar .icon-bar {
+  background-color: #f5f5f5;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  display: block;
+  height: 2px;
+  width: 18px;
+}
+.navbar .btn-navbar .icon-bar + .icon-bar {
+  margin-top: 3px;
+}
+.pagination ul > li > a,
+.pagination ul > li > span {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  border-image: none;
+}
+.modal.fade {
+  top: -50%;
+}
+@media not all {
+  .nav-collapse.collapse {
+    height: auto !important;
+    overflow: visible !important;
+  }
+}
+.break-word {
+  word-break: keep-all;
+}
+.tag {
+  border: 1px solid #ddd;
+  color: #6a6a6a;
+  margin-bottom: 6px;
+}
+.module-heading {
+  background-color: #f1f6fc;
+}
+.media-heading {
+  word-break: keep-all;
+}
+.nav-item > a,
+.nav-aside li a {
+  color: #29a8f1;
+}
+.control-group .btn.seed-download-results {
+  top: 0;
+  margin-left: 5px;
+}
+.info-block .icon-large,
+.info-inline .icon-large {
+  float: left;
+  font-size: 22px;
+  margin-right: 15px;
+}
+.js .image-upload #field-image-url {
+  padding-right: 29px;
+}
+.js .image-upload .btn-remove-url {
+  padding: 0 4px;
+}
+.js .image-upload .btn-remove-url .icon-remove {
+  margin-right: 0;
+}
+.dataset-heading a {
+  color: #29a8f1;
+}
+.dataset-private .icon-lock {
+  width: 9px;
+}
+.search-form h2 {
+  color: #c04deb;
+  font-size: 22px;
+}
+.toolbar {
+  width: 80%;
+}
+.format-label {
+  background-position: 0 -62px;
+  height: 35px;
+  width: 32px;
+}
+.page-header {
+  background-color: #f1f6fc;
+}
+@media (max-width: 767px) {
+  .toolbar .breadcrumb {
+    color: #505050;
+  }
+  .toolbar .breadcrumb a {
+    color: #505050;
+  }
+}
+section.module.module-narrow.dataset-map {
+  margin: -10px;
+}
+section.module.module-narrow.dataset-map .module-heading {
+  background: transparent;
+}
+#dataset-map h2.module-heading {
+  color: #c04deb;
+}
+.ckanext-datapreview > iframe {
+  min-height: 400px;
+}
+.format-label[data-format="seed web map"],
+.format-label[data-format*="seed web map"] {
+  background-position: -352px -62px;
+}
+.format-label[data-format="shp"],
+.format-label[data-format*="shp"] {
+  background-position: -384px -62px;
+}
+.format-label[data-format="mbtiles"],
+.format-label[data-format*="mbtiles"] {
+  background-position: -416px -62px;
+}
+.format-label[data-format="esri web service"],
+.format-label[data-format*="esri Web service"] {
+  background-position: -448px -62px;
+}
+.format-label[data-format="mitab"],
+.format-label[data-format*="mitab"] {
+  background-position: -480px -62px;
+}
+.format-label[data-format="wfs"],
+.format-label[data-format*="wfs"] {
+  background-position: -512px -62px;
+}
+.format-label[data-format="wms"],
+.format-label[data-format*="wms"] {
+  background-position: -544px -62px;
+}
+.format-label[data-format="wmts"],
+.format-label[data-format*="wmts"] {
+  background-position: -576px -62px;
+}
+.format-label[data-format="url"],
+.format-label[data-format*="url"] {
+  background-position: -608px -62px;
+}
+.format-label[data-format="mbd"],
+.format-label[data-format*="mdb"] {
+  background-position: -640px -62px;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+  text-align: right;
+  width: 14px;
+}
+.btn [class^="icon-"],
+.nav [class^="icon-"],
+.module-heading [class^="icon-"],
+.dropdown [class^="icon-"],
+.btn [class*=" icon-"],
+.nav [class*=" icon-"],
+.module-heading [class*=" icon-"],
+.dropdown [class*=" icon-"] {
+  margin-right: 4px;
+}
+.info-block [class^="icon-"],
+.info-block [class*=" icon-"] {
+  float: left;
+  font-size: 28px;
+  margin-right: 5px;
+  margin-top: 2px;
+  width: 28px;
+}

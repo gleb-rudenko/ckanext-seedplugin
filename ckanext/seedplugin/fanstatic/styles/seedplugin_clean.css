@@ -1653,7 +1653,7 @@ input.btn-block[type="submit"], input.btn-block[type="reset"], input.btn-block[t
 }*/
 .btn-primary {
     background-color: #c04deb;
-    /*color: #ffffff;*/
+    color: #ffffff;
 }
 /*.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
     background-color: #085871;

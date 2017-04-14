@@ -134,8 +134,6 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_public_directory(config_, 'fanstatic')
-        toolkit.add_resource('fanstatic', 'ckanext-seedplugin')
         toolkit.add_resource('fanstatic', 'seedplugin')
 
     def before_map(self, routeMap):
