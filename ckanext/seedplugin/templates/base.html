@@ -5,12 +5,14 @@
      {% resource g.main_css[6:] %}
 <!--      <link rel="stylesheet" href="https://use.typekit.net/c/8fbb9e/1w;proxima-nova,7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191,2clzCG:W:i4,2clzC6:W:i7,2clzCF:W:n4,2clzC5:W:n7/l" media="all"> -->
      {% resource 'seedplugin/styles/seedplugin.css' %}
+     {% resource 'seedplugin/styles/jquery-ui.css' %}
 {% endblock %}
 
 
 {% block scripts %}
-  {% resource 'seedplugin/scripts/csrfprotector.js' %}
-  {% resource 'seedplugin/scripts/message_target.js' %}
-  {% resource 'seedplugin/scripts/seedplugin.js' %}
-  {% resource 'seedplugin/scripts/seedaccordion.js' %}
+    {% resource 'seedplugin/scripts/jquery-ui.js' %}
+    {% resource 'seedplugin/scripts/csrfprotector.js' %}
+    {% resource 'seedplugin/scripts/message_target.js' %}
+    {% resource 'seedplugin/scripts/seedplugin.js' %}
+    {% resource 'seedplugin/scripts/seedaccordion.js' %}
 {% endblock %}

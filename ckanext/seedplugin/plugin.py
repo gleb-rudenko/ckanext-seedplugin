@@ -144,6 +144,7 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IAuthFunctions, inherit=True)
     plugins.implements(plugins.IResourceController, inherit=True)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     def __init__(self, **kwargs):
         authenticator.intercept_authenticator()
@@ -268,6 +269,30 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     def before_show(self, resource_dict):
         pkg = model.Package.get(resource_dict['package_id'])
         seedwebmap = 'SEED Web Map'
-        if resource_dict['format'].lower() == seedwebmap.lower():
+        if resource_dict['format'].lower() == seedwebmap.lower() and 'map_type' in pkg.extras:
             resource_dict['url'] = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='+pkg.extras['map_type']+":map_service_id="+pkg.extras['map_service_id'].replace("&","+")+";layer_id="+pkg.extras['layer_id'].replace("&","+")
         return resource_dict
+
+    def before_search(self, search_params):
+        print search_params
+        extras = search_params.get('extras')
+        if not extras:
+            return search_params
+
+        start_date = extras.get('ext_startdate', '')
+        end_date = extras.get('ext_enddate', '')
+
+        fq = search_params['fq']
+        if start_date and not end_date:
+            fq = '{fq} +created:[{start_date} TO *]'.format(
+                fq=fq, start_date=start_date)
+        if end_date and not start_date:
+            fq = '{fq} +created:[* TO {end_date}]'.format(
+                fq=fq, end_date=end_date)
+        if start_date and end_date:
+            fq = '{fq} +created:[{start_date}  TO {end_date}]'.format(
+                fq=fq, start_date=start_date, end_date=end_date)
+
+        search_params['fq'] = fq
+
+        return search_params
