@@ -1,39 +1,256 @@
-{% ckan_extends %}
+{% extends "base.html" %}
+{% import 'macros/form.html' as form %}
 
-{% block maintag %}<div role="main" class="seed-datasets">{% endblock %}
+{%- block page -%}
 
-{% block form %}
-    {% set facets = {
-      'fields': c.fields_grouped,
-      'search': c.search_facets,
-      'titles': c.facet_titles,
-      'translated_fields': c.translated_fields,
-      'remove_field': c.remove_field }
-    %}
-    {% set sorting = [
-      (_('Relevance'), 'score desc, metadata_modified desc'),
-      (_('Name Ascending'), 'title_string asc'),
-      (_('Name Descending'), 'title_string desc'),
-      (_('Most Recently Added'), 'metadata_created desc'),
-      (_('Most Views'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
-    %}
-    {% snippet 'snippets/search_form_datasets.html', form_id='dataset-search-form', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
-{% endblock %}
+  {% block skip %}
+    <div class="hide"><a href="#content">{{ _('Skip to content') }}</a></div>
+  {% endblock %}
 
+  {#
+  Override the header on a page by page basis by extending this block. If
+  making sitewide header changes it is preferable to override the header.html
+  file.
+  #}
+  {%- block header %}
+    {% include "header.html" %}
+  {% endblock -%}
 
-{% block page_primary_action %}
-  {% if h.check_access('package_create') %}
-    <div class="page_primary_action">
-      {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary', icon='plus-sign-alt' %}
-      {% if h.check_access('sysadmin') %}
-        {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController', action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %}
-      {% endif %}
+  {# The content block allows you to replace the content of the page if needed #}
+  {%- block content %}
+    {% block maintag %}<div role="main" class="seed-datasets">{% endblock %}
+      <div id="content" class="container">
+        {% block main_content %}
+          {% block flash %}
+            <div class="flash-messages">
+              {% block flash_inner %}
+                {% for message in h.flash.pop_messages() | list %}
+                  <div class="alert fade in {{ message.category }}">
+                    {{ h.literal(message) }}
+                  </div>
+                {% endfor %}
+              {% endblock %}
+            </div>
+          {% endblock %}
+          {% block toolbar %}
+            <div class="toolbar">
+              {% block breadcrumb %}
+                {% if self.breadcrumb_content() | trim %}
+                  <ol class="breadcrumb">
+                    {% snippet 'snippets/home_breadcrumb_item.html' %}
+                    {% block breadcrumb_content %}
+                      <li class="active">{{ h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index') }}</li>
+                    {% endblock %}
+                  </ol>
+                {% endif %}
+              {% endblock %}
+            </div>
+          {% endblock %}
+
+          <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %} seed-main-content-block">
+
+            {#
+            The pre_primary block can be used to add content to before the
+            rendering of the main content columns of the page.
+            #}
+            {% block pre_primary %}
+            {% endblock %}
+
+            {% block primary %}
+              <div class="span12 seed-search-main-block">
+                {% set facets = {
+                  'fields': c.fields_grouped,
+                  'search': c.search_facets,
+                  'titles': c.facet_titles,
+                  'translated_fields': c.translated_fields,
+                  'remove_field': c.remove_field }
+                %}
+                {% set seed_facet_list = h.seed_facet_list() %}
+                <div class="span11 seed-search-second-block">
+                  {% block help_button %}
+                   {# how to find out what content is currently being displayed? #}
+                   <a type="button" href="https://www.seed.nsw.gov.au/edphome/using-seed/refining-search.aspx" target= "_blank" class="btn pull-right seed-search-info-button"><i class="icon-info-sign"></i>How to Refine Search </a>
+                  {% endblock %}
+                </div>
+                <div class="span11 seed-search-second-block" style="background-color: rgba(0,0,0,0.7);">
+                  <form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %} seed-dataset-search-form" method="get">
+                     {% block search_input %}
+                      <div class="seed-search-input">
+                        <div class="search-input control-group  span7">
+                          <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="Search for a topic of interest e.g. Soil, Water, Air">
+
+                          <button type="submit" value="search">
+                            <i class="icon-search"></i>
+                            <span>Submit</span>
+                          </button>
+
+                        </div>
+                     </div>
+                    {% endblock %}
+                    <div class="seed-search-filters">
+                      <select id="" name="topic" class="span2">
+                        <option title="Select Category" value="" class="" >Select Category</option>
+                        {% for value in seed_facet_list[0]['topic'] %}
+                          {% if value != '' %}
+                            <option title="{{ value }}" value="{{ value }}" class=""{% if request.params.get('topic') == value %} selected="selected"{% endif %}>{{ value }}</option>
+                          {% endif %}
+                      {% endfor %}
+                      </select>
+                      <select id="" name="res_format" class="span2">
+                        <option title="Select Format" value="" class="">Select Format</option>
+                        {% for value in seed_facet_list[1]['res_format'] %}
+                        {{ value }}
+                          {% if value != '' %}
+                            <option title="{{ value }}" value="{{ value }}" class=""{% if request.params.get('res_format') == value %} selected="selected"{% endif %}>{{ value }}</option>
+                          {% endif %}
+                        {% endfor %}
+                      </select>
+                      <input type="text" id="ext_startdate" value="{{ request.params.get('ext_startdate', '') }}" name="ext_startdate" class="span2" placeholder="From Date">
+                      <input type="text" id="ext_enddate" value="{{ request.params.get('ext_enddate', '') }}" name="ext_enddate" class="span2" placeholder="To Date">
+                    </div>
+                  </form>
+                  <a class="show-filters btn seed-more-filters">{{ _('More Filters') }}</a>
+                </div>
+              </div>
+              <div class="span12 seed-search-main-block-second">
+                <div class="span11 seed-search-main-block-third">
+                  {% block search_title %}
+                    {% if not no_title %}
+                      <h2>{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
+                    {% endif %}
+                  {% endblock %}
+                  {% if h.check_access('package_create') %}
+                    <div class="page_primary_action">
+                      {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %}
+                      {% if h.check_access('sysadmin') %}
+                        {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController', action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %}
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="primary span9">
+                {#
+                The primary_content block can be used to add content to the page.
+                This is the main block that is likely to be used within a template.
+
+                Example:
+
+                  {% block primary_content %}
+                    <h1>My page content</h1>
+                    <p>Some content for the page</p>
+                  {% endblock %}
+                #}
+                  {% block primary_content %}
+                    <section class="module">
+                      <div class="module-content">
+                        {% block page_primary_action %}
+                        {% endblock %}
+                        {% block form %}
+                          {% set facets = {
+                            'fields': c.fields_grouped,
+                            'search': c.search_facets,
+                            'titles': c.facet_titles,
+                            'translated_fields': c.translated_fields,
+                            'remove_field': c.remove_field }
+                          %}
+                          {% set sorting = [
+                            (_('Relevance'), 'score desc, metadata_modified desc'),
+                            (_('Name Ascending'), 'title_string asc'),
+                            (_('Name Descending'), 'title_string desc'),
+                            (_('Last Modified'), 'metadata_modified desc'),
+                            (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
+                          %}
+                          {% snippet 'snippets/search_form_datasets.html', form_id='dataset-search-form', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
+                        {% endblock %}
+                        {% block package_search_results_list %}
+                          {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
+                        {% endblock %}
+                      </div>
+
+                      {% block page_pagination %}
+                        {{ c.page.pager(q=c.q) }}
+                      {% endblock %}
+                    </section>
+
+                    {% block package_search_results_api %}
+                    <section class="module">
+                      <div class="module-content">
+                        {% block package_search_results_api_inner %}
+                        <small>
+                          {% set api_link = h.link_to(_('API'), h.url_for(controller='api', action='get_api', ver=3)) %}
+                          {% set api_doc_link = h.link_to(_('API Docs'), 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version)) %}
+                          {% if g.dumps_url -%}
+                            {% set dump_link = h.link_to(_('full {format} dump').format(format=g.dumps_format), g.dumps_url) %}
+                            {% trans %}
+                              You can also access this registry using the {{ api_link }} (see {{ api_doc_link }}) or download a {{ dump_link }}.
+                            {% endtrans %}
+                          {% else %}
+                            {% trans %}
+                              You can also access this registry using the {{ api_link }} (see {{ api_doc_link}}).
+                            {% endtrans %}
+                          {%- endif %}
+                        </small>
+                        {% endblock %}
+                      </div>
+                    </section>
+                    {% endblock %}
+                  {% endblock %}
+              </div>
+            {% endblock %}
+
+            {% block secondary %}
+              <aside class="secondary span3">
+                {#
+                The secondary_content block can be used to add content to the
+                sidebar of the page. This is the main block that is likely to be
+                used within a template.
+
+                Example:
+
+                  {% block secondary_content %}
+                    <h2>A sidebar item</h2>
+                    <p>Some content for the item</p>
+                  {% endblock %}
+                #}
+              {% block secondary_content %}
+              <div class="seed-filter-title">
+                <span>
+                  <i class="icon-list" alt="Filter datasets- icon"></i>
+                </span>Filter
+              </div>
+              <div class="filters">
+                <div>
+                  {% for facet in c.facet_titles %}
+                    {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
+                  {% endfor %}
+                </div>
+                <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
+              </div>
+              {% endblock %}
+              </aside>
+            {% endblock %}
+          </div>
+        {% endblock %}
+      </div>
     </div>
-  {% endif %}
-{% endblock %}
+  {% endblock -%}
 
-{% block help_button %}
- {{ super() }}
- {# how to find out what content is currently being displayed? #}
- <a type="button" href="https://www.seed.nsw.gov.au/edphome/using-seed/refining-search.aspx" target= "_blank" style="color:#505050" class="btn pull-right"><i class="icon-info-sign"></i>How to Refine Search </a>
-{% endblock %}
+  {#
+  Override the footer on a page by page basis by extending this block. If
+  making sitewide header changes it is preferable to override the footer.html-u
+  file.
+  #}
+  {%- block footer %}
+    {% include "footer.html" %}
+  {% endblock -%}
+{%- endblock -%}
+
+{%- block scripts %}
+    {% resource 'base/main' %}
+    {% resource 'base/ckan' %}
+    {% if g.tracking_enabled %}
+      {% resource 'base/tracking.js' %}
+    {% endif %}
+  {{ super() }}
+{% endblock -%}

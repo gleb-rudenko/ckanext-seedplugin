@@ -1,6 +1,20 @@
-{% extends "snippets/search_form.html" %}
+{% import 'macros/form.html' as form %}
 
-{% block search_sortby %}
+{% set placeholder = placeholder if placeholder else _('Search datasets...') %}
+{% set sorting = sorting if sorting else [(_('Name Ascending'), 'name asc'), (_('Name Descending'), 'name desc')] %}
+{% set search_class = search_class if search_class else 'search-giant' %}
+{% set no_bottom_border = no_bottom_border if no_bottom_border else false %}
+{% set form_id = form_id if form_id else false %}
+
+<form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %}" method="get" data-module="select-switch">
+
+  {% block search_search_fields %}
+    {% if fields -%}
+      <span>{{ form.hidden_from_list(fields=fields) }}</span>
+    {%- endif %}
+  {% endblock %}
+
+  {% block search_sortby %}
     {% if sorting %}
       <div class="form-select control-group control-order-by">
         <label for="field-order-by">{{ _('Order by') }}</label>
@@ -12,21 +26,74 @@
           {% endfor %}
         </select>
         {% block search_sortby_button %}
-        <button class="btn js-hide" type="submit">{{ _('Go') }}</button>
+        <button class="btn js-hide" type="Submitt">{{ _('Go') }}</button>
         {% endblock %}
       </div>
     {% endif %}
-{% endblock %}
+  {% endblock %}
 
-{% block search_facets %}
-    {{ super() }}
-    <div class="accordion-buttons">
-        <div class="checkbox-datasets">
-            <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
-            <label for="all-datasets-checkbox"></label>
-            <span class="datasets-tooltip">Select</span>
-        </div>
-        <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled">{{ _('Expand') }}<i></i><span class="datasets-tooltip">Expand selection</span></a>
-        <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled">{{ _('Collapse') }}<i></i><span class="datasets-tooltip">Collapse selection</span></a>
+  {% block search_facets %}
+    {% if facets %}
+      <p class="filter-list">
+        {% for field in facets.fields %}
+          {% set search_facets_items = facets.search.get(field)['items'] %}
+          <span class="facet">{{ facets.titles.get(field) }}:</span>
+          {% for value in facets.fields[field] %}
+            <span class="filtered pill">
+              {%- if facets.translated_fields and facets.translated_fields.has_key((field,value)) -%}
+                {{ facets.translated_fields[(field,value)] }}
+              {%- else -%}
+                {{ h.list_dict_filter(search_facets_items, 'name', 'display_name', value) }}
+              {%- endif %}
+              <a href="{{ facets.remove_field(field, value) }}" class="remove" title="{{ _('Remove') }}"><i class="icon-remove"></i></a>
+            </span>
+          {% endfor %}
+        {% endfor %}
+      </p>
+    {% endif %}
+    {# Daterange #}
+    <div id="datesearch-filter">
+        {% if (request.params.get('ext_startdate')) %}
+        <p class="filter-list">
+            <span class="facet">Start Date:</span>
+            <span id="ext_startdate_after" value="{{ request.params.get('ext_startdate') }}" class="filtered pill">{{ request.params.get('ext_startdate') }}
+              <a href="{{ request.params.get('ext_startdate') }}" class="remove" title="{{ _('Remove') }}" style="padding-right: 0">
+                <i class="icon-remove"></i>
+              </a>
+            </span>
+        {% endif %}
+
+        {% if (request.params.get('ext_enddate')) %}
+            <span class="facet">End Date:</span>
+            <span id="ext_enddate_after" class="filtered pill">{{ request.params.get('ext_enddate') }}
+              <a href="{{ request.params.get('ext_enddate') }}" class="remove" title="{{ _('Remove') }}" style="padding-right: 0">
+                <i class="icon-remove"></i>
+              </a>
+            </span>
+        </p>
+        {% endif %}
     </div>
-{% endblock%}
+      <div class="accordion-buttons">
+          <div class="checkbox-datasets">
+              <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
+              <label for="all-datasets-checkbox"></label>
+              <span class="datasets-tooltip">Select</span>
+          </div>
+          <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled">{{ _('Expand') }}<i></i><span class="datasets-tooltip">Expand selection</span></a>
+          <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled">{{ _('Collapse') }}<i></i><span class="datasets-tooltip">Collapse selection</span></a>
+      </div>
+  {% endblock %}
+
+</form>
+
+{% if show_empty and count == 0 %}
+  {% trans %}
+    <p class="extra">Please try another search.</p>
+  {% endtrans %}
+{% endif %}
+
+{% if error %}
+  {% trans %}
+    <p><strong>There was an error while searching.</strong> Please try again.</p>
+  {% endtrans %}
+{% endif %}
