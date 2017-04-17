@@ -1654,6 +1654,7 @@ input.btn-block[type="submit"], input.btn-block[type="reset"], input.btn-block[t
 .btn-primary {
     background-color: #c04deb;
     color: #ffffff;
+    border-radius: 0;
 }
 /*.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
     background-color: #085871;
@@ -1682,12 +1683,12 @@ input.btn-block[type="submit"], input.btn-block[type="reset"], input.btn-block[t
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: #ffffff;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-}
+}*/
 .btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled] {
     background-color: #bd362f;
     color: #ffffff;
 }
-.btn-danger:active, .btn-danger.active {
+/*.btn-danger:active, .btn-danger.active {
 }*/
 .btn-success {
     /*background-color: #5bb75b;
@@ -1782,11 +1783,11 @@ button.btn.btn-mini, input.btn.btn-mini[type="submit"] {
 }
 .btn-toolbar > .btn + .btn, .btn-toolbar > .btn-group + .btn, .btn-toolbar > .btn + .btn-group {
     margin-left: 5px;
-}
+}*/
 .btn-group > .btn {
     border-radius: 0;
     position: relative;
-}
+}/*
 .btn-group > .btn + .btn {
     margin-left: -1px;
 }
@@ -1801,10 +1802,10 @@ button.btn.btn-mini, input.btn.btn-mini[type="submit"] {
 }
 .btn-group > .btn-large {
     font-size: 17.5px;
-}
+}*/
 .btn-group > .btn:first-child {
-    margin-left: 0;
-}
+    border-radius: 0;
+}/*
 .btn-group > .btn:last-child, .btn-group > .dropdown-toggle {
 }
 .btn-group > .btn.large:first-child {
@@ -6540,10 +6541,13 @@ h1 small, h2 small, h3 small, h4 small {
     right: 0;
 }
 }*/
-.account-masthead {
+/*.account-masthead {
     background: #1a63e8 url("/base/images/bg.png") repeat scroll 0 0;
-    /*color: #ffffff;
-    min-height: 30px;*/
+    color: #ffffff;
+    min-height: 30px;
+}*/
+.account-masthead {
+  background-color: #1a63e8;
 }
 /*.account-masthead::before, .account-masthead::after {
     content: "";
@@ -6740,8 +6744,8 @@ h1 small, h2 small, h3 small, h4 small {
 .masthead .container {
     padding-left: 20px;
     padding-right: 20px;
-}
 .masthead .site-search {
+}
     display: none;
 }
 }*/
@@ -6855,7 +6859,7 @@ footer > *{
 }
 
 .col-md-4 {
-        width: 33.3333%;
+    width: 33.3333%;
 }
 .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left;
