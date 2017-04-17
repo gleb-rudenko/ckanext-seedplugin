@@ -8318,6 +8318,8 @@ a[data-toggle="modal"] {
 
 .seed-datasets .accordion-buttons {
     position: relative;
+    display: inline-block;
+    width: auto;
 }
 
 .seed-datasets .accordion-buttons .checkbox-datasets {
@@ -8461,12 +8463,12 @@ a[data-toggle="modal"] {
      height: 7px;
      position: absolute;
      top: 2px;
-     background: url(../images/tick_checkbox.png) no-repeat;
+     background: url(/images/tick_checkbox.png) no-repeat;
      opacity: 0;
 }
 
 .accordion-buttons .checkbox-datasets .checked_minus + label:after {
-    background: url(../images/remove_checkbox.png) no-repeat;
+    background: url(/images/remove_checkbox.png) no-repeat;
     top: 4px;
     left: 1px;
 }
@@ -8586,11 +8588,11 @@ a[data-toggle="modal"] {
 }
 
 .seed-datasets .accordion-buttons .seed-datasets-collapse-checked[disabled='disabled'] i {
-    background: url("../images/minus_collapse_disabled.png") no-repeat;
+    background: url("/images/minus_collapse_disabled.png") no-repeat;
 }
 
 .seed-datasets .accordion-buttons .seed-datasets-expand-checked[disabled='disabled'] i {
-    background: url("../images/plus_expand_disabled.png") no-repeat;
+    background: url("/images/plus_expand_disabled.png") no-repeat;
 }
 
 #ui-datepicker-div {
@@ -8652,12 +8654,12 @@ a[data-toggle="modal"] {
 }
 
 .seed-facet-list .seed-facet-item.active a {
-    background-color: #29a8f1;
+    background-color: #1a63e8;
     color: #fff;
 }
 
 .seed-facet-list .seed-facet-item a:hover, .seed-facet-list .seed-facet-item a:focus, .seed-facet-list .seed-facet-item a:active{
-    background-color: #29a8f1;
+    background-color: #1a63e8;
     color: #fff;
 }
 
@@ -8816,7 +8818,7 @@ a[data-toggle="modal"] {
 }
 
 .seed-filter-title {
-    background-color: #29a8f1;
+    background-color: #1a63e8;
     color: #fff;
     text-align: center;
     height: 25px;
@@ -8858,7 +8860,7 @@ a[data-toggle="modal"] {
 }
 
 .ui-datepicker .ui-datepicker-header {
-    background-color: #29a8f1;
+    background-color: #1a63e8;
     color: #fff;
     border: none;
 }
@@ -8881,7 +8883,7 @@ a[data-toggle="modal"] {
 }
 
 .ui-datepicker-today .ui-state-highlight {
-    background-color: #29a8f1;
+    background-color: #1a63e8;
     color: #fff;
     border: none;
 }
@@ -8912,6 +8914,39 @@ a[data-toggle="modal"] {
 
 .seed-datasets #dataset-map {
     display: none;
+}
+
+.seed-datasets .module-content .pagination {
+    margin: 0 auto;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.seed-datasets .module-content .pagination ul li a {
+    border: none;
+    background-color: #1a63e8;
+    color: #fff;
+    padding: 7px 14px
+}
+
+.seed-datasets #seed-search-items-from {
+    margin-bottom: 10px;
+}
+
+.seed-datasets .module-content .pagination ul li.active a {
+    background-color: #003647;
+}
+
+.seed-datasets .module-content .pagination ul li a:hover {
+    background-color: #003647;
+}
+
+.seed-datasets .module-content .pagination ul > li:first-child > a {
+        border-radius: 4px 0 0 4px;
+}
+
+.seed-datasets .module-content .pagination ul > li:last-child > a {
+        border-radius: 0 4px 4px 0;
 }
 
 @media (max-width: 767px) {
