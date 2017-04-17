@@ -8629,7 +8629,7 @@ a[data-toggle="modal"] {
 .ui-datepicker-prev span {
     display: block;
     text-indent: -99999px;
-    background-image: url(../images/arr-left.png) !important;
+    background-image: url(/images/arr-left.png) !important;
     background-repeat: no-repeat;
 }
 
@@ -8643,7 +8643,7 @@ a[data-toggle="modal"] {
 .ui-datepicker-next span {
     display: block;
     text-indent: -99999px;
-    background-image: url(../images/arr-right.png) !important;
+    background-image: url(/images/arr-right.png) !important;
     background-repeat: no-repeat;
 }
 
