@@ -8366,12 +8366,12 @@ a[data-toggle="modal"] {
 
 .accordion-buttons .seed-datasets-collapse-checked i,
 .seed-datasets .a-expand i {
-    background: url("../images/minus_accordion.png") no-repeat;
+    background: url("/images/minus_accordion.png") no-repeat;
 }
 
 .accordion-buttons .seed-datasets-expand-checked i,
 .seed-datasets .a-expand.a-collapse i {
-    background: url("../images/plus_accordion.png") no-repeat;
+    background: url("/images/plus_accordion.png") no-repeat;
 }
 
 .accordion-buttons .seed-datasets-expand-checked,
