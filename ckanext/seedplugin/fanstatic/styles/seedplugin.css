@@ -4105,6 +4105,14 @@ a.tag:hover {
 .span9 div.module-content {
     padding-left: 10px;
 }
+.seed-datasets .span9 div.seed-module-content {
+    margin-bottom: 20px;
+}
+.seed-datasets .span9 div.seed-api-module {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
 }
 .module-content:first-child {
     margin-top: 0;
@@ -4122,7 +4130,7 @@ a.tag:hover {
     border-top-width: 0;
 }
 .module:last-child {
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 .module-footer {
     border-top: 1px dotted #dddddd;
@@ -5303,7 +5311,7 @@ textarea {
 }
 .dataset-item:last-of-type {
     border-bottom: 1px solid #ecf0f1;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     padding-bottom: 0;
 }
 .dataset-heading {

@@ -200,13 +200,10 @@
                         {% block package_search_results_list %}
                           {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
                         {% endblock %}
-                      </div>
-                          {{ c.page.pager(q=c.q) }}
-                    </section>
-
+                        {{ c.page.pager(q=c.q) }}
                     {% block package_search_results_api %}
                     <section class="module">
-                      <div class="module-content">
+                      <div class="module-content seed-api-module">
                         {% block package_search_results_api_inner %}
                         <small>
                           {% set api_link = h.link_to(_('API'), h.url_for(controller='api', action='get_api', ver=3)) %}
@@ -226,6 +223,8 @@
                       </div>
                     </section>
                     {% endblock %}
+                      </div>
+                    </section>
                   {% endblock %}
               </div>
             {% endblock %}
