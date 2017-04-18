@@ -47,7 +47,7 @@ within_tertiary
         {% set wrapper_class = 'nav-facet nav-facet-tertiary' %}
       {% endif %}
       {% block facet_list_item %}
-        <section class="{{ wrapper_class or 'module module-narrow module-shallow' }}">
+        <section class="{{ wrapper_class or 'module module-narrow module-shallow' }} seed-facet-list-filter">
           {% block facet_list_heading %}
             <h2 class="module-heading seed-facet-title collapsed" value="{{ name }}" data-toggle="collapse" href="#{{ name }}" aria-expanded="false" aria-controls="collapseExample" style="color: #c04deb;font-size: 16px;font-weight: 600;line-height: 1.8;    background-color: #fff;border: none;cursor: pointer;position: relative;">
               <i class="icon-medium icon-filter"></i>
@@ -75,15 +75,6 @@ within_tertiary
                 </ul>
               </nav>
 
-<!--               <p class="module-footer" style="border:none">
-                {% if h.get_param_int('_%s_limit' % name) %}
-                  {% if h.has_more_facets(name) %}
-                    <a href="{{ h.remove_url_param('_%s_limit' % name, replace=0, extras=extras, alternative_url=alternative_url) }}" class="read-more">{{ _('Show More {facet_type}').format(facet_type=title) }}</a>
-                  {% endif %}
-                {% else %}
-                  <a href="{{ h.remove_url_param('_%s_limit' % name, extras=extras, alternative_url=alternative_url) }}" class="read-more">{{ _('Show Only Popular {facet_type}').format(facet_type=title) }}</a>
-                {% endif %}
-              </p> -->
             {% else %}
               <p class="module-content empty collapse seed-facet-list" id="{{ name }}" style="padding-top: 0px;padding-bottom: 0px;">{{ _('There are no {facet_type} that match this search').format(facet_type=title) }}</p>
             {% endif %}

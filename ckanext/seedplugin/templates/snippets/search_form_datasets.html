@@ -17,8 +17,8 @@
   {% block search_sortby %}
     {% if sorting %}
       <div class="form-select control-group control-order-by">
-        <label for="field-order-by">{{ _('Order by') }}</label>
-        <select id="field-order-by" name="sort">
+        <label for="field-order-by" class="seed-order-by">{{ _('Order by') }}</label>
+        <select id="field-order-by" class="seed-order-by-select" name="sort">
           {% for label, value in sorting %}
             {% if label and value %}
               <option value="{{ value }}"{% if sorting_selected == value %} selected="selected"{% endif %}>{{ label }}</option>
@@ -73,15 +73,6 @@
         </p>
         {% endif %}
     </div>
-      <div class="accordion-buttons">
-          <div class="checkbox-datasets">
-              <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
-              <label for="all-datasets-checkbox"></label>
-              <span class="datasets-tooltip">Select</span>
-          </div>
-          <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled">{{ _('Expand') }}<i></i><span class="datasets-tooltip">Expand selection</span></a>
-          <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled">{{ _('Collapse') }}<i></i><span class="datasets-tooltip">Collapse selection</span></a>
-      </div>
   {% endblock %}
 
 </form>
