@@ -5302,7 +5302,7 @@ textarea {
 }
 }
 .dataset-item:last-of-type {
-    border-bottom: medium none;
+    border-bottom: 1px solid #ecf0f1;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -8342,7 +8342,7 @@ a[data-toggle="modal"] {
 .seed-datasets .seed-accordion .seed-dataset-item .dataset-content .seed-dataset-accordion-btn {
     display: inline-block;
     float: right;
-    line-height: 20px;
+    line-height: 18px;
 }
 
 .seed-datasets .seed-selections-box {
@@ -9217,6 +9217,7 @@ a[data-toggle="modal"] {
 
 .seed-main-block .seed-module-content {
     margin-right: 10px;
+    padding-bottom: 20px;
 }
 
 .seed-secondary-block, .seed-main-block .seed-module-content {
