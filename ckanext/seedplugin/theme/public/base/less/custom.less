@@ -840,7 +840,7 @@ section.module.module-narrow.dataset-map {
         margin-left: 0;
     }
     #content a:link:not([href^='/']):not([href^='#']):not([href*='edptest']):not([href*='seed.nsw.gov']):not([href^='mailto']):not([href^='javascript']):not([href='']) {
-        background-image: url('../images/images/external-link-16.png');
+        background-image: url("@{imagePath}external-link-16.png");
         background-position: center right;
         background-repeat: no-repeat;
         background-size: 12px;
@@ -862,61 +862,9 @@ section.module.module-narrow.dataset-map {
 
     .pull-left {
         float: left;
-        padding-top: 17px;
     }
 
     .btn-group > .btn:first-child {
         border-radius: 0;
-    }
-}
-
-// Custom css for search page OEHXCECF-44
-
-.seed-datasets {
-    .seed-accordion {
-        .seed-dataset-item {
-            .dataset-content {
-                .dataset-heading {
-                    display: inline-block;
-                }
-                .seed-dataset-accordion-btn {
-                    float: right;
-                }
-            }
-        }
-    }
-    .accordion-buttons {
-        position: relative;
-        .checkbox-datasets {
-            display: inline-block;
-            background: @seedF7;
-            padding-bottom: 3px;
-            padding-top: 0px;
-            padding-left: 10px;
-            padding-right: 10px;
-            border: 1px solid @seedDDD;
-            label:after {
-                content: '';
-            }
-        }
-    }
-    .accordion-buttons .seed-datasets-expand-checked,
-    .accordion-buttons .seed-datasets-collapse-checked,
-    .a-expand.a-collapse {
-        background-color: @seedF7;
-        border: 1px solid @seedDDD;
-        color: @seedBlue;
-    }
-    li.dataset-item {
-        padding-left: 10px;
-    }
-    .a-expand {
-        background-color: @seedEEE;
-        border: 1px solid @seedDDD;
-        i {
-            display: block;
-            width: 14px;
-            height: 2px;
-        }
     }
 }
