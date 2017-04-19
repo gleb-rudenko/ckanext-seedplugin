@@ -9325,7 +9325,7 @@ a[data-toggle="modal"] {
         width: 175px;
     }
     .seed-search-filters input {
-        180px;
+        width: 180px;
     }
     .seed-search-filters select.seed-lga-select {
         width: 277px;
