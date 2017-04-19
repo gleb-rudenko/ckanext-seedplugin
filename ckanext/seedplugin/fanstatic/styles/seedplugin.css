@@ -5628,7 +5628,9 @@ textarea {
 }
 .search-form .control-order-by select {
     margin: 0;
-    width: 160px;
+    width: 320px;
+    height: 45px;
+    border: 2px solid #dce4ec;
 }
 .search-form h2 {
     color: #c04deb;
@@ -6732,7 +6734,7 @@ h1 small, h2 small, h3 small, h4 small {
     margin-bottom: 0;
 }
 .masthead .navigation .nav-pills li a:hover, .masthead .navigation .nav-pills li.active a {
-    background-color: #003647;
+    background-color: #02454c;
 }
 .masthead .nav > li > a, .masthead .nav > li > a:focus, .masthead .nav > li > a:hover, .masthead .nav > .active > a, .masthead .nav > .active > a:hover, .masthead .nav > .active > a:focus {
     color: #fff;
@@ -8798,7 +8800,7 @@ a[data-toggle="modal"] {
 }
 
 .seed-facet-list-filter {
-    margin: 5px 0;
+    margin: 9px 0;
 }
 
 .seed-facet-list-button {
@@ -8867,6 +8869,12 @@ a[data-toggle="modal"] {
     padding: 6px 9px;
     border-radius: 3px;
     float: none;
+    font-size: 13px;
+}
+
+.seed-search-main-block .seed-search-info-button i {
+    position: relative;
+    top: 2px;
 }
 
 .seed-search-second-block form {
@@ -8874,7 +8882,8 @@ a[data-toggle="modal"] {
 }
 
 .seed-search-second-block form .seed-search-input {
-    padding: 20px 0;
+    padding: 31px 0;
+    padding-top: 10px;
 }
 
 .seed-search-second-block form .seed-search-input div {
@@ -8923,6 +8932,7 @@ a[data-toggle="modal"] {
     margin-bottom: 10px;
     font-family: 'Lato';
     color: #2c3e50;
+    font-size: 15px;
 }
 
 .seed-search-filters select {
@@ -8976,14 +8986,15 @@ a[data-toggle="modal"] {
 .seed-filter-title {
     background-color: #29a8f1;
     color: #fff;
-    text-align: center;
+    // text-align: center;
     height: 55px;
-    padding-top: 5px;
+    padding-top: 14px;
     font-size: 16px;
+    padding-left: 32px;
 }
 
 .seed-filter-title span {
-    margin-right: 5px;
+    margin-right: 20px;
 }
 
 .seed-filter-title span i {
@@ -9087,7 +9098,7 @@ a[data-toggle="modal"] {
     border: none;
     background-color: #b72fe8;
     color: #fff;
-    padding: 7px 14px
+    padding: 11.5px 16px
 }
 
 .seed-datasets #seed-search-items-from {
@@ -9207,11 +9218,11 @@ a[data-toggle="modal"] {
 .seed-order-by {
     font-family: 'Lato';
     color: #525e74;
-    vertical-align: top;
+    // vertical-align: top;
 }
 
 .seed-order-by:after {
-    vertical-align: top;
+    // vertical-align: top;
 }
 
 .seed-order-by-select {
@@ -9303,11 +9314,20 @@ a[data-toggle="modal"] {
         width: 310px;
     }
     .seed-search-filters select, .seed-search-filters input {
-        margin: 0 10px;
-        margin-bottom: 10px;
+        margin: 0 13px;
+        margin-bottom: 12px;
     }
     .datepicker-button {
         margin-left: -10px;
         margin-right: 10px;
+    }
+    .seed-search-filters select {
+        width: 175px;
+    }
+    .seed-search-filters input {
+        180px;
+    }
+    .seed-search-filters select.seed-lga-select {
+        width: 277px;
     }
 }
