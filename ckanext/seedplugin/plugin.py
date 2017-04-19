@@ -182,6 +182,8 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
                          action='read')
         routeMap.connect('/download_results', controller=controller,
                          action='download_results')
+        routeMap.connect('/dataset', controller='ckanext.seedplugin.controller:SEEDPackageController',
+                         action='search')
         # routeMap.connect('/dataset', controller=controllerPackage,
         #                  action='search', highlight_actions='index search')
 
@@ -257,6 +259,10 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         return resource_dict
 
     def before_search(self, search_params):
+        if request.params.get('per_page'):
+            search_params['fq'] = search_params['fq'].replace(
+                'per_page:"' + request.params.get('per_page') + '"',
+                '')
         print search_params
         extras = search_params.get('extras')
         if not extras:

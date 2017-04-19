@@ -257,8 +257,10 @@ class SEEDUserController(UserController):
                       '?came_from=' + url)
 
 
-# class SEEDPackageController(PackageController):
-#
-#     def search(self):
-#         result = super(SEEDPackageController, self).search()
-#         return result
+class SEEDPackageController(PackageController):
+
+    def search(self):
+        if request.params.get('per_page'):
+            g.datasets_per_page = int(request.params.get('per_page'))
+        result = super(SEEDPackageController, self).search()
+        return result

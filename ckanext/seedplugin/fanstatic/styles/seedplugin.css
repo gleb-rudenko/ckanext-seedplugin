@@ -5631,6 +5631,7 @@ textarea {
     width: 320px;
     height: 45px;
     border: 2px solid #dce4ec;
+    font-size: 15px;
 }
 .search-form h2 {
     color: #c04deb;
@@ -5678,7 +5679,7 @@ textarea {
 @media (min-width: 980px) {
 .seed-datasets .search-form .control-order-by {
     float: none;
-    margin-left: 0;
+    // margin-left: 0;
     text-align: center;
 }
 .search-form .control-order-by {
@@ -9212,7 +9213,7 @@ a[data-toggle="modal"] {
 .seed-datasets .seed-selections-box {
     right: 0;
     position: absolute;
-    top: 15px;
+    top: 10px;
 }
 
 .seed-order-by {
@@ -9255,6 +9256,33 @@ a[data-toggle="modal"] {
 
 .seed-dataset-items h3 {
     font-size: 18px;
+}
+
+.seed-additional-filters {
+    text-align: center;
+}
+
+.seed-items-per-page {
+    display: inline-block;
+    font-family: 'Lato';
+}
+
+.seed-items-per-page select {
+    width: 52px;
+    height: 45px;
+    border: 2px solid #dce4ec;
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+.seed-item-per-page {
+    color: #525e74;
+    font-family: 'Lato';
+    display: inline;
+}
+
+.seed-order-by-filter {
+    display: inline-block;
 }
 
 @media (max-width: 767px) {
@@ -9329,5 +9357,8 @@ a[data-toggle="modal"] {
     }
     .seed-search-filters select.seed-lga-select {
         width: 277px;
+    }
+    .seed-items-per-page select {
+        width: 106px;
     }
 }
