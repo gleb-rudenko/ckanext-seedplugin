@@ -14,7 +14,7 @@ $( function() {
       showOtherMonths: true,
       selectOtherMonths: true
     });
-    $('<label class="datepicker-button" for="ext_startdate"><i class="icon-calendar" style="position: relative;"></i></label>').insertAfter($("#ext_startdate"));
+    $('<label class="datepicker-button" for="ext_startdate"><i class="fa fa-th" style="position: relative;"></i></label>').insertAfter($("#ext_startdate"));
     if($('#ext_startdate_after').length > 0){
       remove_date = String(window.location.href);
       date = jQuery('#ext_startdate_after').text().trim();
@@ -26,7 +26,7 @@ $( function() {
       showOtherMonths: true,
       selectOtherMonths: true
     });
-    $('<label class="datepicker-button" for="ext_enddate"><i class="icon-calendar" style="position: relative;"></i></label>').insertAfter($("#ext_enddate"));
+    $('<label class="datepicker-button" for="ext_enddate"><i class="fa fa-th" style="position: relative;"></i></label>').insertAfter($("#ext_enddate"));
     if($('#ext_enddate_after').length > 0){
       remove_date = String(window.location.href);
       date = jQuery('#ext_enddate_after').text().trim();
