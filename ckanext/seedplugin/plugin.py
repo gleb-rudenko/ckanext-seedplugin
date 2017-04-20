@@ -120,15 +120,10 @@ def seed_localised_nice_date(datetime_, show_date=False, with_hours=False):
 
     if with_hours:
         return (
-            # NOTE: This is for translating dates like `April 24, 2013, 10:45 (Europe/Zurich)`
-            #_('{month} {day}, {year}, {hour:02}:{min:02} ({timezone})') \
             _('{day_n}/{month_n}/{year}, {hour:02}:{min:02} ({timezone})') \
             .format(**details))
     else:
         return (
-            # NOTE: This is for translating dates like `April 24, 2013`
-            #_('{month} {day}, {year}').format(**details))
-            # We reformatted date to dd/mm/yyyy
             _('{day_n}/{month_n}/{year}').format(**details))
 
 
@@ -186,6 +181,8 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
                          action='read')
         routeMap.connect('/download_results', controller=controller,
                          action='download_results')
+        routeMap.connect('/dataset', controller='ckanext.seedplugin.controller:SEEDPackageController',
+                         action='search')
         # routeMap.connect('/dataset', controller=controllerPackage,
         #                  action='search', highlight_actions='index search')
 
@@ -206,19 +203,19 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     def dataset_facets(self, facets_dict, package_type):
         # We will actually remove all the core facets and add our own
         facets_dict.clear()
-        facets_dict['topic'] = toolkit._('Topic Category')
-        facets_dict['tags'] = toolkit._('Tags')
-        facets_dict['organization'] = toolkit._('Organisation')
+        facets_dict['topic'] = toolkit._('Categories')
+        facets_dict['organization'] = toolkit._('Organisations')
         facets_dict['res_format'] = toolkit._('Formats')
+        facets_dict['tags'] = toolkit._('Tags')
         return facets_dict
 
     def organization_facets(self, facets_dict, organization_type,
                             package_type):
         facets_dict.clear()
-        facets_dict['topic'] = toolkit._('Topic Category')
-        facets_dict['tags'] = toolkit._('Tags')
-        facets_dict['organization'] = toolkit._('Organisation')
+        facets_dict['topic'] = toolkit._('Categories')
+        facets_dict['organization'] = toolkit._('Organisations')
         facets_dict['res_format'] = toolkit._('Formats')
+        facets_dict['tags'] = toolkit._('Tags')
         return facets_dict
 
     # IAuthenticator
@@ -226,10 +223,8 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         pass
 
     def identify(self):
-        log.debug(request.environ['CKAN_CURRENT_URL'].split('?'))
         if request.environ['CKAN_CURRENT_URL'].split('?')[0] == '/user/logged_in':
             if var:
-                log.debug("var has value once logged in, clearing var")
                 del var[:]
                 return var
             else:
@@ -237,22 +232,12 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         if hasattr(toolkit.c.userobj, 'password'):
             upassword = getattr(toolkit.c.userobj, 'password')
             if var:
-                log.debug('existing var')
-                log.debug(var)
                 if upassword == var[0]:
-                    log.debug("same, pass")
-                    # log.debug(upassword)
                     pass
                 else:
                     var[0] = upassword
-                    log.debug("different, do stuff")
-                    # this toolkit redirect does not do what user expects)
                     toolkit.redirect_to(controller='user', action='logout', __ckan_no_root=True, id=None)
-                    # h.redirect_to('http://ckan.dev.edptest.info/user/logout')
-                    # to do - this logs the user out, but does not redirect user to the "you have been logged out" page.
-                    # return render('user/logout.html')
             else:
-                log.debug("var is appended")
                 var.append(upassword)
         else:
             pass
@@ -273,7 +258,10 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
         return resource_dict
 
     def before_search(self, search_params):
-        print search_params
+        if request.params.get('per_page'):
+            search_params['fq'] = search_params['fq'].replace(
+                'per_page:"' + request.params.get('per_page') + '"',
+                '')
         extras = search_params.get('extras')
         if not extras:
             return search_params

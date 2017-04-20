@@ -7,7 +7,6 @@ console.log("")
 //links to open in new window
 $(document).ready(function () {
                 var localhost = window.location.host;
-                //console.log(localhost)
                 var parts = localhost.split(".").slice(-2);
                 localhost = parts.join(".");
                 $("a").each(function (i) {
@@ -29,13 +28,3 @@ $(function () {
         $('.modal').modal('hide');
     });
 });
-
-
-
-//ckan.module('message_target', function ($, _) {
-//  return {
-//    initialize: function () {
-//      console.log("I've been initialized for element")
-//    }
-//  };
-//});

@@ -76,7 +76,7 @@
                   <form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %} seed-dataset-search-form" method="get">
                      {% block search_input %}
                       <div class="seed-search-input">
-                        <div class="search-input control-group  span7">
+                        <div class="search-input control-group  span9">
                           <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="Search for a topic of interest e.g. Soil, Water, Air">
 
                           <button type="submit" value="search">
@@ -88,7 +88,7 @@
                      </div>
                     {% endblock %}
                     <div class="seed-search-filters">
-                      <select id="" name="topic" class="span2">
+                      <select id="" name="topic" class="span2" title="Select category from dropdown to include in search criteria">
                         <option title="Select Category" value="" class="" >Select Category</option>
                         {% for value in seed_facet_list[0]['topic'] %}
                           {% if value != '' %}
@@ -96,7 +96,7 @@
                           {% endif %}
                       {% endfor %}
                       </select>
-                      <select id="" name="res_format" class="span2">
+                      <select id="" name="res_format" class="span2" title="Select format from dropdown to include in search criteria">
                         <option title="Select Format" value="" class="">Select Format</option>
                         {% for value in seed_facet_list[1]['res_format'] %}
                         {{ value }}
@@ -105,8 +105,11 @@
                           {% endif %}
                         {% endfor %}
                       </select>
-                      <input type="text" id="ext_startdate" value="{{ request.params.get('ext_startdate', '') }}" name="ext_startdate" class="span2" placeholder="From Date">
-                      <input type="text" id="ext_enddate" value="{{ request.params.get('ext_enddate', '') }}" name="ext_enddate" class="span2" placeholder="To Date">
+                      <input type="text" id="ext_startdate" value="{{ request.params.get('ext_startdate', '') }}" name="ext_startdate" class="span2 seed-datepicker-inputs" placeholder="From Date" title="StartDate picker, select start date for date-range , to include in search criteria">
+                      <input type="text" id="ext_enddate" value="{{ request.params.get('ext_enddate', '') }}" name="ext_enddate" class="span2 seed-datepicker-inputs" placeholder="To Date" title="EndDate picker, select end date for date-range , to include in search criteria">
+                      <select id="" name="lga" class="span2 seed-lga-select" title="Select Local Government Association from dropdown to include in search criteria">
+                        <option title="Select LGA" value="" class="" >Select LGA</option>
+                      </select>
                     </div>
                   </form>
                   <a class="show-filters btn seed-more-filters">{{ _('More Filters') }}</a>
@@ -126,10 +129,38 @@
                         {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController', action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %}
                       {% endif %}
                     </div>
+                    <div class="seed-selections-box">
+                      <div class="checkbox-datasets">
+                          <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
+                          <label for="all-datasets-checkbox"></label>
+                          <span class="datasets-tooltip">Select</span>
+                      </div>
+                      <div class="seed-view-on-map-count"></div>
+                      <div class="seed-view-on-map-options">
+                        <div style="display: inline-block;">
+                          <a href="" class="seed-view-on-map-all" target="_blank" title="Show selected Dataset on Map"><span class="icon-globe"></span>View on Map</a>
+                          <div class="dropwon" style="position: relative;">
+                            <a href="" class="seed-view-on-map-datasets" data-toggle="dropdown" title="View selection list">
+                              <span class="icon-list-ul"></span>
+                            </a>
+                            <ul class="dropdown-menu seed-selected-datasets-list">
+                            </ul>
+                          </div>
+  <!--                         <a href="#" class="seed-view-on-map-remove" title="Clear selection">
+                            <span>X</span>
+                          </a> -->
+                        </div>
+                        <div class="accordion-buttons">
+                            <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled">{{ _('Show all') }}<i></i><span class="datasets-tooltip">Expand selection</span></a>
+                            <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled">{{ _('Hide all') }}<i></i><span class="datasets-tooltip">Collapse selection</span></a>
+                        </div>
+                      </div>
+                    </div>
+
                   {% endif %}
                 </div>
               </div>
-              <div class="primary span9">
+              <div class="primary span9 seed-main-block">
                 {#
                 The primary_content block can be used to add content to the page.
                 This is the main block that is likely to be used within a template.
@@ -143,7 +174,7 @@
                 #}
                   {% block primary_content %}
                     <section class="module">
-                      <div class="module-content">
+                      <div class="module-content seed-module-content">
                         {% block page_primary_action %}
                         {% endblock %}
                         {% block form %}
@@ -155,11 +186,11 @@
                             'remove_field': c.remove_field }
                           %}
                           {% set sorting = [
-                            (_('Relevance'), 'score desc, metadata_modified desc'),
                             (_('Name Ascending'), 'title_string asc'),
                             (_('Name Descending'), 'title_string desc'),
-                            (_('Last Modified'), 'metadata_modified desc'),
-                            (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
+                            (_('Date Created Ascending'), 'score desc, metadata_created asc'),
+                            (_('Date Created Descending'), 'score desc, metadata_created desc'),
+                            (_('Most Recently Updated'), 'metadata_modified desc')]
                           %}
                           {% snippet 'snippets/search_form_datasets.html', form_id='dataset-search-form seed-search-items-from', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
                         {% endblock %}
@@ -169,13 +200,10 @@
                         {% block package_search_results_list %}
                           {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
                         {% endblock %}
-                      </div>
-
-                    </section>
-
+                        {{ c.page.pager(q=c.q) }}
                     {% block package_search_results_api %}
                     <section class="module">
-                      <div class="module-content">
+                      <div class="module-content seed-api-module">
                         {% block package_search_results_api_inner %}
                         <small>
                           {% set api_link = h.link_to(_('API'), h.url_for(controller='api', action='get_api', ver=3)) %}
@@ -195,12 +223,14 @@
                       </div>
                     </section>
                     {% endblock %}
+                      </div>
+                    </section>
                   {% endblock %}
               </div>
             {% endblock %}
 
             {% block secondary %}
-              <aside class="secondary span3">
+              <aside class="secondary span3 seed-secondary-block">
                 {#
                 The secondary_content block can be used to add content to the
                 sidebar of the page. This is the main block that is likely to be
@@ -217,7 +247,7 @@
               <div class="seed-filter-title">
                 <span>
                   <i class="icon-list" alt="Filter datasets- icon"></i>
-                </span>Filter
+                </span>Filters
               </div>
               <div class="filters">
                 <div>

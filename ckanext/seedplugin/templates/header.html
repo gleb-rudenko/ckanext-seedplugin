@@ -117,9 +117,8 @@
             </li>
            </ul>
                       <ul class="nav nav-pills">
-            <li>
+            <li class="active">
               {% set dataseturl=request.url.split("/")[2]|replace("ckan.","") %}
-              <!-- <a href={{"http://dev.edptest.info/edphome/SearchResults.aspx"}}>DATASETS</a> -->
               <a href="{{ g.site_url }}/dataset">DATASETS</a>
             </li>
             <li>

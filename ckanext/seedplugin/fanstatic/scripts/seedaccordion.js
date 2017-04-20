@@ -68,12 +68,12 @@ function toogle_dataset(action, index, elem) {
         $(dataset).collapse('hide');
         $(resource).collapse('hide');
         $(elem).addClass('a-collapse');
-        $(elem).find('span').text('Expand');
+        $(elem).find('span').text('Show more');
     } else if (action == 'expand') {
         $(dataset).collapse('show');
         $(resource).collapse('show');
         $(elem).removeClass('a-collapse');
-        $(elem).find('span').text('Collapse');
+        $(elem).find('span').text('Show less');
     }
     change_expand_collapse_btns();
 }
@@ -84,6 +84,7 @@ jQuery(document).ready(function () {
     var collapse_selected = $('.seed-datasets-collapse-checked');
     change_expand_collapse_btns();
     $(all_checkbox).on('click', function(event) {
+
         var checkboxes = $('.checkbox-dataset input[type=checkbox]');
         if ($(this).hasClass('datasets-not-checked')) {
             for (var i = 0; i < checkboxes.length; i++) {
@@ -91,10 +92,12 @@ jQuery(document).ready(function () {
                 $('.span-checkbox-dataset' + i).text("Deselect");
             }
             $(all_checkbox).removeClass('datasets-not-checked');
+            $(all_checkbox).addClass('dataset-plus');
         } else {
             for (var i = 0; i < checkboxes.length; i++) {
                 $('.span-checkbox-dataset' + i).text("Add to selection");
                 $(checkboxes[i]).prop('checked', false);
+                $(all_checkbox).removeClass('dataset-plus');
                 $(all_checkbox).addClass('datasets-not-checked');
                 $(expand_selected).attr('disabled', true);
                 $('.seed-datasets-collapse-checked').attr('disabled', true);
@@ -103,6 +106,7 @@ jQuery(document).ready(function () {
                 $(all_checkbox).prop('checked', false);
             }
             $(all_checkbox).removeClass('checked_minus');
+
         }
         change_expand_collapse_btns();
     });
@@ -113,14 +117,17 @@ jQuery(document).ready(function () {
         if (state_checked) {
             $(all_checkbox).removeClass('datasets-not-checked');
             if (datasets_checkbox_checked != datasets_checkbox) {
+                $(all_checkbox).removeClass('dataset-plus');
                 $(all_checkbox).addClass('checked_minus');
                 $(all_checkbox).prop('checked', true);
             } else if (datasets_checkbox_checked == datasets_checkbox) {
+                $(all_checkbox).addClass('dataset-plus');
                 $(all_checkbox).removeClass('checked_minus');
             }
             $('.span-checkbox-dataset' + $(this).val()).text("Deselect");
         } else {
             if ($('.checkbox-dataset input[type=checkbox]:checked').length == 0) {
+                $(all_checkbox).removeClass('dataset-plus');
                 $(all_checkbox).addClass('datasets-not-checked');
                 if ($(all_checkbox).prop('checked')) {
                     $(all_checkbox).prop('checked', false);
@@ -130,6 +137,7 @@ jQuery(document).ready(function () {
                 $('.seed-datasets-collapse-checked').attr('disabled', true);
             }
             if (datasets_checkbox_checked > 0 && datasets_checkbox_checked != datasets_checkbox) {
+                $(all_checkbox).removeClass('dataset-plus');
                 $(all_checkbox).addClass('checked_minus');
             }
             $('.span-checkbox-dataset' + $(this).val()).text("Add to selection");
