@@ -459,13 +459,58 @@
     }
 }
 
-.seed-facet-list .seed-facet-item.active a {
-    background-color: #1a63e8;
-    color: #fff;
+.seed-facet-list .seed-facet-item.active {
+    a {
+        background-color: #29a8f1;
+        color: #fff;
+        padding: 10px 25px;
+        span {
+            font-size: 12px;
+            width: 100%;
+            text-align: left;
+            font-family: 'Lato';
+            &:before {
+                position: absolute;
+                right: 25px;
+                padding: 3px 6px;
+                font-size: 15px;
+                border-radius: 5px;
+                background-color: #333;
+                top: 7px;
+                font-family: FontAwesome;
+            }
+        }
+    }
 }
 
 .seed-facet-list-filter {
     margin: 10px 0;
+    position: relative;
+}
+.seed-facetq-remove, .seed-facetsq-remove {
+    color: #fff;
+    background-color: #b72fe8;
+    padding: 2px 8px;
+    border-radius: 3px;
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    span {
+        margin: 0;
+    }
+    &:hover {
+        color: #fff;
+        background-color: #460a5c;
+        text-decoration: none;
+    }
+}
+.seed-facetsq-remove {
+    padding: 7.5px 12px;
+    right: 50px;
+}
+
+.seed-filter-title .seed-remove-all-facets-icon {
+    margin: 0;
 }
 
 .seed-facet-list-button {
@@ -474,7 +519,7 @@
     height: 25px;
     position: absolute;
     top: 10px;
-    right: 25px;
+    right: 55px;
     border-radius: 3px;
 }
 
@@ -538,6 +583,7 @@
     color: #ffffff;
     background-color: #1a242f;
     border-color: #161f29;
+    text-decoration: underline;
 }
 
 .seed-search-main-block .seed-search-info-button {
@@ -551,7 +597,7 @@
 
 .seed-search-main-block .seed-search-info-button i {
     position: relative;
-    top: 2px;
+    top: 0;
 }
 
 .seed-search-second-block form {
@@ -609,12 +655,10 @@
 }
 .seed-search-filters select, .seed-search-filters input {
     margin: 0 10px;
-    margin-bottom: 10px;
     font-family: 'Lato';
     color: #2c3e50;
     font-size: 15px;
     vertical-align: middle;
-    // padding: 10px 15px;
 }
 
 .seed-search-filters select {
@@ -674,10 +718,11 @@
     background-color: #29a8f1;
     color: #fff;
     // text-align: center;
-    height: 55px;
+    height: 41px;
     padding-top: 14px;
     font-size: 16px;
     padding-left: 32px;
+    position: relative;
 }
 
 .seed-filter-title span {
@@ -703,6 +748,8 @@
     line-height: 52px;
     margin-left: -10px;
     margin-right: 10px;
+    margin-bottom: 0;
+    vertical-align: middle;
 }
 
 .datepicker-button::after {
@@ -986,6 +1033,10 @@
     padding: 10px 0;
 }
 
+.seed-datasets .seed-search-second-block.seed-filters-block {
+    padding-bottom: 20px;
+}
+
 .search-form .control-order-by select {
     margin: 0;
     width: 305px;
@@ -1007,7 +1058,7 @@
     background-color: #02454c;
 }
 
-.nav-facet .nav-item > a:hover::after, .nav-facet .nav-item.active > a::after {
+.nav-facet .nav-item > a:hover::after {
     background-image: none;
     content: "\2b";
     font-size: 20px;
@@ -1015,15 +1066,25 @@
     color: #dfe4e5;
 }
 
+.seed-facet-list .seed-facet-item.active>a:before, .seed-facet-list .seed-facet-item.active>a:after {
+    content: '';
+    background-image: none;
+    right: 0;
+    width: 0;
+}
+
 .seed-search-input div input, #ext_startdate, #ext_enddate {
+    &::placeholder {
+        opacity: 1;
+    }
     &::-webkit-input-placeholder {
         opacity: 0.8;
     }
     &::-moz-input-placeholder {
-        opacity: 0.8;
+        opacity: 1;
     }
     &:-moz-input-placeholder {
-        opacity: 0.8;
+        opacity: 1;
     }
 }
 
@@ -1081,6 +1142,10 @@
     .module:last-child {
         margin-bottom: 0;
     }
+    [role=main], .main {
+        background: #f1f6fc;
+        .bg_img_url('bg.png');
+    }
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
@@ -1114,7 +1179,7 @@
         padding-right: 15px;
     }
     .container {
-        width: 1261px;
+        width: 1280px;
     }
     .seed-datasets .span11 {
         width: 98.5%;
@@ -1126,10 +1191,10 @@
         width: 803px;
     }
     .primary.span9 {
-        width:  939px;
+        width:  950px;
     }
     .secondary.span3 {
-        width: 310px;
+        width: 318px;
         margin-left: 10px;
     }
     .datepicker-button {
@@ -1149,7 +1214,6 @@
         }
         select, input {
             margin: 0 13px;
-            margin-bottom: 10px;
         }
     }
 
@@ -1162,10 +1226,15 @@
     .module .pagination {
         height: auto;
     }
-
     .span9 div.module-content {
         padding-right: 31px;
         padding-left: 50px;
+    }
+    .seed-facet-list-button {
+        right: 70px;
+    }
+    .seed-facetsq-remove {
+        right: 67px;
     }
 
 }

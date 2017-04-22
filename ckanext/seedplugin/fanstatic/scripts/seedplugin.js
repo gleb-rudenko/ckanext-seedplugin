@@ -108,4 +108,12 @@ $( function() {
 
 } );
 
+$(document).ready(function () {
+  jQuery('.seed-filters-collapsing').children().each(function(index, el) {
+    if(jQuery(this).find('li').hasClass('active')) {
+      jQuery(this).find('h2').removeClass('collapsed');
+      jQuery(this).find('ul').addClass('in')
+    }
+  });
 
+});

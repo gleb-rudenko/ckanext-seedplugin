@@ -1,11 +1,15 @@
-from ckan.common import c
+from ckan.common import c, request
 import ckan.logic as logic
+from urlparse import urlparse, parse_qs
+from urllib import urlencode
 
 
 def get_seed_helpers():
     return {
         'get_datasets_targets': get_datasets_targets,
-        'seed_facet_list': seed_facet_list
+        'seed_facet_list': seed_facet_list,
+        'seed_facet_remove': seed_facet_remove,
+        'seed_all_facets_remove': seed_all_facets_remove
     }
 
 
@@ -29,3 +33,37 @@ def seed_facet_list():
     facet_dict.append(topic_facets)
     facet_dict.append(res_format_facets)
     return facet_dict
+
+
+def seed_facet_remove(items, name):
+    result = {'got_active': False}
+    url = request.url
+    full_path = urlparse(url)
+    query_items = parse_qs(full_path.query)
+    for idx, i in enumerate(items):
+        if i['active'] is True and name in query_items:
+            result['got_active'] = True
+            query_items.pop(name)
+
+    unparse_q_items = urlencode(query_items, doseq=True)
+    result['domain'] = full_path.netloc
+    result['path'] = full_path.path
+    result['query'] = unparse_q_items
+
+    return result
+
+
+def seed_all_facets_remove(facets):
+    result = {'got_active': False}
+    url = request.url
+    full_path = urlparse(url)
+    query_items = parse_qs(full_path.query)
+    for facet in facets:
+        if facet in query_items:
+            result['got_active'] = True
+            query_items.pop(facet)
+    unparse_q_items = urlencode(query_items, doseq=True)
+    result['domain'] = full_path.netloc
+    result['path'] = full_path.path
+    result['query'] = unparse_q_items
+    return result

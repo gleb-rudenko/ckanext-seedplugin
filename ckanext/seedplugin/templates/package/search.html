@@ -72,7 +72,7 @@
                    <a type="button" href="https://www.seed.nsw.gov.au/edphome/using-seed/refining-search.aspx" target= "_blank" class="btn pull-right seed-search-info-button"><i class="icon-info-sign"></i>How to Refine Search </a>
                   {% endblock %}
                 </div>
-                <div class="span11 seed-search-second-block" style="background-color: rgba(0,0,0,0.7);">
+                <div class="span11 seed-search-second-block seed-filters-block" style="background-color: rgba(0,0,0,0.7);">
                   <form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %} seed-dataset-search-form" method="get">
                      {% block search_input %}
                       <div class="seed-search-input">
@@ -244,17 +244,19 @@
                   {% endblock %}
                 #}
               {% block secondary_content %}
+              {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
               <div class="seed-filter-title">
+               {% if rm_facets['got_active'] == True %}
+                  <a href="{{ rm_facets['path'] }}{% if rm_facets['query'] %}?{% endif %}{{ rm_facets['query'] }}" class="seed-facetsq-remove"><span class="icon-remove seed-remove-all-facets-icon"></span></a>
+                {% endif %}
                 <span>
                   <i class="fa fa-list" alt="Filter datasets- icon"></i>
                 </span>Filters
               </div>
-              <div class="filters">
-                <div>
+              <div class="filters seed-filters-collapsing">
                   {% for facet in c.facet_titles %}
                     {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
                   {% endfor %}
-                </div>
                 <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
               </div>
               {% endblock %}

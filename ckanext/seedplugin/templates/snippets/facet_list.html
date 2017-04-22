@@ -68,12 +68,16 @@ within_tertiary
                     {% set count = count_label(item['count']) if count_label else ('(%d)' % item['count']) %}
                       <li class="{{ nav_item_class or 'nav-item' }}{% if item.active %} active{% endif %} seed-facet-item">
                         <a href="{{ href }}" title="{{ label if label != label_truncated else '' }}">
-                          <span>{{ label_truncated }} {{ count }}</span>
+                          <span {% if item.active %} class="icon-remove"{% endif %}>{{ label_truncated }} {{ count }}</span>
                         </a>
                       </li>
                   {% endfor %}
                 </ul>
               </nav>
+                {% set url_items_result = h.seed_facet_remove(h.get_facet_items_dict(name), name) %}
+                {% if url_items_result['got_active'] == True %}
+                  <a href="{{ url_items_result['path'] }}{% if url_items_result['query'] %}?{% endif %}{{ url_items_result['query'] }}" class="seed-facetq-remove"><span class="icon-remove"></span></a>
+                {% endif %}
 
             {% else %}
               <p class="module-content empty collapse seed-facet-list" id="{{ name }}" style="padding-top: 0px;padding-bottom: 0px;">{{ _('There are no {facet_type} that match this search').format(facet_type=title) }}</p>

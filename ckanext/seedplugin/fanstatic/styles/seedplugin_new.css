@@ -1741,11 +1741,56 @@ section.module.module-narrow.dataset-map .module-heading {
   border-bottom: 1px dotted #dddddd;
 }
 .seed-facet-list .seed-facet-item.active a {
-  background-color: #1a63e8;
+  background-color: #29a8f1;
   color: #fff;
+  padding: 10px 25px;
+}
+.seed-facet-list .seed-facet-item.active a span {
+  font-size: 12px;
+  width: 100%;
+  text-align: left;
+  font-family: 'Lato';
+}
+.seed-facet-list .seed-facet-item.active a span:before {
+  position: absolute;
+  right: 25px;
+  padding: 3px 6px;
+  font-size: 15px;
+  border-radius: 5px;
+  background-color: #333;
+  top: 7px;
+  font-family: FontAwesome;
 }
 .seed-facet-list-filter {
   margin: 10px 0;
+  position: relative;
+}
+.seed-facetq-remove,
+.seed-facetsq-remove {
+  color: #fff;
+  background-color: #b72fe8;
+  padding: 2px 8px;
+  border-radius: 3px;
+  position: absolute;
+  top: 10px;
+  right: 16px;
+}
+.seed-facetq-remove span,
+.seed-facetsq-remove span {
+  margin: 0;
+}
+.seed-facetq-remove:hover,
+.seed-facetsq-remove:hover {
+  color: #fff;
+  background-color: #460a5c;
+  text-decoration: none;
+}
+.seed-facetsq-remove {
+  padding: 7.5px 12px;
+  right: 50px;
+}
+.seed-filter-title .seed-remove-all-facets-icon {
+  margin: 0;
 }
 .seed-facet-list-button {
   background-color: #b72fe8;
@@ -1753,7 +1798,7 @@ section.module.module-narrow.dataset-map .module-heading {
   height: 25px;
   position: absolute;
   top: 10px;
-  right: 25px;
+  right: 55px;
   border-radius: 3px;
 }
 .seed-facet-list-button:hover {
@@ -1810,6 +1855,7 @@ section.module.module-narrow.dataset-map .module-heading {
   color: #ffffff;
   background-color: #1a242f;
   border-color: #161f29;
+  text-decoration: underline;
 }
 .seed-search-main-block .seed-search-info-button {
   color: #fff;
@@ -1821,7 +1867,7 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-search-main-block .seed-search-info-button i {
   position: relative;
-  top: 2px;
+  top: 0;
 }
 .seed-search-second-block form {
   border-bottom: none;
@@ -1871,7 +1917,6 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-search-filters select,
 .seed-search-filters input {
   margin: 0 10px;
-  margin-bottom: 10px;
   font-family: 'Lato';
   color: #2c3e50;
   font-size: 15px;
@@ -1920,10 +1965,11 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-filter-title {
   background-color: #29a8f1;
   color: #fff;
-  height: 55px;
+  height: 41px;
   padding-top: 14px;
   font-size: 16px;
   padding-left: 32px;
+  position: relative;
 }
 .seed-filter-title span {
   margin-right: 20px;
@@ -1945,6 +1991,8 @@ section.module.module-narrow.dataset-map .module-heading {
   line-height: 52px;
   margin-left: -10px;
   margin-right: 10px;
+  margin-bottom: 0;
+  vertical-align: middle;
 }
 .datepicker-button::after {
   content: '';
@@ -2186,6 +2234,9 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-datasets .seed-search-second-block {
   padding: 10px 0;
 }
+.seed-datasets .seed-search-second-block.seed-filters-block {
+  padding-bottom: 20px;
+}
 .search-form .control-order-by select {
   margin: 0;
   width: 305px;
@@ -2205,13 +2256,24 @@ section.module.module-narrow.dataset-map .module-heading {
 .masthead .navigation .nav-pills li.active a {
   background-color: #02454c;
 }
-.nav-facet .nav-item > a:hover::after,
-.nav-facet .nav-item.active > a::after {
+.nav-facet .nav-item > a:hover::after {
   background-image: none;
   content: "\2b";
   font-size: 20px;
   font-weight: 700;
   color: #dfe4e5;
+}
+.seed-facet-list .seed-facet-item.active > a:before,
+.seed-facet-list .seed-facet-item.active > a:after {
+  content: '';
+  background-image: none;
+  right: 0;
+  width: 0;
+}
+.seed-search-input div input::placeholder,
+#ext_startdate::placeholder,
+#ext_enddate::placeholder {
+  opacity: 1;
 }
 .seed-search-input div input::-webkit-input-placeholder,
 #ext_startdate::-webkit-input-placeholder,
@@ -2221,12 +2283,12 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-search-input div input::-moz-input-placeholder,
 #ext_startdate::-moz-input-placeholder,
 #ext_enddate::-moz-input-placeholder {
-  opacity: 0.8;
+  opacity: 1;
 }
 .seed-search-input div input:-moz-input-placeholder,
 #ext_startdate:-moz-input-placeholder,
 #ext_enddate:-moz-input-placeholder {
-  opacity: 0.8;
+  opacity: 1;
 }
 @media (max-width: 767px) {
   .seed-datasets .span11 {
@@ -2281,6 +2343,11 @@ section.module.module-narrow.dataset-map .module-heading {
   .module:last-child {
     margin-bottom: 0;
   }
+  [role=main],
+  .main {
+    background: #f1f6fc;
+    background-image: url("../../../../../../../base/images/bg.png");
+  }
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .seed-datasets .span11 {
@@ -2309,7 +2376,7 @@ section.module.module-narrow.dataset-map .module-heading {
     padding-right: 15px;
   }
   .container {
-    width: 1261px;
+    width: 1280px;
   }
   .seed-datasets .span11 {
     width: 98.5%;
@@ -2321,10 +2388,10 @@ section.module.module-narrow.dataset-map .module-heading {
     width: 803px;
   }
   .primary.span9 {
-    width: 939px;
+    width: 950px;
   }
   .secondary.span3 {
-    width: 310px;
+    width: 318px;
     margin-left: 10px;
   }
   .datepicker-button {
@@ -2343,7 +2410,6 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-search-filters select,
   .seed-search-filters input {
     margin: 0 13px;
-    margin-bottom: 10px;
   }
   .seed-items-per-page select {
     width: 106px;
@@ -2357,5 +2423,11 @@ section.module.module-narrow.dataset-map .module-heading {
   .span9 div.module-content {
     padding-right: 31px;
     padding-left: 50px;
+  }
+  .seed-facet-list-button {
+    right: 70px;
+  }
+  .seed-facetsq-remove {
+    right: 67px;
   }
 }
