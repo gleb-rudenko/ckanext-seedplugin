@@ -129,6 +129,7 @@
                         {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController', action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %}
                       {% endif %}
                     </div>
+                  {% endif %}
                     <div class="seed-selections-box">
                       <div class="checkbox-datasets">
                           <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
@@ -156,8 +157,6 @@
                         </div>
                       </div>
                     </div>
-
-                  {% endif %}
                 </div>
               </div>
               <div class="primary span9 seed-main-block">
