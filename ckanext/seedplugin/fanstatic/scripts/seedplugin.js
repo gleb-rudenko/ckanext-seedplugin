@@ -46,23 +46,34 @@ $( function() {
         var paths = $('.view-map-checkbox:checked').map(function () {
           return $(this).data('link');
         }).get();
+        n_datasets_wom = paths.filter(String).length
         paths = paths.join('');
         paths = paths.substring(1);
         main_link = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='
         main_link = main_link + paths;
+        $('.seed-view-on-map-all').removeClass('seed-disabled');
         $('.seed-view-on-map-all').attr('href', main_link);
-      };
-
+        $('.seed-view-on-map-count').append('<span title="Number of datasets with View on Map url."> ('+ n_datasets_wom +')</span>')
+      }
+      else {
+        if(!$('.seed-view-on-map-all').hasClass('seed-disabled')){
+          $('.seed-view-on-map-all').removeAttr('href');
+          $('.seed-view-on-map-all').addClass('seed-disabled');
+        }
+      }
       var titles = $('.view-map-checkbox:checked').map(function () {
         return $(this).data('title');
       }).get();
       $('.seed-selected-datasets-list').empty();
       $.each(titles, function( index, value ) {
-        $('.seed-selected-datasets-list').append("<li>" + value + "</li>");
+        var number = index + 1
+        $('.seed-selected-datasets-list').append("<li>" + number + '. ' + value + "</li>");
       });
 
     }
     else {
+      $('.seed-view-on-map-all').removeAttr('href');
+      $('.seed-view-on-map-all').addClass('seed-disabled');
       $('.seed-view-on-map-options').hide();
     };
 
@@ -84,25 +95,7 @@ $( function() {
       var inputs = $( ".view-map-checkbox:checked" );
       var n = inputs.length;
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
-      if (n > 0) {
-        $('.seed-view-on-map-count').css('opacity', '1');
-        $('.seed-view-on-map-options').show();
-      };
-      var paths = $('.view-map-checkbox:checked').map(function () {
-        return $(this).data('link');
-      }).get();
-      paths = paths.join('');
-      paths = paths.substring(1);
-      main_link = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='
-      var titles = $('.view-map-checkbox:checked').map(function () {
-        return $(this).data('title');
-      }).get();
-      main_link = main_link + paths;
-      $('.seed-view-on-map-all').attr('href', main_link);
-      $('.seed-selected-datasets-list').empty();
-      $.each(titles, function( index, value ) {
-        $('.seed-selected-datasets-list').append("<li>" + value + "</li>");
-      });
+      countChecked();
     }
   });
 

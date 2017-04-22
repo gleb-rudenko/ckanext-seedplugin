@@ -2154,6 +2154,16 @@ section.module.module-narrow.dataset-map .module-heading {
   color: #fff;
   background-color: #460a5c;
 }
+.seed-view-on-map-all.seed-disabled {
+  cursor: default;
+  opacity: 0.65;
+}
+.seed-view-on-map-all.seed-disabled:hover {
+  cursor: default;
+  opacity: 0.65;
+  background-color: #b72fe8;
+  text-decoration: none;
+}
 .seed-search-main-block-second .span11 .seed-view-on-map-count {
   display: inline-block;
 }
