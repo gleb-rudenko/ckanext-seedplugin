@@ -448,7 +448,7 @@
     a {
         font-size: 12px;
         color: #c04deb;
-        padding-left: 32px;
+        padding-left: 27px;
         &:hover, &:focus, &:active {
             background-color: #fff;
             color: #2c3e50;
@@ -463,8 +463,12 @@
     a {
         background-color: #29a8f1;
         color: #fff;
-        padding: 10px 25px;
+        padding: 10px 28px;
+        padding-right: 50px;
+        overflow: visible;
         span {
+            white-space: normal;
+            overflow: visible;
             font-size: 12px;
             width: 100%;
             text-align: left;
@@ -472,8 +476,8 @@
             &:before {
                 position: absolute;
                 right: 25px;
-                padding: 3px 6px;
-                font-size: 15px;
+                padding: 4px 7px;
+                font-size: 13px;
                 border-radius: 5px;
                 background-color: #333;
                 top: 7px;
@@ -527,7 +531,7 @@
     background-color: #460a5c;
 }
 
-.seed-facet-title {
+.seed-secondary-block .seed-facet-title {
     color: #c04deb;
     font-size: 16px;
     font-weight: 600;
@@ -536,7 +540,7 @@
     border: none;
     cursor: pointer;
     position: relative;
-    padding-left: 32px;
+    padding-left: 20px;
 }
 
 .seed-facet-title.collapsed .seed-facet-list-button:after {
@@ -1189,36 +1193,79 @@
     }
 }
 
+@media (min-width: 1280px) {
+    .masthead {
+        .container {
+            width: 100%;
+            padding-left: 85px;
+            padding-right: 70px;
+            .header-image {
+                padding-left: 15px;
+            }
+            .nav-collapse {
+                float: none;
+            }
+        }
+    }
+    .seed-datasets {
+        #content {
+            width: 854px;
+            .span12 {
+            width: 854px;
+            }
+            .span11 {
+            width: 834px;
+            }
+            .span9 {
+                width: 620px;
+            }
+            .span3.seed-secondary-block {
+                width: 232px;
+            }
+            .seed-search-filters {
+                select, input {
+                    margin: 0 4px;
+                }
+                .datepicker-button {
+                    margin-left: -18px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: @hd-top) {
     .masthead .container {
         width: 1170px;
         padding-left: 15px;
         padding-right: 15px;
     }
-    .container {
-        width: 1280px;
+    .seed-datasets {
+        #content {
+            width: 1280px;
+            .span12 {
+                width: 100%;
+            }
+            .span11 {
+                width: 98.5%;
+            }
+            .seed-search-input .span9 {
+                width: 803px;
+            }
+            .primary.span9 {
+                width:  950px;
+            }
+            .secondary.span3 {
+                width: 318px;
+                margin-left: 10px;
+            }
+            .datepicker-button {
+                margin-left: -13px;
+                margin-right: 14px;
+            }
+        }
     }
-    .seed-datasets .span11 {
-        width: 98.5%;
-    }
-    .span12 {
-        width: 100%;
-    }
-    .seed-search-input .span9 {
-        width: 803px;
-    }
-    .primary.span9 {
-        width:  950px;
-    }
-    .secondary.span3 {
-        width: 318px;
-        margin-left: 10px;
-    }
-    .datepicker-button {
-        margin-left: -13px;
-        margin-right: 14px;
-    }
-
     .seed-search-filters {
         select {
             width: 175px;
@@ -1253,5 +1300,19 @@
     .seed-facetsq-remove {
         right: 67px;
     }
-
+    .seed-facet-list .seed-facet-item {
+        a {
+            padding-left: 36px;
+            padding-right: 66px;
+        }
+    }
+    .seed-secondary-block .seed-facet-title {
+        padding-left: 30px;
+    }
+    .seed-facet-list .seed-facet-item.active {
+        a {
+            padding: 10px 36px;
+            padding-right: 66px;
+        }
+    }
 }

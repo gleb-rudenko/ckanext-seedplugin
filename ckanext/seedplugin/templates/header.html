@@ -73,7 +73,7 @@
     {% endif %}
   {% endblock %}
   <div class="container">
-    <hgroup class="{{ g.header_class }}" style="padding-left:30px;">
+    <hgroup class="{{ g.header_class }}">
 
       {% block header_logo %}
         {% if g.site_logo %}
@@ -108,9 +108,9 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </a>
-    <div class="nav-collapse collapse" style="width:100%">
+    <div class="nav-collapse collapse">
       {% block header_site_navigation %}
-        <nav class="section navigation" style="width:100%; font-weight: bold;">
+        <nav class="section navigation" style="font-weight: bold;">
           <ul class="nav nav-pills" style="display:none;">
             <li>
               <a href="http://dev.edptest.info/edphome/home.aspx">ENVIRONMENTAL DATA PORTAL</a>
