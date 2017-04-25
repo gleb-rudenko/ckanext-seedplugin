@@ -32,9 +32,9 @@
             {% endblock %}
             <div class="seed-dataset-accordion-btn">
                 <a class="btn a-expand" data-index="{{counter}}">
-                    <span>Show less</span>
+                    <span title="Show less">Show less</span>
                     <i></i>
-                    <span class="datasets-tooltip">Collapse</span>
+                    <!-- <span class="datasets-tooltip">Collapse</span> -->
                 </a>
             </div>
             {% block view_add_selection %}
@@ -44,7 +44,7 @@
                 {% set view_on_map='' %}
               {% endif %}
                 <div class="checkbox-dataset">
-                  <input type="checkbox" id='{{ package.id }}' value="{{counter}}" class="view-map-checkbox" name='view-on-map' data-link="{{ view_on_map }}" data-title="{{ package.title }}"></input>
+                  <input type="checkbox" id='{{ package.id }}' value="{{counter}}" class="view-map-checkbox" name='view-on-map' data-link="{{ view_on_map }}" data-title="{{ package.title }}" data-name="{{ package.name }}"></input>
                   <label for="{{ package.id }}" class="view-on-map-label">Add to selection</label>
                 </div>
             {% endblock %}

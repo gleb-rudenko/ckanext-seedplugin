@@ -26,22 +26,22 @@ function change_expand_collapse_btns() {
     var expand_selected = $('.seed-datasets-expand-checked');
     var collapse_selected = $('.seed-datasets-collapse-checked');
     if ($('.all-datasets-checkbox').hasClass('datasets-not-checked')) {
-        $(expand_selected).attr('disabled', true);
-        $(collapse_selected).attr('disabled', true);
-        $('.checkbox-datasets span').text('Select all');
+        $(expand_selected).attr('disabled', true).addClass('seed-disable');
+        $(collapse_selected).attr('disabled', true).addClass('seed-disable');
+        // $('.checkbox-datasets span').text('Select all');
         return;
     }
     if (get_selected_expand_datasets().length == 0) {
-        $(collapse_selected).attr('disabled', true);
+        $(collapse_selected).attr('disabled', true).addClass('seed-disable');
     } else {
-        $('.checkbox-datasets span').text('Deselect all');
-        $(collapse_selected).attr('disabled', false);
+        // $('.checkbox-datasets span').text('Deselect all');
+        $(collapse_selected).attr('disabled', false).removeClass('seed-disable');
     }
     if (get_selected_collapse_datasets().length == 0) {
-        $(expand_selected).attr('disabled', true);
+        $(expand_selected).attr('disabled', true).addClass('seed-disable');
     } else {
-        $('.checkbox-datasets span').text('Deselect all');
-        $(expand_selected).attr('disabled', false);
+        // $('.checkbox-datasets span').text('Deselect all');
+        $(expand_selected).attr('disabled', false).removeClass('seed-disable');
     }
 }
 
@@ -69,11 +69,13 @@ function toogle_dataset(action, index, elem) {
         $(resource).collapse('hide');
         $(elem).addClass('a-collapse');
         $(elem).find('span').text('Show more');
+        $(elem).find('span').attr('title', 'Show more');
     } else if (action == 'expand') {
         $(dataset).collapse('show');
         $(resource).collapse('show');
         $(elem).removeClass('a-collapse');
         $(elem).find('span').text('Show less');
+        $(elem).find('span').attr('title', 'Show less');
     }
     change_expand_collapse_btns();
 }

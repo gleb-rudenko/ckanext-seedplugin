@@ -1397,6 +1397,22 @@ section.module.module-narrow.dataset-map .module-heading {
   border: none;
   color: #fff;
   border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.seed-datasets .seed-selections-box .seed-datasets-expand-checked:hover,
+.seed-datasets .seed-selections-box .seed-datasets-collapse-checked:hover {
+  background-color: #460a5c;
+}
+.seed-datasets .seed-selections-box .seed-datasets-expand-checked.seed-disable:hover,
+.seed-datasets .seed-selections-box .seed-datasets-collapse-checked.seed-disable:hover {
+  background-color: #c04deb;
+  opacity: 0.65;
+}
+.seed-selections-box .seed-datasets-collapse-checked {
+  line-height: 26px;
+  height: 25px;
+  width: 75px;
 }
 .seed-datasets li.dataset-item {
   padding-left: 10px;
@@ -1476,10 +1492,10 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-selections-box .seed-datasets-expand-checked,
 .seed-selections-box .seed-datasets-collapse-checked {
   position: relative;
-  padding: 2px 7px;
+  padding: 0;
 }
 .seed-selections-box .seed-datasets-expand-checked {
-  width: 91px;
+  width: 75px;
   height: 25px;
   padding: 0;
 }
@@ -1506,6 +1522,9 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-datasets .a-expand.a-collapse i {
   height: 14px;
 }
+.seed-datasets .dataset-resources {
+  margin-top: 17px;
+}
 .seed-dataset-item .seed-dataset,
 .seed-dataset-item .seed-dataset-resource {
   padding-left: 0;
@@ -1517,6 +1536,7 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-dataset-item .checkbox-dataset {
   display: inline-block;
   float: right;
+  margin-right: 15px;
 }
 .seed-selections-box .checkbox-datasets label {
   cursor: pointer;
@@ -1573,12 +1593,15 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-selections-box .checkbox-datasets .checked_minus + label:after {
   /* background: url(/images/remove_checkbox.png) no-repeat; */
-  top: 7px;
+  top: 0;
   left: 3px;
   right: 0;
   /* width: 100%; */
   /* padding: 0 0px; */
-  border-top: 2px solid #fff;
+  content: "\f068";
+  font-family: FontAwesome;
+  color: #fff;
+  font-size: 13px;
 }
 .seed-selections-box .checkbox-datasets input[type=checkbox],
 .seed-dataset-item input[type=checkbox] {
@@ -1594,7 +1617,7 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-search-main-block-third .seed-selections-box .checkbox-datasets .checked_minus + label {
   border-color: #3e97eb;
   background-color: #3e97eb;
-  width: 16px;
+  width: 17px;
   height: 16px;
   border-radius: 4px;
   top: 2px;
@@ -1602,74 +1625,9 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-dataset-accordion-btn a {
   position: relative;
 }
-.datasets-tooltip {
-  display: none;
-  position: absolute;
-  width: 64px;
-  background-color: #000;
-  color: #fff;
-  top: 37px;
-  left: -15px;
-  z-index: 1;
-  font-size: 13px;
-  border-radius: 5px;
-  padding-top: 3px;
-  padding-bottom: 2px;
-  text-align: center;
-  font-weight: bold;
-}
 .seed-datasets .checkbox-datasets,
 .seed-datasets .seed-dataset-item .checkbox-dataset {
   position: relative;
-}
-.seed-selections-box .seed-datasets-expand-checked .datasets-tooltip {
-  left: -7px;
-}
-.seed-selections-box .seed-datasets-expand-checked .datasets-tooltip:after {
-  left: 48px;
-}
-.seed-selections-box .seed-datasets-collapse-checked .datasets-tooltip:after {
-  left: 54px;
-}
-.seed-selections-box .seed-datasets-expand-checked .datasets-tooltip {
-  width: 112px;
-}
-.seed-selections-box .seed-datasets-collapse-checked .datasets-tooltip {
-  width: 124px;
-}
-.seed-datasets .seed-dataset-item .checkbox-dataset .datasets-tooltip {
-  width: 110px;
-  top: 30px;
-  left: -69px;
-}
-.seed-datasets .seed-dataset-item .checkbox-dataset .datasets-tooltip:after {
-  left: 47px;
-}
-.seed-selections-box .checkbox-datasets:hover .datasets-tooltip,
-.seed-selections-box .seed-datasets-expand-checked:hover .datasets-tooltip,
-.seed-selections-box .seed-datasets-collapse-checked:hover .datasets-tooltip,
-.seed-datasets .seed-dataset-item .checkbox-dataset:hover .datasets-tooltip,
-.seed-dataset-accordion-btn a:hover .datasets-tooltip {
-  display: block;
-}
-.datasets-tooltip::after {
-  content: '';
-  width: 0;
-  height: 0;
-  position: absolute;
-  display: block;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid #000;
-  top: -8px;
-  left: 24px;
-}
-.seed-selections-box .checkbox-datasets .datasets-tooltip {
-  width: 80px;
-  left: -24px;
-}
-.seed-selections-box .checkbox-datasets .datasets-tooltip::after {
-  left: 32px;
 }
 .seed-datasets .seed-selections-box .seed-datasets-collapse-checked[disabled='disabled'],
 .seed-datasets .seed-selections-box .seed-datasets-expand-checked[disabled='disabled'] {
@@ -1948,6 +1906,7 @@ section.module.module-narrow.dataset-map .module-heading {
   line-height: 1.8;
   margin-left: 16px;
   margin-right: 16px;
+  margin-top: 0;
 }
 .seed-search-main-block-second .span11 div {
   display: inline-block;
@@ -1956,6 +1915,8 @@ section.module.module-narrow.dataset-map .module-heading {
   float: none;
   margin: 0 auto;
   position: relative;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 .seed-search-main-block-third div.page_primary_action a {
   position: relative;
@@ -2096,15 +2057,21 @@ section.module.module-narrow.dataset-map .module-heading {
   color: #fff;
   text-decoration: none;
 }
+.seed-view-on-map-buttons {
+  display: inline-block;
+  margin-right: 15px;
+}
 .view-on-map-label:after {
   content: none;
 }
 .view-on-map-label {
   position: relative;
   padding-left: 30px;
-  line-height: 20px;
+  line-height: 22px;
   display: inline-block;
   float: right;
+  color: #525e74;
+  font-size: 15px;
 }
 .view-on-map-label:before {
   position: absolute;
@@ -2154,9 +2121,19 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-view-on-map-all:hover,
 .seed-view-on-map-remove:hover,
-.seed-view-on-map-datasets:hover {
+.seed-view-on-map-datasets:hover,
+.seed-view-on-map-all:active,
+.seed-view-on-map-remove:active,
+.seed-view-on-map-datasets:active,
+.seed-view-on-map-all:focus,
+.seed-view-on-map-remove:focus,
+.seed-view-on-map-datasets:focus {
   color: #fff;
   background-color: #460a5c;
+  text-decoration: none;
+}
+.seed-selections-box .seed-view-on-map-datasets span {
+  margin-right: 0;
 }
 .seed-view-on-map-all.seed-disabled {
   cursor: default;
@@ -2168,8 +2145,13 @@ section.module.module-narrow.dataset-map .module-heading {
   background-color: #b72fe8;
   text-decoration: none;
 }
+.seed-selected-datasets-list {
+  padding: 5px;
+}
 .seed-selected-datasets-list li {
-  padding: 0 5px;
+  padding: 4px 5px;
+  color: #c04deb;
+  font-size: 12px;
 }
 .seed-search-main-block-second .span11 .seed-view-on-map-count {
   display: inline-block;
@@ -2208,7 +2190,16 @@ section.module.module-narrow.dataset-map .module-heading {
   padding-top: 15px;
 }
 .seed-dataset-items h3 {
-  font-size: 18px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.seed-dataset-items h3 a {
+  color: #c04deb;
+  font-size: 16px;
+}
+.seed-dataset-items .seed-dataset div {
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 .seed-additional-filters {
   text-align: center;
@@ -2286,6 +2277,19 @@ section.module.module-narrow.dataset-map .module-heading {
   background-image: none;
   right: 0;
   width: 0;
+}
+.seed-view-on-map-buttons .seed-selected-datasets-list .seed-remove-selected-item {
+  position: relative;
+  right: 10px;
+  float: right;
+  padding: 0;
+}
+.seed-view-on-map-buttons .seed-selected-datasets-list .seed-remove-selected-item:hover,
+.seed-view-on-map-buttons .seed-selected-datasets-list .seed-remove-selected-item:active,
+.seed-view-on-map-buttons .seed-selected-datasets-list .seed-remove-selected-item:focus {
+  background: #fff;
+  color: #333;
+  cursor: pointer;
 }
 .seed-search-input div input::placeholder,
 #ext_startdate::placeholder,

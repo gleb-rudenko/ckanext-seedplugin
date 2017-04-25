@@ -133,18 +133,18 @@
                     <div class="seed-selections-box">
                       <div class="checkbox-datasets">
                           <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
-                          <label for="all-datasets-checkbox"></label>
-                          <span class="datasets-tooltip">Select</span>
+                          <label for="all-datasets-checkbox" title="Select"></label>
+                          <!-- <span class="datasets-tooltip">Select</span> -->
                       </div>
                       <div class="seed-view-on-map-count"></div>
                       <div class="seed-view-on-map-options">
-                        <div style="display: inline-block;">
+                        <div class="seed-view-on-map-buttons">
                           <a href="" class="seed-view-on-map-all" target="_blank" title="Show selected Dataset on Map" disabled="disabled"><span class="icon-globe"></span>View on Map</a>
                           <div class="dropdown" style="position: relative;">
                             <a href="" class="seed-view-on-map-datasets" data-toggle="dropdown" title="View selection list">
                               <span class="icon-list-ul"></span>
                             </a>
-                            <ul class="dropdown-menu seed-selected-datasets-list">
+                            <ul class="dropdown-menu seed-selected-datasets-list" aria-autoclose="false">
                             </ul>
                           </div>
   <!--                         <a href="#" class="seed-view-on-map-remove" title="Clear selection">
@@ -152,8 +152,12 @@
                           </a> -->
                         </div>
                         <div class="accordion-buttons">
-                            <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled">{{ _('Show all') }}<i></i><span class="datasets-tooltip">Expand selection</span></a>
-                            <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled">{{ _('Hide all') }}<i></i><span class="datasets-tooltip">Collapse selection</span></a>
+                            <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled" title="Expand selection">{{ _('Show all') }}<i></i>
+                            <!-- <span class="datasets-tooltip">Expand selection</span> -->
+                            </a>
+                            <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled" title="Collapse selection">{{ _('Hide all') }}<i></i>
+                            <!-- <span class="datasets-tooltip">Collapse selection</span> -->
+                            </a>
                         </div>
                       </div>
                     </div>

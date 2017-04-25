@@ -42,6 +42,7 @@ $( function() {
     };
     if (n > 0) {
       $('.seed-view-on-map-options').show();
+      $('.seed-selections-box').css('right', '0');
       if ($('.view-map-checkbox:checked').data('link').length > 0) {
         var paths = $('.view-map-checkbox:checked').map(function () {
           return $(this).data('link');
@@ -62,12 +63,11 @@ $( function() {
         }
       }
       var titles = $('.view-map-checkbox:checked').map(function () {
-        return $(this).data('title');
+        return $(this);
       }).get();
       $('.seed-selected-datasets-list').empty();
       $.each(titles, function( index, value ) {
-        var number = index + 1
-        $('.seed-selected-datasets-list').append("<li>" + number + '. ' + value + "</li>");
+        $('.seed-selected-datasets-list').append("<li>" + value.data('title') + "<a class='seed-remove-selected-item' data-name="+ value.data('name') +" title='Remove dataset from selection'><span class='icon-remove-sign'></span></a></li>");
       });
 
     }
@@ -75,6 +75,8 @@ $( function() {
       $('.seed-view-on-map-all').removeAttr('href');
       $('.seed-view-on-map-all').addClass('seed-disabled');
       $('.seed-view-on-map-options').hide();
+      $('.seed-selections-box').css('right', '132px');
+      $(".all-datasets-checkbox").removeClass('dataset-plus').removeClass('checked_minus').addClass('datasets-not-checked');
     };
 
   };
@@ -89,6 +91,7 @@ $( function() {
       var n = inputs.length;
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
       $('.seed-view-on-map-options').hide();
+      $('.seed-selections-box').css('right', '132px');
     }
     else {
       $( ".view-map-checkbox:checked" ).prop('checked', true);
@@ -99,7 +102,18 @@ $( function() {
     }
   });
 
-} );
+  $("body").on("click", ".seed-remove-selected-item", function() {
+    if ($("body").find("[data-name='" + $(this).data('name') + "']").length > 0) {
+      $("body").find("[data-name='" + $(this).data('name') + "']").prop('checked', false);
+      countChecked();
+    }
+  });
+
+  $('body').on('click','.seed-selected-datasets-list', function(e){
+    e.stopPropagation();
+  });
+
+});
 
 $(document).ready(function () {
   jQuery('.seed-filters-collapsing').children().each(function(index, el) {
