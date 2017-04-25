@@ -43,10 +43,12 @@ $( function() {
     if (n > 0) {
       $('.seed-view-on-map-options').show();
       $('.seed-selections-box').css('right', '0');
-      if ($('.view-map-checkbox:checked').data('link').length > 0) {
-        var paths = $('.view-map-checkbox:checked').map(function () {
+      var paths = $('.view-map-checkbox:checked').map(function () {
+        if($(this).data('link') != '') {
           return $(this).data('link');
-        }).get();
+        };
+      }).get();
+      if (paths.length > 0) {
         n_datasets_wom = paths.filter(String).length
         paths = paths.join('');
         paths = paths.substring(1);
