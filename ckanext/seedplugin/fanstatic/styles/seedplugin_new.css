@@ -1491,6 +1491,10 @@ section.module.module-narrow.dataset-map .module-heading {
   display: inline-block;
   float: right;
   line-height: 18px;
+  width: 115px;
+}
+.seed-datasets .seed-accordion .seed-dataset-item .dataset-content .seed-dataset-accordion-btn a {
+  font-size: 15px;
 }
 .seed-datasets .seed-selections-box {
   position: relative;
@@ -1639,7 +1643,11 @@ section.module.module-narrow.dataset-map .module-heading {
   height: 14px;
 }
 .seed-datasets .dataset-resources {
-  margin-top: 17px;
+  margin-top: 40px;
+  margin-bottom: 12px;
+}
+.seed-datasets .dataset-resources .seed-dataset-resource-item {
+  background-color: #95a5a6;
 }
 .seed-dataset-item .seed-dataset,
 .seed-dataset-item .seed-dataset-resource {
@@ -1652,7 +1660,7 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-dataset-item .checkbox-dataset {
   display: inline-block;
   float: right;
-  margin-right: 15px;
+  margin-right: 11px;
 }
 .seed-selections-box .checkbox-datasets label {
   cursor: pointer;
@@ -2182,7 +2190,7 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .view-on-map-label {
   position: relative;
-  padding-left: 30px;
+  padding-left: 29px;
   line-height: 22px;
   display: inline-block;
   float: right;
