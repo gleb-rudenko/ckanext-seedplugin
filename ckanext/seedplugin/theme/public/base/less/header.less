@@ -1,0 +1,105 @@
+@media (min-width: @mobile-min) and (max-width: @mobile-top) {
+    .navbar.masthead {
+        min-height: 45px;
+        .container {
+            padding: 10px 15px;
+            .header-image {
+                min-height: 45px;
+                a.logo.pull-left {
+                    margin-top: 7px;
+                    img {
+                        height: 31px;
+                        width: 232px;
+                    }
+                }
+                a.logo.pull-right {
+                    img {
+                        height: 45px;
+                        width: 44px;
+                    }
+                }
+            }
+        }
+    }
+    .navbar.masthead.sticky {
+        .container {
+            padding: 10px 0;
+            .btn.btn-navbar {
+                background-color: @seedBlueD;
+                margin-top: 0;
+            }
+            .nav-collapse.in.collapse {
+                padding-top: 5px;
+            }
+            nav.section.navigation {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media (min-width: @mobile-min) and (max-width: @mobile360) {
+    .account-masthead {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .navbar.masthead {
+        .container {
+            padding: 10px 10px;
+        }
+    }
+}
+
+@media (min-width: @width-768) {
+    .navbar.masthead {
+        min-height: 55px;
+        .container {
+            padding: 10px;
+            padding-left: 0;
+            padding-right: 0;
+            width: 724px;
+            .header-image {
+                min-height: 55px;
+                a.logo.pull-left {
+                    margin-top: 0;
+                    img {
+                        height: 55px;
+                    }
+                }
+                a.logo.pull-right {
+                    img {
+                        height: 55px;
+                    }
+                }
+            }
+        }
+    }
+    .navbar.masthead.sticky {
+        .container {
+            padding-top: 0;
+            padding-bottom: 0;
+            .btn-navbar {
+                display: none;
+            }
+            .nav-collapse.collapse {
+                overflow: visible;
+                float: left;
+                height: auto;
+                .nav {
+                    float: left;
+                    &>li {
+                        float: left;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: @width-980) {
+    .navbar.masthead {
+        .container {
+            width: 940px;
+        }
+    }
+}
