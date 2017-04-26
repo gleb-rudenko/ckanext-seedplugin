@@ -2147,6 +2147,8 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-selected-datasets-list {
   padding: 5px;
+  min-width: 280px;
+  left: -95px;
 }
 .seed-selected-datasets-list li {
   padding: 4px 5px;
@@ -2280,8 +2282,8 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-view-on-map-buttons .seed-selected-datasets-list .seed-remove-selected-item {
   position: relative;
-  right: 10px;
-  float: right;
+  display: inline-block;
+  left: 10px;
   padding: 0;
 }
 .seed-view-on-map-buttons .seed-selected-datasets-list .seed-remove-selected-item:hover,
