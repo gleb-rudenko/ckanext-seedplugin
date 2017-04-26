@@ -2754,6 +2754,12 @@ section.module.module-narrow.dataset-map .module-heading {
   height: 45px;
   border-radius: 4px;
 }
+.seed-main-content-block .primary.span9.seed-main-block {
+  width: 100%;
+}
+.seed-main-content-block .secondary.span3.seed-secondary-block {
+  display: none;
+}
 @media (min-width: 320px) and (max-width: 767px) {
   [role=main] .primary.seed-main-block {
     float: none;
@@ -2847,6 +2853,11 @@ section.module.module-narrow.dataset-map .module-heading {
     display: none;
   }
 }
+@media (min-width: 320px) and (max-width: 979px) {
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action {
+    margin-bottom: 20px;
+  }
+}
 @media (min-width: 768px) and (max-width: 1199px) {
   .seed-main-content-block .seed-search-main-block .seed-search-block-new .seed-dataset-search-form .seed-search-filters {
     padding-left: 30px;
@@ -2880,6 +2891,14 @@ section.module.module-narrow.dataset-map .module-heading {
   }
   .seed-main-content-block .span12.seed-search-main-block .seed-dataset-search-form .seed-search-filters {
     height: auto;
+  }
+}
+@media (min-width: 980px) {
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third h2 {
+    display: inline-block;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-filter-title-mobile-desktop1199 {
+    margin-top: 20px;
   }
 }
 @media (min-width: 1200px) {
@@ -2917,10 +2936,32 @@ section.module.module-narrow.dataset-map .module-heading {
     top: 0;
     right: 0;
   }
+  .seed-main-content-block .primary.span9.seed-main-block {
+    width: 718px;
+  }
+  .seed-main-content-block .secondary.span3.seed-secondary-block {
+    display: block;
+  }
   .span12.seed-search-main-block .seed-dataset-search-form .seed-search-input .div-seed-search-input-filters {
     display: none;
   }
   .seed-search-filters.collapse {
     height: auto;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1279px) {
+  .filters-desktop1200 .seed-facet-list-filter .seed-facet-title {
+    padding-left: 15px;
+    padding-right: 5px;
+  }
+  .filters-desktop1200 .seed-facet-list-filter .seed-facet-title .seed-facet-list-button .seed-facet-list-button {
+    right: 45px;
+  }
+  .filters-desktop1200 .seed-facet-list-filter .active.seed-facet-item {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .filters-desktop1200 .seed-facet-list-filter .seed-facetq-remove {
+    right: 10px;
   }
 }
