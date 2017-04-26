@@ -1,4 +1,7 @@
+# encoding=utf-8
+
 from ckan.common import c, request
+from ckan.lib.helpers import Page
 import ckan.logic as logic
 from urlparse import urlparse, parse_qs
 from urllib import urlencode
@@ -67,3 +70,18 @@ def seed_all_facets_remove(facets):
     result['path'] = full_path.path
     result['query'] = unparse_q_items
     return result
+
+
+def seed_pagination(self, *args, **kwargs):
+    # Overriting CKAN default pagination method to SEED's custom method
+    kwargs.update(
+        format=u"<div class='pagination pagination-centered'><ul>"
+        "$link_first $link_previous ~2~ $link_next $link_last</ul></div>",
+        symbol_previous=u'‹', symbol_next=u'›',
+        symbol_first=u'«', symbol_last=u'»',
+        curpage_attr={'class': 'active'}, link_attr={}
+    )
+
+    return super(Page, self).pager(*args, **kwargs)
+
+Page.pager = seed_pagination
