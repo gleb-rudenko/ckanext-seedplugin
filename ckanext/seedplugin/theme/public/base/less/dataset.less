@@ -1560,6 +1560,12 @@
             }
         }
     }
+    .primary.span9.seed-main-block {
+        width: 100%;
+    }
+    .secondary.span3.seed-secondary-block {
+        display: none;
+    }
 }
 
 @media (min-width: @mobile-min) and (max-width: @mobile-top) {
@@ -1694,6 +1700,16 @@
   }
 }
 
+@media (min-width: @mobile-min) and (max-width: @tablet-top) {
+    .span12.seed-search-main-block-second {
+        .span11.seed-search-main-block-third {
+            .page_primary_action {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+
 @media (min-width: @width-768) and (max-width: @desktop-1199) {
     .seed-main-content-block {
         .seed-search-main-block {
@@ -1744,6 +1760,19 @@
     }
 }
 
+@media (min-width: @width-980) {
+    .span12.seed-search-main-block-second {
+        .span11.seed-search-main-block-third {
+            h2 {
+                display: inline-block;
+            }
+            .seed-filter-title-mobile-desktop1199 {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
 @media (min-width: @desktop-1200) {
   .span12.seed-search-main-block-second {
     .span11.seed-search-main-block-third {
@@ -1788,6 +1817,12 @@
             }
         }
       }
+      .primary.span9.seed-main-block {
+        width: 718px;
+      }
+      .secondary.span3.seed-secondary-block {
+           display: block;
+      }
   }
   .span12.seed-search-main-block {
         .seed-dataset-search-form {
@@ -1801,5 +1836,28 @@
     }
     .seed-search-filters.collapse {
         height: auto;
+    }
+}
+
+@media (min-width: @desktop-1200) and (max-width: @wide-top) {
+    .filters-desktop1200 {
+        .seed-facet-list-filter {
+            .seed-facet-title {
+                padding-left: 15px;
+                padding-right: 5px;
+                .seed-facet-list-button {
+                    .seed-facet-list-button {
+                        right: 45px;
+                    }
+                }
+            }
+            .active.seed-facet-item {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .seed-facetq-remove {
+                right: 10px;
+            }
+        }
     }
 }
