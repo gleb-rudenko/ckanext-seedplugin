@@ -77,7 +77,7 @@ $( function() {
       $('.seed-view-on-map-all').removeAttr('href');
       $('.seed-view-on-map-all').addClass('seed-disabled');
       $('.seed-view-on-map-options').hide();
-      $('.seed-selections-box').css('right', '132px');
+      $('.seed-selections-box').css('right', '129px');
       $(".all-datasets-checkbox").removeClass('dataset-plus').removeClass('checked_minus').addClass('datasets-not-checked');
     };
 
@@ -93,7 +93,7 @@ $( function() {
       var n = inputs.length;
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
       $('.seed-view-on-map-options').hide();
-      $('.seed-selections-box').css('right', '132px');
+      $('.seed-selections-box').css('right', '129px');
     }
     else {
       $( ".view-map-checkbox:checked" ).prop('checked', true);
