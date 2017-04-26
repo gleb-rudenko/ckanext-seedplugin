@@ -115,6 +115,45 @@ $( function() {
     e.stopPropagation();
   });
 
+
+  $('body').on('change','#select_lga', function(event){
+    populateFormats($(event.target).val());
+  });
+
+  function populateFormats(lganame) {
+    $.ajax({
+        url: "http://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/1/query?where=lganame=%27"+lganame+"%27&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects&outFields=lganame&returnGeometry=true&outSR=4326&returnDistinctValues=false&f=pjson",
+        error: function (error) {
+            console.log(error);
+        },
+        dataType: 'json',
+        success: function (data) {
+            var features = data.features;
+            var queryStr_bbox = "";
+            if (features[0]) {
+                var polygonJson = features[0].geometry;
+
+                xmax = polygonJson['rings'][0].reduce(function(max, arr) {
+                    return max >= arr[0] ? max : arr[0];
+                });
+                ymax = polygonJson['rings'][0].reduce(function(max, arr) {
+                    return max >= arr[1] ? max : arr[1];
+                });
+                xmin = polygonJson['rings'][0].reduce(function(min, arr) {
+                    return min <= arr[0] ? min : arr[0];
+                });
+                ymin = polygonJson['rings'][0].reduce(function(min, arr) {
+                    return min <= arr[1] ? min : arr[1];
+                });
+                var bbox_Str = xmin + "," + ymin + "," + xmax + "," + ymax;
+                queryStr_bbox = bbox_Str;
+            }
+            $('#seed_ext_bbox').val(queryStr_bbox);
+        },
+        type: 'GET'
+    });
+  }
+
 });
 
 $(document).ready(function () {
@@ -124,5 +163,36 @@ $(document).ready(function () {
       jQuery(this).find('ul').addClass('in')
     }
   });
+
+  populateLGANames();
+  function populateLGANames() {
+    $.ajax({
+        url: 'http://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/1/query?where=1%3D1&text=&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&relationParam=&outFields=lganame&returnGeometry=false&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&returnDistinctValues=false&resultOffset=&resultRecordCount=&f=json',
+
+        error: function (error) {
+
+            console.log(error);
+        },
+        dataType: 'json',
+        success: function (data) {
+            var features = data.features;
+            var lgaNames = [];
+
+            for (index in features) {
+                lgaNames.push(features[index].attributes.lganame);
+
+            }
+            lgaNames.sort(function (a, b) {
+                return a.localeCompare(b, 'en', { 'sensitivity': 'base' });
+            });
+
+            for (index in lgaNames) {
+
+                $('#select_lga').append('<option value="' + lgaNames[index] + '" aria-label="' + lgaNames[index] + '" >' + lgaNames[index] + '</option>');
+            }
+        },
+        type: 'GET'
+    });
+  }
 
 });

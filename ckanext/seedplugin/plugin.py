@@ -262,6 +262,10 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
             search_params['fq'] = search_params['fq'].replace(
                 'per_page:"' + request.params.get('per_page') + '"',
                 '')
+        if request.params.get('lga'):
+            search_params['fq'] = search_params['fq'].replace(
+                'lga:"' + request.params.get('lga') + '"',
+                '')
         extras = search_params.get('extras')
         if not extras:
             return search_params
