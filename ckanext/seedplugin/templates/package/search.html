@@ -107,9 +107,10 @@
                       </select>
                       <input type="text" id="ext_startdate" value="{{ request.params.get('ext_startdate', '') }}" name="ext_startdate" class="span2 seed-datepicker-inputs" placeholder="From Date" title="StartDate picker, select start date for date-range , to include in search criteria">
                       <input type="text" id="ext_enddate" value="{{ request.params.get('ext_enddate', '') }}" name="ext_enddate" class="span2 seed-datepicker-inputs" placeholder="To Date" title="EndDate picker, select end date for date-range , to include in search criteria">
-                      <select id="" name="lga" class="span2 seed-lga-select" title="Select Local Government Association from dropdown to include in search criteria">
+                      <select id="select_lga" name="lga" class="span2 seed-lga-select" title="Select Local Government Association from dropdown to include in search criteria">
                         <option title="Select LGA" value="" class="" >Select LGA</option>
                       </select>
+                      <input id="seed_ext_bbox" type="" name="ext_bbox" value="">
                     </div>
                   </form>
                   <a class="show-filters btn seed-more-filters">{{ _('More Filters') }}</a>

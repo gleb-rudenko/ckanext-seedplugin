@@ -2313,6 +2313,9 @@ section.module.module-narrow.dataset-map .module-heading {
 #ext_enddate:-moz-input-placeholder {
   opacity: 1;
 }
+#seed_ext_bbox {
+  display: none;
+}
 @media (max-width: 767px) {
   .seed-datasets .span11 {
     width: 100%;
