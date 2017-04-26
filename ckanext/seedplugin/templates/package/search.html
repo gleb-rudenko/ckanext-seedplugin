@@ -1,94 +1,57 @@
-{% extends "base.html" %}
-{% import 'macros/form.html' as form %}
-
-{%- block page -%}
-
-  {% block skip %}
-    <div class="hide"><a href="#content">{{ _('Skip to content') }}</a></div>
-  {% endblock %}
-
-  {#
-  Override the header on a page by page basis by extending this block. If
-  making sitewide header changes it is preferable to override the header.html
-  file.
-  #}
-  {%- block header %}
-    {% include "header.html" %}
-  {% endblock -%}
-
-  {# The content block allows you to replace the content of the page if needed #}
-  {%- block content %}
-    {% block maintag %}<div role="main" class="seed-datasets">{% endblock %}
-      <div id="content" class="container">
-        {% block main_content %}
-          {% block flash %}
-            <div class="flash-messages">
-              {% block flash_inner %}
-                {% for message in h.flash.pop_messages() | list %}
-                  <div class="alert fade in {{ message.category }}">
-                    {{ h.literal(message) }}
-                  </div>
-                {% endfor %}
-              {% endblock %}
+{% extends "base.html" %} {% import 'macros/form.html' as form %} {%- block page -%} {% block skip %}
+<div class="hide"><a href="#content">{{ _('Skip to content') }}</a></div>
+{% endblock %} {# Override the header on a page by page basis by extending this block. If making sitewide header changes it is preferable to override the header.html file. #} {%- block header %} {% include "header.html" %} {% endblock -%} {# The content
+block allows you to replace the content of the page if needed #} {%- block content %} {% block maintag %}
+<div role="main" class="seed-datasets">{% endblock %}
+    <div id="content" class="container">
+        {% block main_content %} {% block flash %}
+        <div class="flash-messages">
+            {% block flash_inner %} {% for message in h.flash.pop_messages() | list %}
+            <div class="alert fade in {{ message.category }}">
+                {{ h.literal(message) }}
             </div>
-          {% endblock %}
-          {% block toolbar %}
-            <div class="toolbar">
-              {% block breadcrumb %}
-                {% if self.breadcrumb_content() | trim %}
-                  <ol class="breadcrumb">
-                    {% snippet 'snippets/home_breadcrumb_item.html' %}
-                    {% block breadcrumb_content %}
-                      <li class="active">{{ h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index') }}</li>
-                    {% endblock %}
-                  </ol>
-                {% endif %}
-              {% endblock %}
-            </div>
-          {% endblock %}
+            {% endfor %} {% endblock %}
+        </div>
+        {% endblock %} {% block toolbar %}
+        <div class="toolbar">
+            {% block breadcrumb %} {% if self.breadcrumb_content() | trim %}
+            <ol class="breadcrumb">
+                {% snippet 'snippets/home_breadcrumb_item.html' %} {% block breadcrumb_content %}
+                <li class="active">{{ h.nav_link(_('Datasets'), controller='package', action='search', highlight_actions = 'new index') }}</li>
+                {% endblock %}
+            </ol>
+            {% endif %} {% endblock %}
+        </div>
+        {% endblock %}
 
-          <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %} seed-main-content-block">
+        <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %} seed-main-content-block">
 
-            {#
-            The pre_primary block can be used to add content to before the
-            rendering of the main content columns of the page.
-            #}
-            {% block pre_primary %}
-            {% endblock %}
-
-            {% block primary %}
-              <div class="span12 seed-search-main-block">
-                {% set facets = {
-                  'fields': c.fields_grouped,
-                  'search': c.search_facets,
-                  'titles': c.facet_titles,
-                  'translated_fields': c.translated_fields,
-                  'remove_field': c.remove_field }
-                %}
-                {% set seed_facet_list = h.seed_facet_list() %}
+            {# The pre_primary block can be used to add content to before the rendering of the main content columns of the page. #} {% block pre_primary %} {% endblock %} {% block primary %}
+            <div class="span12 seed-search-main-block">
+                {% set facets = { 'fields': c.fields_grouped, 'search': c.search_facets, 'titles': c.facet_titles, 'translated_fields': c.translated_fields, 'remove_field': c.remove_field } %} {% set seed_facet_list = h.seed_facet_list() %}
                 <div class="span11 seed-search-second-block">
-                  {% block help_button %}
-                   {# how to find out what content is currently being displayed? #}
-                   <a type="button" href="https://www.seed.nsw.gov.au/edphome/using-seed/refining-search.aspx" target= "_blank" class="btn pull-right seed-search-info-button"><i class="icon-info-sign"></i>How to Refine Search </a>
-                  {% endblock %}
+                    {% block help_button %} {# how to find out what content is currently being displayed? #}
+                    <a type="button" href="https://www.seed.nsw.gov.au/edphome/using-seed/refining-search.aspx" target="_blank" class="btn pull-right seed-search-info-button"><i class="icon-info-sign"></i>How to Refine Search </a> {% endblock %}
                 </div>
-                <div class="span11 seed-search-second-block seed-filters-block" style="background-color: rgba(0,0,0,0.7);">
-                  <form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %} seed-dataset-search-form" method="get">
-                     {% block search_input %}
-                      <div class="seed-search-input">
-                        <div class="search-input control-group  span9">
-                          <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="Search for a topic of interest e.g. Soil, Water, Air">
+                <div class="span11 seed-search-second-block seed-filters-block seed-search-block-new" style="background-color: rgba(0,0,0,0.7);">
+                    <form {% if form_id %}id="{{ form_id }}" {% endif %}class="search-form{% if no_bottom_border %} no-bottom-border{% endif %} seed-dataset-search-form" method="get">
+                        {% block search_input %}
+                        <div class="seed-search-input">
+                            <div class="search-input control-group  span9">
+                                <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="Search for a topic of interest e.g. Soil, Water, Air">
 
-                          <button type="submit" value="search">
+                                <button type="submit" value="search">
                             <i class="icon-search"></i>
                             <span>Submit</span>
                           </button>
-
+                                <div class="div-seed-search-input-filters">
+                                    <a class="btn seed-search-input-filters collapsed" data-target=".seed-search-filters" data-toggle="collapse"><i></i></a>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                    {% endblock %}
-                    <div class="seed-search-filters">
-                      <select id="" name="topic" class="span2" title="Select category from dropdown to include in search criteria">
+                        {% endblock %}
+                        <div class="seed-search-filters collapse">
+                            <select id="" name="topic" class="span2" title="Select category from dropdown to include in search criteria">
                         <option title="Select Category" value="" class="" >Select Category</option>
                         {% for value in seed_facet_list[0]['topic'] %}
                           {% if value != '' %}
@@ -96,7 +59,7 @@
                           {% endif %}
                       {% endfor %}
                       </select>
-                      <select id="" name="res_format" class="span2" title="Select format from dropdown to include in search criteria">
+                            <select id="" name="res_format" class="span2" title="Select format from dropdown to include in search criteria">
                         <option title="Select Format" value="" class="">Select Format</option>
                         {% for value in seed_facet_list[1]['res_format'] %}
                         {{ value }}
@@ -115,101 +78,72 @@
                   </form>
                   <a class="show-filters btn seed-more-filters">{{ _('More Filters') }}</a>
                 </div>
-              </div>
-              <div class="span12 seed-search-main-block-second">
+            </div>
+            <div class="span12 seed-search-main-block-second">
                 <div class="span11 seed-search-main-block-third">
-                  {% block search_title %}
-                    {% if not no_title %}
-                      <h2>{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
-                    {% endif %}
-                  {% endblock %}
-                  {% if h.check_access('package_create') %}
+                    {% block search_title %} {% if not no_title %} {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
+                    <h2>{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
+                    {% endif %} {% if h.check_access('package_create') %}
                     <div class="page_primary_action">
-                      {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %}
-                      {% if h.check_access('sysadmin') %}
-                        {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController', action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %}
-                      {% endif %}
+                        {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %} {% if h.check_access('sysadmin') %} {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController',
+                        action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %} {% endif %}
                     </div>
-                  {% endif %}
+                    {% endif %}
+                    <div class="seed-filter-title seed-filter-title-mobile-desktop1199">
+                        {% if rm_facets['got_active'] == True %}
+                        <a href="{{ rm_facets['path'] }}{% if rm_facets['query'] %}?{% endif %}{{ rm_facets['query'] }}" class="seed-facetsq-remove"><span class="icon-remove seed-remove-all-facets-icon"></span></a> {% endif %}
+                        <span>
+                        <i class="icon-list" alt="Filter datasets- icon"></i>
+                      </span>Filters
+                    </div>
+                    <div class="filters seed-filters-collapsing filters-mobile-desktop1199">
+                            {% for facet in c.facet_titles %} {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, prefix_name="mobile") }} {% endfor %}
+                        <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
+                    </div>
+                    {% endblock %}
                     <div class="seed-selections-box">
-                      <div class="checkbox-datasets">
-                          <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
-                          <label for="all-datasets-checkbox" title="Select"></label>
-                          <!-- <span class="datasets-tooltip">Select</span> -->
-                      </div>
-                      <div class="seed-view-on-map-count"></div>
-                      <div class="seed-view-on-map-options">
-                        <div class="seed-view-on-map-buttons">
-                          <a href="" class="seed-view-on-map-all" target="_blank" title="Show selected Dataset on Map" disabled="disabled"><span class="icon-globe"></span>View on Map</a>
-                          <div class="dropdown" style="position: relative;">
-                            <a href="" class="seed-view-on-map-datasets" data-toggle="dropdown" title="View selection list">
-                              <span class="icon-list-ul"></span>
-                            </a>
-                            <ul class="dropdown-menu seed-selected-datasets-list" aria-autoclose="false">
-                            </ul>
-                          </div>
-  <!--                         <a href="#" class="seed-view-on-map-remove" title="Clear selection">
-                            <span>X</span>
-                          </a> -->
+                        <div class="checkbox-datasets">
+                            <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
+                            <label for="all-datasets-checkbox" title="Select"></label>
                         </div>
-                        <div class="accordion-buttons">
-                            <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled" title="Expand selection">{{ _('Show all') }}<i></i>
-                            <!-- <span class="datasets-tooltip">Expand selection</span> -->
+                        <div class="seed-view-on-map-count"></div>
+                        <div class="seed-view-on-map-options">
+                            <div class="seed-view-on-map-buttons">
+                                <a href="" class="seed-view-on-map-all" target="_blank" title="Show selected Dataset on Map" disabled="disabled"><span class="icon-globe"></span>View on Map</a>
+                                <div class="dropdown" style="position: relative;">
+                                    <a href="" class="seed-view-on-map-datasets" data-toggle="dropdown" title="View selection list">
+                                        <span class="icon-list-ul"></span>
+                                    </a>
+                                    <ul class="dropdown-menu seed-selected-datasets-list" aria-autoclose="false">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="accordion-buttons">
+                                <a class="btn btn-primary seed-datasets-expand-checked" disabled="disabled" title="Expand selection">{{ _('Show all') }}<i></i>
                             </a>
-                            <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled" title="Collapse selection">{{ _('Hide all') }}<i></i>
-                            <!-- <span class="datasets-tooltip">Collapse selection</span> -->
+                                <a class="btn btn-primary seed-datasets-collapse-checked" disabled="disabled" title="Collapse selection">{{ _('Hide all') }}<i></i>
                             </a>
+                            </div>
                         </div>
-                      </div>
                     </div>
                 </div>
-              </div>
-              <div class="primary span9 seed-main-block">
-                {#
-                The primary_content block can be used to add content to the page.
-                This is the main block that is likely to be used within a template.
-
-                Example:
-
-                  {% block primary_content %}
-                    <h1>My page content</h1>
-                    <p>Some content for the page</p>
-                  {% endblock %}
-                #}
-                  {% block primary_content %}
-                    <section class="module">
-                      <div class="module-content seed-module-content">
-                        {% block page_primary_action %}
-                        {% endblock %}
-                        {% block form %}
-                          {% set facets = {
-                            'fields': c.fields_grouped,
-                            'search': c.search_facets,
-                            'titles': c.facet_titles,
-                            'translated_fields': c.translated_fields,
-                            'remove_field': c.remove_field }
-                          %}
-                          {% set sorting = [
-                            (_('Name Ascending'), 'title_string asc'),
-                            (_('Name Descending'), 'title_string desc'),
-                            (_('Date Created Ascending'), 'score desc, metadata_created asc'),
-                            (_('Date Created Descending'), 'score desc, metadata_created desc'),
-                            (_('Most Recently Updated'), 'metadata_modified desc')]
-                          %}
-                          {% snippet 'snippets/search_form_datasets.html', form_id='dataset-search-form seed-search-items-from', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected, count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %}
-                        {% endblock %}
-                        {% block page_pagination %}
-                          {{ c.page.pager(q=c.q) }}
-                        {% endblock %}
-                        {% block package_search_results_list %}
-                          {{ h.snippet('snippets/package_list.html', packages=c.page.items) }}
-                        {% endblock %}
-                        {{ c.page.pager(q=c.q) }}
-                    {% block package_search_results_api %}
-                    <section class="module">
-                      <div class="module-content seed-api-module">
-                        {% block package_search_results_api_inner %}
-                        <small>
+            </div>
+            <div class="primary span9 seed-main-block">
+                {# The primary_content block can be used to add content to the page. This is the main block that is likely to be used within a template. Example: {% block primary_content %}
+                <h1>My page content</h1>
+                <p>Some content for the page</p>
+                {% endblock %} #} {% block primary_content %}
+                <section class="module">
+                    <div class="module-content seed-module-content">
+                        {% block page_primary_action %} {% endblock %} {% block form %} {% set facets = { 'fields': c.fields_grouped, 'search': c.search_facets, 'titles': c.facet_titles, 'translated_fields': c.translated_fields, 'remove_field': c.remove_field } %} {% set sorting
+                        = [ (_('Name Ascending'), 'title_string asc'), (_('Name Descending'), 'title_string desc'), (_('Date Created Ascending'), 'score desc, metadata_created asc'), (_('Date Created Descending'), 'score desc, metadata_created desc'),
+                        (_('Most Recently Updated'), 'metadata_modified desc')] %} {% snippet 'snippets/search_form_datasets.html', form_id='dataset-search-form seed-search-items-from', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected,
+                        count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %} {% endblock %} {% block page_pagination %} {{ c.page.pager(q=c.q) }} {% endblock %} {% block package_search_results_list
+                        %} {{ h.snippet('snippets/package_list.html', packages=c.page.items) }} {% endblock %} {{ c.page.pager(q=c.q) }} {% block package_search_results_api %}
+                        <section class="module">
+                            <div class="module-content seed-api-module">
+                                {% block package_search_results_api_inner %}
+                                <small>
                           {% set api_link = h.link_to(_('API'), h.url_for(controller='api', action='get_api', ver=3)) %}
                           {% set api_doc_link = h.link_to(_('API Docs'), 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version)) %}
                           {% if g.dumps_url -%}
@@ -222,71 +156,37 @@
                               You can also access this registry using the {{ api_link }} (see {{ api_doc_link}}).
                             {% endtrans %}
                           {%- endif %}
-                        </small>
+                        </small> {% endblock %}
+                            </div>
+                        </section>
                         {% endblock %}
-                      </div>
-                    </section>
-                    {% endblock %}
-                      </div>
-                    </section>
-                  {% endblock %}
-              </div>
-            {% endblock %}
-
-            {% block secondary %}
-              <aside class="secondary span3 seed-secondary-block">
-                {#
-                The secondary_content block can be used to add content to the
-                sidebar of the page. This is the main block that is likely to be
-                used within a template.
-
-                Example:
-
-                  {% block secondary_content %}
-                    <h2>A sidebar item</h2>
-                    <p>Some content for the item</p>
-                  {% endblock %}
-                #}
-              {% block secondary_content %}
-              {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
-              <div class="seed-filter-title">
-               {% if rm_facets['got_active'] == True %}
-                  <a href="{{ rm_facets['path'] }}{% if rm_facets['query'] %}?{% endif %}{{ rm_facets['query'] }}" class="seed-facetsq-remove"><span class="icon-remove seed-remove-all-facets-icon"></span></a>
-                {% endif %}
-                <span>
+                    </div>
+                </section>
+                {% endblock %}
+            </div>
+            {% endblock %} {% block secondary %}
+            <aside class="secondary span3 seed-secondary-block">
+                {# The secondary_content block can be used to add content to the sidebar of the page. This is the main block that is likely to be used within a template. Example: {% block secondary_content %}
+                <h2>A sidebar item</h2>
+                <p>Some content for the item</p>
+                {% endblock %} #} {% block secondary_content %} {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
+                <div class="seed-filter-title seed-filter-title-desktop1200">
+                    {% if rm_facets['got_active'] == True %}
+                    <a href="{{ rm_facets['path'] }}{% if rm_facets['query'] %}?{% endif %}{{ rm_facets['query'] }}" class="seed-facetsq-remove"><span class="icon-remove seed-remove-all-facets-icon"></span></a> {% endif %}
+                    <span>
                   <i class="fa fa-list" alt="Filter datasets- icon"></i>
                 </span>Filters
-              </div>
-              <div class="filters seed-filters-collapsing">
-                  {% for facet in c.facet_titles %}
-                    {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet) }}
-                  {% endfor %}
-                <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
-              </div>
-              {% endblock %}
-              </aside>
+                </div>
+                <div class="filters seed-filters-collapsing filters-desktop1200">
+                    {% for facet in c.facet_titles %} {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, prefix_name="desktop") }} {% endfor %}
+                    <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
+                </div>
+                {% endblock %}
+            </aside>
             {% endblock %}
-          </div>
+        </div>
         {% endblock %}
-      </div>
     </div>
-  {% endblock -%}
-
-  {#
-  Override the footer on a page by page basis by extending this block. If
-  making sitewide header changes it is preferable to override the footer.html-u
-  file.
-  #}
-  {%- block footer %}
-    {% include "footer.html" %}
-  {% endblock -%}
-{%- endblock -%}
-
-{%- block scripts %}
-    {% resource 'base/main' %}
-    {% resource 'base/ckan' %}
-    {% if g.tracking_enabled %}
-      {% resource 'base/tracking.js' %}
-    {% endif %}
-  {{ super() }}
-{% endblock -%}
+</div>
+{% endblock -%} {# Override the footer on a page by page basis by extending this block. If making sitewide header changes it is preferable to override the footer.html-u file. #} {%- block footer %} {% include "footer.html" %} {% endblock -%} {%- endblock
+-%} {%- block scripts %} {% resource 'base/main' %} {% resource 'base/ckan' %} {% if g.tracking_enabled %} {% resource 'base/tracking.js' %} {% endif %} {{ super() }} {% endblock -%}
