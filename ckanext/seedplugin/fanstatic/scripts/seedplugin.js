@@ -187,8 +187,14 @@ $(document).ready(function () {
             });
 
             for (index in lgaNames) {
-
-                $('#select_lga').append('<option value="' + lgaNames[index] + '" aria-label="' + lgaNames[index] + '" >' + lgaNames[index] + '</option>');
+                var url_lag = String(window.location.search);
+                var lga_name = lgaNames[index].split(' ').join('+');
+                if (url_lag.indexOf(lga_name) != -1) {
+                  $('#select_lga').append('<option value="' + lgaNames[index] + '" aria-label="' + lgaNames[index] + '" selected="selected">' + lgaNames[index] + '</option>');
+                }
+                else {
+                  $('#select_lga').append('<option value="' + lgaNames[index] + '" aria-label="' + lgaNames[index] + '" >' + lgaNames[index] + '</option>');
+                };
             }
         },
         type: 'GET'
