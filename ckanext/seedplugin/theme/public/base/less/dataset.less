@@ -1886,3 +1886,163 @@
         }
     }
 }
+
+
+// OEHXCECF-82
+
+.seed-datasets {
+    #content {
+        .seed-main-content-block {
+            border: 1px solid @seedDatePickerbtn;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+        }
+        @media (min-width: @width-768) and (max-width: @hd-top) {
+            .span12.seed-search-main-block,
+            .span12.seed-search-main-block-second {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.seed-dataset-read {
+    padding-top: 10px;
+    .container {
+        background-color: @seedFFF;
+        padding-left: 10px;
+        padding-right: 10px;
+        .toolbar {
+            margin-bottom: 0;
+            padding-top: 10px;
+            padding-bottom: 9px;
+            .breadcrumb {
+                font-size: 15px;
+                .home {
+                    .icon-home {
+                        vertical-align: 0;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .wrapper {
+            border: 1px solid @seedDatePickerbtn;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+            #dataset-map-attribution {
+                div,
+                a {
+                    color: @seedPink2;
+                }
+            }
+            .span9 .module-content .notes.embedded-content,
+            .secondary.span3 .context-info .module-content p,
+            .secondary.span3 .license .module-content span {
+                font-size: 16px;
+                line-height: 1.42857;
+                color: @seedTextColor;
+            }
+            #dataset-resources .dropdown.btn-group a,
+            .follow_button a {
+                border-radius: 3px;
+                font-weight: 400;
+            }
+            .tags {
+                .tag {
+                    height: 21px;
+                    &:hover {
+                        background-color: @seedTagRollover;
+                    }
+                }
+            }
+            @media (width: @width-768) {
+                margin-left: 0;
+                margin-right: 0;
+                .primary.span9 {
+                    width: 532px;
+                    .page-header {
+                        margin-left: -23px;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: @desktop-1280) and (max-width: @hd-top) {
+        #content.container {
+            width: 852px;
+            .wrapper {
+                .span9 {
+                    width: 614px;
+                    .page-header {
+                        margin-left: -15px;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: @hd-top) {
+        .container {
+            width: 1280px;
+            .wrapper {
+                .span9 {
+                    width: 1040px;
+                }
+            }
+        }
+    }
+}
+
+.seed-org-info-button,
+.seed-dataset-info-button {
+    color: @seedFFF;
+    background-color: @seedGrey4;
+    padding: 6px 9px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-top: 6px;
+    &:hover {
+        background-color: @seedBlack;
+        border-color: @seedBlackBorder;
+        text-decoration: underline;
+        color: @seedFFF;
+    }
+}
+
+.seed-dataset-read-resources {
+    .nav-simple {
+        .nav-item {
+            a {
+                color: @seedPink2;
+            }
+            &.active {
+                a {
+                    background-color: @seedBlue;
+                    color: @seedFFF;
+                    &:before {
+                        background-image: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: @width-768) {
+    .seed-dataset-read,
+    .seed-dataset-resources {
+        .container {
+            .wrapper {
+                .bg_img_url("new-nav.png"); 
+            }
+        }
+    }
+}
+
+@media (min-width: @desktop-1280) {
+    .masthead {
+        .container {
+            .header-image {
+                padding-left: 0;
+            }
+        }
+    }
+}

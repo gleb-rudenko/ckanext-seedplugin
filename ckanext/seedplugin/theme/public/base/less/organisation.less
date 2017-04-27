@@ -1,0 +1,208 @@
+.seed-orgs-page {
+    .container {
+        @media (min-width: @desktop-1280) and (max-width: @hd-top) {
+            width: 854px;
+            .span9 {
+                width: 614px;
+            }
+        }
+        @media (min-width: @width-1500) {
+            width: 1280px;
+            .span9 {
+                width: 1040px;
+                .module-content {
+                    padding-left: 10px;
+                    padding-right: 25px;
+                }
+            }
+        }
+        .wrapper {
+            .secondary.span3 {
+                .module-heading {
+                    padding: 9px 15px;
+                    background-color: @seedBlue;
+                    color: @seedFFF;
+                }
+            }
+            @media (min-width: @mobile-min) and (max-width: @mobile-top) {
+                .primary.span9 {
+                    float: none;
+                }
+            }
+        }
+    }
+}
+
+.seed-org-read {
+    .container {
+        background-color: @seedFFF;
+        padding-left: 10px;
+        padding-right: 10px;
+        .wrapper {
+            @media (min-width: @width-768) {
+                .bg_img_url("new-nav.png");
+            }
+            .span9 {
+                .dataset-list {
+                    .seed-dataset-item {
+                        .seed-dataset-accordion-btn {
+                            float: right;
+                            line-height: 18px;
+                            width: 119px;
+                            a.a-expand {
+                                background-color: @seedFFF;
+                                font-size: 15px;
+                                padding: 0 10px;
+                                &:hover {
+                                    color: @seedPink;
+                                }
+                            }
+                            a.a-expand,
+                            a.a-expand.a-collapse {
+                                i {
+                                    display: inline-block;
+                                    width: 14px;
+                                    height: 2px;
+                                    &:after {
+                                        font-family: FontAwesome;
+                                        content: "\f106";
+                                        color: #b72fe8;
+                                        width: 14px;
+                                        height: 14px;
+                                        display: block;
+                                        font-size: 18px;
+                                        line-height: 13px;
+                                        margin: 0 auto;
+                                        padding-right: 1px;
+                                        font-style: normal;
+                                        margin-left: 3px;
+                                        position: relative;
+                                        top: 2px;
+                                    }
+                                }
+                            }
+                            a.a-expand.a-collapse {
+                                i {
+                                    &:after {
+                                        content: "\f107";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .secondary.span3 {
+                .seed-facet-title {
+                    color: @seedPink;
+                    font-size: 16px;
+                    font-weight: 600;
+                    line-height: 1.8;
+                    background-color: @seedFFF;
+                    border: none;
+                    cursor: pointer;
+                    position: relative;
+                }
+            }
+        }
+        @media (min-width: @width-980) and (max-width: @wide-top) {
+            width: 940px;
+        }
+        @media (min-width: @desktop-1280) and (max-width: @hd-top) {
+            width: 854px;
+            .span9 {
+                width: 614px;
+            }
+        }
+        @media (min-width: @width-1500) {
+            width: 1280px;
+            .span9 {
+                width: 1040px;
+            }
+        }
+    }
+}
+
+.seed-dataset-resources,
+.seed-org-read,
+.seed-orgs-page {
+    .container {
+        .toolbar {
+            margin-bottom: 0;
+            padding-top: 10px;
+            padding-bottom: 9px;
+            .breadcrumb {
+                font-size: 15px;
+                .home {
+                    .icon-home {
+                        vertical-align: 0;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .wrapper {
+            border: 1px solid @seedDatePickerbtn;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+            .span9 {
+                #organization-search-form,
+                #organization-datasets-search-form {
+                    .search-input {
+                        input {
+                            height: 45px;
+                            border: 2px solid @seedGrey3;
+                            border-radius: 5px;
+                            font-family: 'Lato';
+                            color: @seedSearchInput;
+                            font-size: 15px;
+                            vertical-align: middle;
+                            padding: 10px 15px;
+                        }
+                        button {
+                            background-color: @seedPink2;
+                            border-radius: 0 4px 4px 0;
+                            top: 0;
+                            right: 0px;
+                            margin-top: 0;
+                            width: 49px;
+                            height: 45px;
+                            &:hover {
+                                background-color: @seedPink3;
+                            }
+                            .icon-search {
+                                color: @seedFFF;
+                                width: 14px;
+                                font-size: 14px;
+                                &:hover {
+                                    color: @seedFFF;
+                                }
+                            }
+                        }
+                    }
+                    .control-order-by {
+                        label {
+                            font-family: 'Lato';
+                            color: @seedTextColor;
+                        }
+                        @media (min-width: @mobile-min) and (max-width: @tablet-top) {
+                            #field-order-by {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            .span9 .module-content .seed-dataset,
+            .secondary.span3 .context-info .module-content p,
+            .secondary.span3 .license .module-content span {
+                font-size: 16px;
+                line-height: 1.42857;
+                color: @seedTextColor;
+            }
+            .follow_button a {
+                border-radius: 3px;
+                font-weight: 400;
+            }
+        }
+    }
+}

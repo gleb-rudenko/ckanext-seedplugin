@@ -1,8 +1,7 @@
 {% ckan_extends %}
 
-{% block breadcrumb_content %}
-  {{ super() }}
-  <li class="active"><a href="#">{{ h.resource_display_name(res)|truncate(30) }}</a></li>
+{% block maintag %}
+    <div role="main" class="seed-dataset-resources">
 {% endblock %}
 
 {% set res = c.resource %}
