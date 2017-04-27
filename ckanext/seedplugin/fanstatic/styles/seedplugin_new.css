@@ -2830,7 +2830,7 @@ section.module.module-narrow.dataset-map .module-heading {
     padding-right: 64px;
   }
 }
-@media (min-width: 320px) and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 767px) {
   .span11.seed-search-second-block .seed-dataset-search-form .seed-search-input {
     text-align: left;
   }
@@ -2890,7 +2890,7 @@ section.module.module-narrow.dataset-map .module-heading {
     display: none;
   }
   .seed-main-content-block .span12.seed-search-main-block .seed-dataset-search-form .seed-search-filters {
-    height: auto;
+    height: auto !important;
   }
 }
 @media (min-width: 980px) {
