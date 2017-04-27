@@ -1680,7 +1680,7 @@
     }
 }
 
-@media (min-width: @mobile-min) and (max-width: @width-768) {
+@media (min-width: @mobile-min) and (max-width: @mobile-top) {
   .span11.seed-search-second-block {
     .seed-dataset-search-form {
       .seed-search-input {
@@ -1761,7 +1761,7 @@
                     }
                 }
                 .seed-search-filters {
-                    height: auto;
+                    height: auto !important;
                 }
             }
         }
@@ -1866,6 +1866,23 @@
             .seed-facetq-remove {
                 right: 10px;
             }
+        }
+    }
+}
+
+@media (min-width: @wide-top) and (max-width: @hd-top) {
+    .account-masthead,
+    .navbar.masthead {
+        .container {
+            width: 854px;
+        }
+    }
+}
+@media (min-width: @hd-top) {
+    .account-masthead,
+    .navbar.masthead {
+        .container {
+            width: 1280px;
         }
     }
 }
