@@ -19,17 +19,6 @@
                 </span>
               {% endif %}
             {% endblock %}
-            {% block heading_title %}
-              {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
-            {% endblock %}
-            {% block heading_meta %}
-              {% if package.get('state', '').startswith('draft') %}
-                <span class="label label-info">{{ _('Draft') }}</span>
-              {% elif package.get('state', '').startswith('deleted') %}
-                <span class="label label-important">{{ _('Deleted') }}</span>
-              {% endif %}
-              {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
-            {% endblock %}
             <div class="seed-dataset-accordion-btn">
                 <a class="btn a-expand" data-index="{{counter}}">
                     <span title="Show less">Show less</span>
@@ -47,6 +36,19 @@
                   <input type="checkbox" id='{{ package.id }}' value="{{counter}}" class="view-map-checkbox" name='view-on-map' data-link="{{ view_on_map }}" data-title="{{ package.title }}" data-name="{{ package.name }}"></input>
                   <label for="{{ package.id }}" class="view-on-map-label">Add to selection</label>
                 </div>
+            {% endblock %}
+            {% block heading_title %}
+              <span class="seed-package-title-heading">
+                {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
+              </span>
+            {% endblock %}
+            {% block heading_meta %}
+              {% if package.get('state', '').startswith('draft') %}
+                <span class="label label-info">{{ _('Draft') }}</span>
+              {% elif package.get('state', '').startswith('deleted') %}
+                <span class="label label-important">{{ _('Deleted') }}</span>
+              {% endif %}
+              {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
             {% endblock %}
           </h3>
         {% endblock %}
