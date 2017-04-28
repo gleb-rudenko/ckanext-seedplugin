@@ -43,6 +43,7 @@ $( function() {
     if (n > 0) {
       $('.seed-view-on-map-options').show();
       $('.seed-selections-box').css('right', '0');
+      $('.seed-filter-title-mobile-desktop1199').addClass('seed-filter-title-mobile-320-979');
       var paths = $('.view-map-checkbox:checked').map(function () {
         if($(this).data('link') != '') {
           return $(this).data('link');
@@ -78,6 +79,7 @@ $( function() {
       $('.seed-view-on-map-all').addClass('seed-disabled');
       $('.seed-view-on-map-options').hide();
       $('.seed-selections-box').css('right', '132px');
+      $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
       $(".all-datasets-checkbox").removeClass('dataset-plus').removeClass('checked_minus').addClass('datasets-not-checked');
     };
 
@@ -94,6 +96,7 @@ $( function() {
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
       $('.seed-view-on-map-options').hide();
       $('.seed-selections-box').css('right', '132px');
+      $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
     }
     else {
       $( ".view-map-checkbox:checked" ).prop('checked', true);
