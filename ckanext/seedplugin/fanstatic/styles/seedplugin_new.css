@@ -627,7 +627,7 @@ footer > * {
   }
 }
 @media (min-width: 1499px) {
-  .navbar.masthead .container {
+  body .navbar.masthead .container {
     width: 1170px;
     padding-top: 15px;
     padding-left: 15px;
