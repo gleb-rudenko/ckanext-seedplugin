@@ -12,6 +12,10 @@
     display: inline-block;
     float: right;
     line-height: 18px;
+    width: 115px;
+    a {
+        font-size: 15px;
+    }
 }
 
 .seed-datasets .seed-selections-box {
@@ -197,7 +201,11 @@
 
 .seed-datasets {
     .dataset-resources {
-        margin-top: 17px;
+        margin-top: 40px;
+        margin-bottom: 12px;
+        .seed-dataset-resource-item {
+            background-color: #95a5a6;
+        }
     }
 }
 
@@ -214,7 +222,7 @@
 .seed-dataset-item .checkbox-dataset {
     display: inline-block;
     float: right;
-    margin-right: 15px;
+    margin-right: 11px;
 }
 
 .seed-selections-box .checkbox-datasets label {
@@ -234,8 +242,8 @@
     position: absolute;
     width: 16px;
     height: 16px;
-    top: 2px;
-    left: 0;
+    top: 0;
+    left: 1px;
     background: #3e97eb;
     border: 1px solid #3e97eb;
     border-radius: 4px;
@@ -844,8 +852,8 @@
 }
 
 .seed-main-content-block {
-    border: none;
-    box-shadow: 0 0 0 2px #ecf0f1;
+//     border: none;
+//     box-shadow: 0 0 0 2px #ecf0f1;
     background-image: none;
 }
 
@@ -917,7 +925,7 @@
 
 .view-on-map-label {
     position: relative;
-    padding-left: 30px;
+    padding-left: 29px;
     line-height: 22px;
     display: inline-block;
     float: right;
@@ -1058,6 +1066,9 @@
             color: #c04deb;
             font-size: 16px;
         }
+        .seed-package-title-heading {
+            display: inline-block;
+        }
     }
     .seed-dataset {
         div {
@@ -1156,11 +1167,11 @@
 
 .seed-view-on-map-buttons .seed-selected-datasets-list .seed-remove-selected-item {
     position: relative;
-    // right: 10px;
-    // float: right;
     display: inline-block;
-    left: 10px;
+    /* left: 10px; */
     padding: 0;
+    right: -5px;
+    float: right;
     &:hover, &:active, &:focus {
         background: #fff;
         color: #333;
@@ -1272,7 +1283,7 @@
 }
 
 @media (min-width: 1280px) {
-    .masthead {
+    .navbar.masthead {
         .container {
             width: 100%;
             padding-left: 85px;
@@ -1309,16 +1320,24 @@
                     margin-right: 5px;
                 }
             }
+            .seed-search-main-block-third {
+                .page_primary_action {
+                    margin-top: 0;
+                    margin-bottom: 20px;
+                    // .seed-add-dataset,
+                    // .seed-download-results {
+                    //     top: 0;
+                    // }
+                    a {
+                        top: -10px;
+                    }
+                }
+            }
         }
     }
 }
 
 @media (min-width: @hd-top) {
-    .masthead .container {
-        width: 1170px;
-        padding-left: 15px;
-        padding-right: 15px;
-    }
     .seed-datasets {
         #content {
             width: 1280px;
@@ -1342,20 +1361,20 @@
                 margin-left: -13px;
                 margin-right: 14px;
             }
-        }
-    }
-    .seed-search-filters {
-        select {
-            width: 175px;
-        }
-        select.seed-lga-select {
-            width: 277px;
-        }
-        input {
-            width: 161px;
-        }
-        select, input {
-            margin: 0 13px;
+            .seed-search-filters {
+                select {
+                    width: 175px;
+                }
+                select.seed-lga-select {
+                    width: 277px;
+                }
+                input {
+                    width: 161px;
+                }
+                select, input {
+                    margin: 0 13px;
+                }
+            }
         }
     }
 
@@ -1894,19 +1913,223 @@
     }
 }
 
+// @media (min-width: @wide-top) and (max-width: @hd-top) {
+//     .account-masthead,
+//     .navbar.masthead {
+//         .container {
+//             width: 854px;
+//         }
+//     }
+// }
+// @media (min-width: @hd-top) {
+//     .account-masthead,
+//     .navbar.masthead {
+//         .container {
+//             width: 1280px;
+//         }
+//     }
+// }
+
+
+// OEHXCECF-82
+
+.seed-datasets {
+    #content {
+        .seed-main-content-block {
+            border: 1px solid @seedDatePickerbtn;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+        }
+        @media (min-width: @width-768) and (max-width: @hd-top) {
+            .span12.seed-search-main-block,
+            .span12.seed-search-main-block-second {
+                width: 100%;
+            }
+        }
+        @media (min-width: @desktop-1280) and (max-width: @hd-top) {
+            .span9.seed-main-block {
+                width: 618px;
+            }
+        }
+        @media (min-width: @width-1500) {
+            .span9.seed-main-block {
+                width: 948px;
+            }
+        }
+    }
+}
+
+.seed-dataset-read {
+    padding-top: 10px;
+    .container {
+        background-color: @seedFFF;
+        padding-left: 10px;
+        padding-right: 10px;
+        .toolbar {
+            margin-bottom: 0;
+            padding-top: 10px;
+            padding-bottom: 9px;
+            .breadcrumb {
+                font-size: 15px;
+                .home {
+                    .icon-home {
+                        vertical-align: 0;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .wrapper {
+            border: 1px solid @seedDatePickerbtn;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+            #dataset-map-attribution {
+                div,
+                a {
+                    color: @seedPink2;
+                }
+            }
+            .span9 .module-content .notes.embedded-content,
+            .secondary.span3 .context-info .module-content p,
+            .secondary.span3 .license .module-content span {
+                font-size: 16px;
+                line-height: 1.42857;
+                color: @seedTextColor;
+            }
+            #dataset-resources .dropdown.btn-group a,
+            .follow_button a {
+                border-radius: 3px;
+                font-weight: 400;
+            }
+            .tags {
+                .tag {
+                    height: 21px;
+                    &:hover {
+                        background-color: @seedTagRollover;
+                    }
+                }
+            }
+            @media (width: @width-768) {
+                margin-left: 0;
+                margin-right: 0;
+                .primary.span9 {
+                    width: 532px;
+                    .page-header {
+                        margin-left: -23px;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: @desktop-1280) and (max-width: @hd-top) {
+        #content.container {
+            width: 852px;
+            .wrapper {
+                .span9 {
+                    width: 614px;
+                    .page-header {
+                        margin-left: -15px;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: @hd-top) {
+        .container {
+            width: 1280px;
+            .wrapper {
+                .span9 {
+                    width: 1040px;
+                }
+            }
+        }
+    }
+}
+
+.seed-org-info-button,
+.seed-dataset-info-button {
+    color: @seedFFF;
+    background-color: @seedGrey4;
+    padding: 6px 9px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-top: 6px;
+    &:hover {
+        background-color: @seedBlack;
+        border-color: @seedBlackBorder;
+        text-decoration: underline;
+        color: @seedFFF;
+    }
+}
+
+.seed-dataset-read-resources {
+    .nav-simple {
+        .nav-item {
+            a {
+                color: @seedPink2;
+            }
+            &.active {
+                a {
+                    background-color: @seedBlue;
+                    color: @seedFFF;
+                    &:before {
+                        background-image: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: @width-768) {
+    .seed-dataset-read,
+    .seed-dataset-resources {
+        .container {
+            .wrapper {
+                .bg_img_url("new-nav.png");
+            }
+        }
+    }
+}
+
+@media (min-width: @desktop-1200) {
+    .seed-main-content-block .primary.span9.seed-main-block {
+        width: 716px;
+    }
+}
+
+// @media (min-width: @desktop-1280) {
+//     .masthead {
+//         .container {
+//             .header-image {
+//                 padding-left: 0;
+//             }
+//         }
+//     }
+// }
+
 @media (min-width: @wide-top) and (max-width: @hd-top) {
-    .account-masthead,
-    .navbar.masthead {
+    .seed-dataset-resources {
         .container {
             width: 854px;
+            .wrapper {
+                .span9 {
+                    width: 614px;
+                }
+            }
         }
     }
 }
 @media (min-width: @hd-top) {
-    .account-masthead,
-    .navbar.masthead {
+    .seed-dataset-resources {
         .container {
             width: 1280px;
+            .wrapper {
+                .span9 {
+                    width: 1058px;
+                    .module-content {
+                        padding-left: 30px;
+                    }
+                }
+            }
         }
     }
 }
