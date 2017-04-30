@@ -65,8 +65,8 @@
 }
 
 .seed-selections-box .seed-datasets-collapse-checked {
-    line-height: 26px;
-    height: 25px;
+    line-height: 28px;
+    height: 28px;
     width: 75px;
 }
 
@@ -167,7 +167,8 @@
 
 .seed-selections-box .seed-datasets-expand-checked {
     width: 75px;
-    height: 25px;
+    height: 28px;
+    line-height: 28px;
     padding: 0;
 }
 
@@ -191,7 +192,7 @@
 }
 
 .seed-datasets .seed-dataset-accordion-btn a, .seed-datasets .seed-dataset-accordion-btn a.a-collapse {
-    padding: 0 10px;
+    padding: 0 8px;
     color: #b72fe8;
 }
 
@@ -242,8 +243,8 @@
     position: absolute;
     width: 16px;
     height: 16px;
-    top: 0;
-    left: 1px;
+    top: 2px;
+    left: 0;
     background: #3e97eb;
     border: 1px solid #3e97eb;
     border-radius: 4px;
@@ -852,8 +853,8 @@
 }
 
 .seed-main-content-block {
-//     border: none;
-//     box-shadow: 0 0 0 2px #ecf0f1;
+    border: none;
+    box-shadow: 0 0 0 2px #ecf0f1;
     background-image: none;
 }
 
@@ -976,10 +977,12 @@
 .seed-view-on-map-all, .seed-view-on-map-remove, .seed-view-on-map-datasets {
     padding: 6px 5px;
     font-size: 13px;
-    line-height: 1.5;
+    line-height: 16px;
     border-radius: 3px;
     background-color: #b72fe8;
     color: #fff;
+    display: inline-block;
+    height: 16px;
     &:hover, &:active, &:focus {
         color: #fff;
         background-color: #460a5c;
@@ -1065,9 +1068,6 @@
         a {
             color: #c04deb;
             font-size: 16px;
-        }
-        .seed-package-title-heading {
-            display: inline-block;
         }
     }
     .seed-dataset {
@@ -1283,7 +1283,7 @@
 }
 
 @media (min-width: 1280px) {
-    .navbar.masthead {
+    .masthead {
         .container {
             width: 100%;
             padding-left: 85px;
@@ -1320,24 +1320,16 @@
                     margin-right: 5px;
                 }
             }
-            .seed-search-main-block-third {
-                .page_primary_action {
-                    margin-top: 0;
-                    margin-bottom: 20px;
-                    // .seed-add-dataset,
-                    // .seed-download-results {
-                    //     top: 0;
-                    // }
-                    a {
-                        top: -10px;
-                    }
-                }
-            }
         }
     }
 }
 
 @media (min-width: @hd-top) {
+    .masthead .container {
+        width: 1170px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
     .seed-datasets {
         #content {
             width: 1280px;
@@ -1361,20 +1353,20 @@
                 margin-left: -13px;
                 margin-right: 14px;
             }
-            .seed-search-filters {
-                select {
-                    width: 175px;
-                }
-                select.seed-lga-select {
-                    width: 277px;
-                }
-                input {
-                    width: 161px;
-                }
-                select, input {
-                    margin: 0 13px;
-                }
-            }
+        }
+    }
+    .seed-search-filters {
+        select {
+            width: 175px;
+        }
+        select.seed-lga-select {
+            width: 277px;
+        }
+        input {
+            width: 161px;
+        }
+        select, input {
+            margin: 0 13px;
         }
     }
 
@@ -1556,8 +1548,9 @@
         }
     }
     .page_primary_action {
-        margin-top: 20px;
+        // margin-top: 20px;
         margin-bottom: 0;
+        margin-left: 16px;
         .seed-add-dataset,
         .seed-download-results {
             top: 0;
@@ -1588,6 +1581,58 @@
 }
 
 @media (min-width: @mobile-min) and (max-width: @mobile-top) {
+    .seed-datasets {
+        .wrapper.seed-main-content-block {
+            .span12.seed-search-main-block-second {
+                .seed-search-main-block-third {
+                    margin-top: 0;
+                    .page_primary_action {
+                        margin-bottom: 5px;
+                        margin-left: 16px;
+                        margin-top: 0;
+                    }
+                    .seed-filter-title-mobile-desktop1199 {
+                        margin-top: 40px;
+                    }
+                    .seed-filter-title-mobile-desktop1199.seed-filter-title-mobile-320-979 {
+                        margin-top: 75px;
+                    }
+                    .seed-selections-box {
+                        top: 85px;
+                        left: 0;
+                        margin-left: 16px;
+                    }
+                    .seed-view-on-map-options {
+                        margin-right: 12px;
+                        .seed-view-on-map-buttons {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: @mobile-min) and (max-width: @mobile359) {
+    .seed-datasets {
+        .wrapper.seed-main-content-block {
+            .span12.seed-search-main-block-second {
+                .seed-search-main-block-third {
+                    .seed-filter-title-mobile-desktop1199.seed-filter-title-mobile-320-979 {
+                        margin-top: 100px;
+                    }
+                    .seed-view-on-map-buttons {
+                        display: block;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: @mobile-min) and (max-width: @mobile-top) {
     [role=main] .primary.seed-main-block {
         float: none;
         width: 100%;
@@ -1611,6 +1656,35 @@
                         }
                         select {
                             width: 100%;
+                        }
+                    }
+                }
+                .seed-accordion {
+                    .seed-dataset-items {
+                        .dataset-heading {
+                            .seed-dataset-accordion-btn {
+                                float: none;
+                                // &:after {
+                                //     clear: both;
+                                // }
+                            }
+                            .checkbox-dataset {
+                                float: left;
+                                margin-right: 0;
+                                .view-on-map-label {
+                                    float: left;
+                                }
+                            }
+                            .seed-dataset-title-label {
+                                float: left;
+                                width: 100%;
+                            }
+                        }
+                        .seed-dataset {
+                            clear: both;
+                            div {
+                                margin-top: 15px;
+                            }
                         }
                     }
                 }
@@ -1665,20 +1739,20 @@
 }
 
 @media (min-width: @mobile-min) and (max-width: @mobile480) {
-    .span9.seed-main-block {
-        .seed-module-content {
-            .seed-dataset-items {
-                .seed-dataset-item {
-                    .dataset-heading {
-                        .checkbox-dataset {
-                            display: block;
-                            float: none;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // .span9.seed-main-block {
+    //     .seed-module-content {
+    //         .seed-dataset-items {
+    //             .seed-dataset-item {
+    //                 .dataset-heading {
+    //                     .checkbox-dataset {
+    //                         display: block;
+    //                         float: none;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     .span12.seed-search-main-block {
         .span11.seed-search-second-block.seed-filters-block.seed-search-block-new {
             .seed-dataset-search-form {
@@ -1719,11 +1793,11 @@
   }
 }
 
-@media (min-width: @mobile-min) and (max-width: @tablet-top) {
+@media (min-width: @width-768) and (max-width: @tablet-top) {
     .span12.seed-search-main-block-second {
         .span11.seed-search-main-block-third {
             .page_primary_action {
-                margin-bottom: 20px;
+                margin-top: 10px;
             }
         }
     }
@@ -1787,6 +1861,9 @@
             }
             .seed-filter-title-mobile-desktop1199 {
                 margin-top: 20px;
+            }
+            .page_primary_action {
+                margin-left: 0;
             }
         }
     }
@@ -1881,23 +1958,22 @@
     }
 }
 
-// @media (min-width: @wide-top) and (max-width: @hd-top) {
-//     .account-masthead,
-//     .navbar.masthead {
-//         .container {
-//             width: 854px;
-//         }
-//     }
-// }
-// @media (min-width: @hd-top) {
-//     .account-masthead,
-//     .navbar.masthead {
-//         .container {
-//             width: 1280px;
-//         }
-//     }
-// }
-
+@media (min-width: @wide-top) and (max-width: @hd-top) {
+    .account-masthead,
+    .navbar.masthead {
+        .container {
+            width: 854px;
+        }
+    }
+}
+@media (min-width: @hd-top) {
+    .account-masthead,
+    .navbar.masthead {
+        .container {
+            width: 1280px;
+        }
+    }
+}
 
 // OEHXCECF-82
 
@@ -2064,15 +2140,15 @@
     }
 }
 
-// @media (min-width: @desktop-1280) {
-//     .masthead {
-//         .container {
-//             .header-image {
-//                 padding-left: 0;
-//             }
-//         }
-//     }
-// }
+@media (min-width: @desktop-1280) {
+    .masthead {
+        .container {
+            .header-image {
+                padding-left: 0;
+            }
+        }
+    }
+}
 
 @media (min-width: @wide-top) and (max-width: @hd-top) {
     .seed-dataset-resources {
