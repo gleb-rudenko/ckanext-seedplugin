@@ -37,6 +37,7 @@
                   <label for="{{ package.id }}" class="view-on-map-label">Add to selection</label>
                 </div>
             {% endblock %}
+            <div class="seed-dataset-title-label">
             {% block heading_title %}
               <span class="seed-package-title-heading">
                 {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
@@ -50,6 +51,7 @@
               {% endif %}
               {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
             {% endblock %}
+            </div>
           </h3>
         {% endblock %}
         <div class="seed-dataset collapse in seed-dataset{{counter}}">
