@@ -120,6 +120,13 @@ $( function() {
     if ($("body").find("[data-name='" + $(this).data('name') + "']").length > 0) {
       $("body").find("[data-name='" + $(this).data('name') + "']").prop('checked', false);
       countChecked();
+      $('.all-datasets-checkbox').removeClass('dataset-plus');
+      $('.all-datasets-checkbox').addClass('checked_minus');
+    }
+    if ($('.checkbox-dataset input[type=checkbox]:checked').length == 0) {
+      $('.all-datasets-checkbox').removeClass('dataset-plus');
+      $('.all-datasets-checkbox').removeClass('checked_minus');
+
     }
   });
 
