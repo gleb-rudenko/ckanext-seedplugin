@@ -166,7 +166,7 @@ block allows you to replace the content of the page if needed #} {%- block conte
                 <section class="module">
                     <div class="module-content seed-module-content">
                         {% block page_primary_action %} {% endblock %} {% block form %} {% set facets = { 'fields': c.fields_grouped, 'search': c.search_facets, 'titles': c.facet_titles, 'translated_fields': c.translated_fields, 'remove_field': c.remove_field } %} {% set sorting
-                        = [ (_('Name Ascending'), 'title_string asc'), (_('Name Descending'), 'title_string desc'), (_('Date Created Ascending'), 'score desc, metadata_created asc'), (_('Date Created Descending'), 'score desc, metadata_created desc'),
+                        = [ (_('Relevance'), 'score desc, metadata_modified desc'), (_('Name Ascending'), 'title_string asc'), (_('Name Descending'), 'title_string desc'), (_('Date Created Ascending'), 'score desc, metadata_created asc'), (_('Date Created Descending'), 'score desc, metadata_created desc'),
                         (_('Most Recently Updated'), 'metadata_modified desc')] %} {% snippet 'snippets/search_form_datasets.html', form_id='dataset-search-form seed-search-items-from', type='dataset', query=c.q, sorting=sorting, sorting_selected=c.sort_by_selected,
                         count=c.page.item_count, facets=facets, show_empty=request.params, error=c.query_error, fields=c.fields %} {% endblock %} {% block page_pagination %} {{ c.page.pager(q=c.q) }} {% endblock %} {% block package_search_results_list
                         %} {{ h.snippet('snippets/package_list.html', packages=c.page.items) }} {% endblock %} {{ c.page.pager(q=c.q) }} {% block package_search_results_api %}

@@ -1854,7 +1854,7 @@ section.module.module-narrow.dataset-map .module-heading {
   font-size: 12px;
   width: 100%;
   text-align: left;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .seed-facet-list .seed-facet-item.active a span:before {
   position: absolute;
@@ -1989,7 +1989,7 @@ section.module.module-narrow.dataset-map .module-heading {
   height: 45px;
   border: 2px solid #dce4ec;
   border-radius: 5px;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #acb6c0;
   font-size: 15px;
   vertical-align: middle;
@@ -2017,12 +2017,12 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-search-filters {
   text-align: center;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .seed-search-filters select,
 .seed-search-filters input {
   margin: 0 10px;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #2c3e50;
   font-size: 15px;
   vertical-align: middle;
@@ -2154,7 +2154,7 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-datasets .search-form.seed-dataset-search-form {
   margin-bottom: 0;
   padding-bottom: 0;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .seed-datasets #dataset-map {
   display: none;
@@ -2309,12 +2309,12 @@ section.module.module-narrow.dataset-map .module-heading {
   top: 10px;
 }
 .seed-order-by {
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #525e74;
 }
 .seed-order-by-select {
   height: 44px;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .seed-main-block {
   width: 718px;
@@ -2353,11 +2353,11 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-additional-filters .seed-items-per-page {
   display: inline-block;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .seed-additional-filters .seed-items-per-page .seed-item-per-page {
   color: #525e74;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: inline;
   margin-right: 5px;
 }
@@ -2488,7 +2488,7 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-loading-message .seed-loading-popup .seed-loading-text {
   display: inline-block;
-  font-family: 'Lato';
+  font-family: "proxima-nova", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 600;
   position: relative;
   top: 5px;
