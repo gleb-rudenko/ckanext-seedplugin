@@ -42,13 +42,13 @@ $( function() {
     };
     if (n > 0) {
       $('.seed-view-on-map-options').show();
-      if ($(window).width() < 979) {
+      //if ($(window).width() < 979) {
           $('.seed-filter-title-mobile-desktop1199').addClass('seed-filter-title-mobile-320-979');
           $('.seed-selections-box').addClass('seed-selections-box-320-979');
-      } else {
-          $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
-          $('.seed-selections-box').removeClass('seed-selections-box-320-979');
-      }
+    //   } else {
+    //       $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
+    //       $('.seed-selections-box').removeClass('seed-selections-box-320-979');
+    //   }
       var paths = $('.view-map-checkbox:checked').map(function () {
         if($(this).data('link') != '') {
           return $(this).data('link');
@@ -83,10 +83,10 @@ $( function() {
       $('.seed-view-on-map-all').removeAttr('href');
       $('.seed-view-on-map-all').addClass('seed-disabled');
       $('.seed-view-on-map-options').hide();
-      if ($(window).width() < 979) {
+      //if ($(window).width() < 979) {
           $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
-          $('.seed-selections-box').addClass('seed-selections-box-320-979');
-      }
+          $('.seed-selections-box').removeClass('seed-selections-box-320-979');
+      //}
       $(".all-datasets-checkbox").removeClass('dataset-plus').removeClass('checked_minus').addClass('datasets-not-checked');
     };
 
@@ -102,9 +102,10 @@ $( function() {
       var n = inputs.length;
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
       $('.seed-view-on-map-options').hide();
-      if ($(window).width() < 979) {
-          $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
-      }
+      //if ($(window).width() < 979) {
+      $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
+      $('.seed-selections-box').removeClass('seed-selections-box-320-979');
+     //}
     }
     else {
       $( ".view-map-checkbox:checked" ).prop('checked', true);

@@ -1750,6 +1750,9 @@
                         margin-left: 16px;
                         margin-top: 0;
                     }
+                    .page_primary_action-after-767 {
+                        display: none;
+                    }
                     .seed-filter-title-mobile-desktop1199 {
                         margin-top: 40px;
                     }
@@ -1952,11 +1955,34 @@
   }
 }
 
+@media (min-width: @width-768) {
+    .span12.seed-search-main-block-second {
+        .span11.seed-search-main-block-third {
+            h2 {
+                display: inline-block;
+            }
+            .page_primary_action-to-767 {
+                display: none;
+            }
+        }
+    }
+}
+
 @media (min-width: @width-768) and (max-width: @tablet-top) {
     .span12.seed-search-main-block-second {
         .span11.seed-search-main-block-third {
             .page_primary_action {
                 margin-top: 10px;
+            }
+            .seed-filter-title-mobile-desktop1199 {
+                margin-top: 30px;
+            }
+            .seed-filter-title-mobile-desktop1199.seed-filter-title-mobile-320-979 {
+                margin-top: 70px;
+            }
+            .seed-selections-box {
+                top: 50px;
+                left: 16px;
             }
         }
     }
@@ -2015,14 +2041,17 @@
 @media (min-width: @width-980) {
     .span12.seed-search-main-block-second {
         .span11.seed-search-main-block-third {
-            h2 {
-                display: inline-block;
-            }
             .seed-filter-title-mobile-desktop1199 {
                 margin-top: 20px;
             }
             .page_primary_action {
                 margin-left: 0;
+            }
+            .seed-selections-box {
+                right: 129px;
+            }
+            .seed-selections-box.seed-selections-box-320-979 {
+                right: 0;
             }
         }
     }
@@ -2130,6 +2159,19 @@
     .navbar.masthead {
         .container {
             width: 1280px;
+        }
+    }
+}
+
+@media (min-width: @width-1500) {
+    .span12.seed-search-main-block-second {
+        .span11.seed-search-main-block-third {
+            .seed-selections-box {
+                right: 134px;
+            }
+            .seed-selections-box.seed-selections-box-320-979 {
+                right: 5px;
+            }
         }
     }
 }
