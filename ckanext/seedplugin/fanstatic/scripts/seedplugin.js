@@ -133,12 +133,16 @@ $( function() {
 
   function populateFormats(lganame) {
     $.ajax({
+        beforeSend: function (jqXHR,settings) {
+          $('.seed-loading-message').show();
+        },
         url: "http://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Administrative_Boundaries/MapServer/1/query?where=lganame=%27"+lganame+"%27&geometryType=esriGeometryEnvelope&spatialRel=esriSpatialRelIntersects&outFields=lganame&returnGeometry=true&outSR=4326&returnDistinctValues=false&f=pjson",
         error: function (error) {
             console.log(error);
         },
         dataType: 'json',
         success: function (data) {
+
             var features = data.features;
             var queryStr_bbox = "";
             if (features[0]) {
@@ -161,7 +165,12 @@ $( function() {
             }
             $('#seed_ext_bbox').val(queryStr_bbox);
         },
-        type: 'GET'
+        type: 'GET',
+        complete: function (jqXHR, textStatus) {
+          if (textStatus == 'success') {
+            $('.seed-loading-message').hide();
+          };
+        }
     });
   }
 
