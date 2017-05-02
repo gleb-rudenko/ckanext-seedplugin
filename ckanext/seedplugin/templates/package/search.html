@@ -81,14 +81,23 @@ block allows you to replace the content of the page if needed #} {%- block conte
             </div>
             <div class="span12 seed-search-main-block-second">
                 <div class="span11 seed-search-main-block-third">
-                    <div class="page_primary_action">
-                    {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %} {% if h.check_access('sysadmin') %} {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController',
-                    action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %} {% endif %}
-                    </div>
-                    {% block search_title %} {% if not no_title %} {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
-                    <h2>{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
-                    {% endif %} {% if h.check_access('package_create') %}
+                    {% if h.check_access('package_create') %}
+                        <div class="page_primary_action page_primary_action-to-767">
+                        {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %} {% if h.check_access('sysadmin') %} {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController',
+                        action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %} {% endif %}
+                        </div>
                     {% endif %}
+                    {% block search_title %}
+                        {% if not no_title %}
+                            {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
+                            <h2>{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
+                        {% endif %}
+                        {% if h.check_access('package_create') %}
+                            <div class="page_primary_action page_primary_action-after-767">
+                            {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %} {% if h.check_access('sysadmin') %} {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController',
+                            action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %} {% endif %}
+                            </div>
+                        {% endif %}
                     <div class="seed-filter-title seed-filter-title-mobile-desktop1199">
                         {% if rm_facets['got_active'] == True %}
                         <a href="{{ rm_facets['path'] }}{% if rm_facets['query'] %}?{% endif %}{{ rm_facets['query'] }}" class="seed-facetsq-remove"><span class="icon-remove seed-remove-all-facets-icon"></span></a> {% endif %}

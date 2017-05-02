@@ -2800,6 +2800,9 @@ section.module.module-narrow.dataset-map .module-heading {
     margin-left: 16px;
     margin-top: 0;
   }
+  .seed-datasets .wrapper.seed-main-content-block .span12.seed-search-main-block-second .seed-search-main-block-third .page_primary_action-after-767 {
+    display: none;
+  }
   .seed-datasets .wrapper.seed-main-content-block .span12.seed-search-main-block-second .seed-search-main-block-third .seed-filter-title-mobile-desktop1199 {
     margin-top: 40px;
   }
@@ -2936,9 +2939,27 @@ section.module.module-narrow.dataset-map .module-heading {
     display: none;
   }
 }
+@media (min-width: 768px) {
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third h2 {
+    display: inline-block;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action-to-767 {
+    display: none;
+  }
+}
 @media (min-width: 768px) and (max-width: 979px) {
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action {
     margin-top: 10px;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-filter-title-mobile-desktop1199 {
+    margin-top: 30px;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-filter-title-mobile-desktop1199.seed-filter-title-mobile-320-979 {
+    margin-top: 70px;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box {
+    top: 50px;
+    left: 16px;
   }
 }
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -2977,14 +2998,17 @@ section.module.module-narrow.dataset-map .module-heading {
   }
 }
 @media (min-width: 980px) {
-  .span12.seed-search-main-block-second .span11.seed-search-main-block-third h2 {
-    display: inline-block;
-  }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-filter-title-mobile-desktop1199 {
     margin-top: 20px;
   }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action {
     margin-left: 0;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box {
+    right: 129px;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box.seed-selections-box-320-979 {
+    right: 0;
   }
 }
 @media (min-width: 1200px) {
@@ -3061,6 +3085,14 @@ section.module.module-narrow.dataset-map .module-heading {
   .account-masthead .container,
   .navbar.masthead .container {
     width: 1280px;
+  }
+}
+@media (min-width: 1500px) {
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box {
+    right: 134px;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box.seed-selections-box-320-979 {
+    right: 5px;
   }
 }
 .seed-datasets #content .seed-main-content-block {
