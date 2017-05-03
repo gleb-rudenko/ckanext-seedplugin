@@ -558,11 +558,17 @@ footer > * {
     width: 44px;
   }
   .navbar.masthead.sticky .container {
-    padding: 10px 0;
+    padding: 16px 0;
   }
   .navbar.masthead.sticky .container .btn.btn-navbar {
     background-color: #1a63e8;
     margin-top: 0;
+  }
+  .navbar.masthead.sticky .container .btn.btn-navbar .icon-bar {
+    width: 22px;
+  }
+  .navbar.masthead.sticky .container .btn.btn-navbar .icon-bar + .icon-bar {
+    margin-top: 4px;
   }
   .navbar.masthead.sticky .container .nav-collapse.in.collapse {
     padding-top: 5px;
@@ -646,6 +652,9 @@ footer > * {
   footer .footer-col {
     margin-left: auto;
     margin-right: auto;
+  }
+  footer .footer-col.col-md-4 {
+    width: 53%;
   }
 }
 @media (min-width: 768px) {
@@ -2385,7 +2394,7 @@ section.module.module-narrow.dataset-map .module-heading {
   top: -2px;
 }
 .seed-datasets .span11 {
-  width: 920px;
+  width: 918px;
 }
 .seed-datasets .seed-search-second-block {
   padding: 10px 0;
@@ -2705,7 +2714,7 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 @media (min-width: 768px) and (max-width: 979px) {
   .seed-datasets .span11 {
-    width: 710px;
+    width: 702px;
   }
 }
 @media (max-width: 979px) {
@@ -2742,7 +2751,7 @@ section.module.module-narrow.dataset-map .module-heading {
     width: 854px;
   }
   .seed-datasets #content .span11 {
-    width: 834px;
+    width: 832px;
   }
   .seed-datasets #content .span9 {
     width: 620px;
@@ -2947,6 +2956,7 @@ section.module.module-narrow.dataset-map .module-heading {
   background-color: #fff;
   border: 0;
   margin-right: 0;
+  font-size: 16px;
 }
 .span12.seed-search-main-block-second .span11.seed-search-main-block-third .filters-mobile-desktop1199 .seed-facet-list-filter .seed-facet-list-button {
   display: block;
@@ -2972,6 +2982,10 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-main-content-block .secondary.span3.seed-secondary-block {
   display: none;
 }
+.seed-filter-title-mobile-desktop1199 .seed-facetsq-remove,
+.seed-filter-title-desktop1200 .seed-facetsq-remove {
+  top: 8px;
+}
 @media (min-width: 320px) and (max-width: 767px) {
   .seed-datasets .wrapper.seed-main-content-block .span12.seed-search-main-block-second .seed-search-main-block-third {
     margin-top: 0;
@@ -2981,7 +2995,7 @@ section.module.module-narrow.dataset-map .module-heading {
     margin-left: 16px;
     margin-top: 0;
   }
-  .seed-datasets .wrapper.seed-main-content-block .span12.seed-search-main-block-second .seed-search-main-block-third .page_primary_action-after-767 {
+  .seed-datasets .wrapper.seed-main-content-block .span12.seed-search-main-block-second .seed-search-main-block-third .page_primary_action-after-979 {
     display: none;
   }
   .seed-datasets .wrapper.seed-main-content-block .span12.seed-search-main-block-second .seed-search-main-block-third .seed-filter-title-mobile-desktop1199 {
@@ -3071,7 +3085,7 @@ section.module.module-narrow.dataset-map .module-heading {
     padding-bottom: 20px;
   }
   .seed-main-content-block .seed-search-main-block-third .seed-filter-title.seed-filter-title-mobile-desktop1199 {
-    height: 35px;
+    height: 41px;
   }
   .seed-main-content-block .secondary.span3.seed-secondary-block {
     display: none;
@@ -3121,26 +3135,36 @@ section.module.module-narrow.dataset-map .module-heading {
   }
 }
 @media (min-width: 768px) {
-  .span12.seed-search-main-block-second .span11.seed-search-main-block-third h2 {
-    display: inline-block;
+  .wrapper {
+    margin-left: 0;
+    margin-right: 0;
   }
-  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action-to-767 {
-    display: none;
+  .seed-search-main-block .seed-search-second-block.seed-filters-block.seed-search-block-new {
+    padding-bottom: 0;
   }
 }
 @media (min-width: 768px) and (max-width: 979px) {
+  .navbar.masthead .container {
+    padding-left: 39px;
+  }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action {
     margin-top: 10px;
   }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-filter-title-mobile-desktop1199 {
-    margin-top: 30px;
-  }
-  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-filter-title-mobile-desktop1199.seed-filter-title-mobile-320-979 {
-    margin-top: 70px;
+    margin-top: 10px;
   }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box {
-    top: 50px;
-    left: 16px;
+    top: 10px;
+    right: 128px;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box.seed-selections-box-320-979 {
+    right: 0;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action-after-979 {
+    display: none;
+  }
+  .span12.seed-search-main-block .seed-dataset-search-form .seed-search-input .search-input {
+    width: 478px;
   }
 }
 @media (min-width: 768px) and (max-width: 1199px) {
@@ -3167,15 +3191,32 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-main-content-block .span9.seed-main-block .seed-module-content .seed-additional-filters .seed-order-by-filter {
     float: right;
   }
+  .seed-main-content-block .span9.seed-main-block .seed-dataset-item .checkbox-dataset {
+    margin-right: 27px;
+  }
+  .seed-main-content-block .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box {
+    top: 10px;
+    right: 128px;
+  }
+  .seed-main-content-block .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box.seed-selections-box-320-979 {
+    right: 0;
+  }
   .seed-main-content-block .span12.seed-search-main-block .seed-dataset-search-form .seed-search-input {
-    text-align: center;
+    text-align: left;
     width: 100%;
+    padding-left: 80px;
   }
   .seed-main-content-block .span12.seed-search-main-block .seed-dataset-search-form .seed-search-input .div-seed-search-input-filters {
-    display: none;
+    display: inline-block;
   }
-  .seed-main-content-block .span12.seed-search-main-block .seed-dataset-search-form .seed-search-filters {
-    height: auto !important;
+  .seed-main-content-block .span12.seed-search-main-block .seed-dataset-search-form .seed-search-input .search-input .div-seed-search-input-filters .seed-search-input-filters {
+    right: -64px;
+    top: 10.5px;
+  }
+}
+@media (min-width: 980px) and (max-width: 1199px) {
+  .span12.seed-search-main-block .seed-dataset-search-form .seed-search-input .search-input {
+    width: 700px;
   }
 }
 @media (min-width: 980px) {
@@ -3186,10 +3227,27 @@ section.module.module-narrow.dataset-map .module-heading {
     margin-left: 0;
   }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box {
-    right: 129px;
+    right: 128px;
   }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box.seed-selections-box-320-979 {
     right: 0;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third h2 {
+    display: inline-block;
+  }
+  .span12.seed-search-main-block-second .span11.seed-search-main-block-third .page_primary_action-to-979 {
+    display: none;
+  }
+}
+@media (min-width: 980px) and (max-width: 1279px) {
+  .navbar.masthead .container .header-image .logo.pull-left {
+    padding-left: 160px;
+  }
+  .navbar.masthead .container .header-image .logo.pull-right {
+    padding-right: 130px;
+  }
+  .navbar.masthead.sticky .container {
+    padding-left: 145px;
   }
 }
 @media (min-width: 1200px) {
@@ -3207,6 +3265,12 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-main-content-block .span11.seed-search-second-block.seed-search-block-new .seed-dataset-search-form .seed-search-input {
     padding-bottom: 30px;
     text-align: center;
+  }
+  .seed-main-content-block .span11.seed-search-second-block.seed-search-block-new .seed-dataset-search-form .seed-search-input .div-seed-search-input-filters {
+    display: none;
+  }
+  .seed-main-content-block .span11.seed-search-second-block.seed-search-block-new .seed-dataset-search-form .seed-search-filters {
+    height: auto !important;
   }
   .seed-main-content-block .span11.seed-search-second-block.seed-search-block-new .seed-dataset-search-form .seed-search-filters input,
   .seed-main-content-block .span11.seed-search-second-block.seed-search-block-new .seed-dataset-search-form .seed-search-filters select {
@@ -3262,13 +3326,27 @@ section.module.module-narrow.dataset-map .module-heading {
     width: 854px;
   }
 }
+@media (min-width: 1280px) {
+  .navbar.masthead .container .header-image .logo.pull-left {
+    padding-left: 100px;
+  }
+  .navbar.masthead .container .header-image .logo.pull-right {
+    padding-right: 70px;
+  }
+  .navbar.masthead.sticky .container {
+    padding-left: 85px;
+  }
+}
+@media (width: 1499px) {
+  .seed-datasets #content.container .span9.seed-main-block {
+    width: 948px;
+  }
+}
 @media (min-width: 1499px) {
   .account-masthead .container,
   .navbar.masthead .container {
     width: 1280px;
   }
-}
-@media (min-width: 1500px) {
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third .seed-selections-box {
     right: 134px;
   }
