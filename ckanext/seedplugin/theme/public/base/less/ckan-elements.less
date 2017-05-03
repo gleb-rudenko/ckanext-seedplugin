@@ -67,12 +67,18 @@ hr {
 }
 
 .btn {
-    color: @seedBlue;
+    color: #fff;
     border: none;
     text-shadow: none;
     background-image: none;
     box-shadow: none;
-    border-radius: 0;
+    background-color: #b72fe8;
+    border-radius: 3px;
+    padding: 6px 12px;
+    &:hover, &:focus {
+        color: #fff;
+        background-color: #0d4252;
+    }
 }
 
 .btn-large {
@@ -99,7 +105,7 @@ hr {
 .btn-primary {
     background-color: @seedPink;
     color: @seedFFF;
-    border-radius: 0;
+    border-radius: 3px;
 }
 
 .btn-success, .btn-warning, .btn-danger {
@@ -118,6 +124,12 @@ hr {
 }
 .nav-pills > li > a {
     border-radius: 0px;
+}
+
+.nav.nav-tabs {
+    a {
+        color: #555555;
+    }
 }
 
 .tabs-below > .nav-tabs > .active > a,

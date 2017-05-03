@@ -177,7 +177,10 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
                          action='logout')
         routeMap.connect('/user/edit/{id:.*}', controller=controllerUser,
                          action='edit')
-        routeMap.connect('/user/{id:.*}', controller=controllerUser,
+        routeMap.connect('/user/activity/{id}/{offset}', action='activity', controller='user')
+        routeMap.connect('user_activity_stream', '/user/activity/{id}',
+                         action='activity', controller='user', ckan_icon='time')
+        routeMap.connect('/user/{id:.*}', controller='user',
                          action='read')
         routeMap.connect('/download_results', controller=controller,
                          action='download_results')
