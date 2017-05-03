@@ -19,6 +19,25 @@
                 </span>
               {% endif %}
             {% endblock %}
+            <div class="seed-dataset-accordion-btn">
+                <a class="btn a-expand" data-index="{{counter}}">
+                    <span title="Show less">Show less</span>
+                    <i></i>
+                    <!-- <span class="datasets-tooltip">Collapse</span> -->
+                </a>
+            </div>
+            {% block view_add_selection %}
+              {% if package.map_type and package.map_service_id and package.layer_id %}
+                {% set view_on_map="/"+package.map_type+":map_service_id="+(package.map_service_id|replace("&", "+"))+";layer_id="+(package.layer_id|replace("&", "+")) %}
+              {% else %}
+                {% set view_on_map='' %}
+              {% endif %}
+                <div class="checkbox-dataset">
+                  <input type="checkbox" id='{{ package.id }}' value="{{counter}}" class="view-map-checkbox" name='view-on-map' data-link="{{ view_on_map }}" data-title="{{ package.title }}" data-name="{{ package.name }}"></input>
+                  <label for="{{ package.id }}" class="view-on-map-label">Add to selection</label>
+                </div>
+            {% endblock %}
+            <div class="seed-dataset-title-label">
             {% block heading_title %}
               <span class="seed-package-title-heading">
                 {{ h.link_to(h.truncate(title, truncate_title), h.url_for(controller='package', action='read', id=package.name)) }}
@@ -32,6 +51,7 @@
               {% endif %}
               {{ h.popular('recent views', package.tracking_summary.recent, min=10) if package.tracking_summary }}
             {% endblock %}
+            </div>
           </h3>
         {% endblock %}
         <div class="seed-dataset collapse in seed-dataset{{counter}}">
@@ -45,6 +65,15 @@
                 <div>{{ notes|urlize }}</div>
               {% else %}
                 <p class="empty">{{ _("This dataset has no description") }}</p>
+              {% endif %}
+            {% endblock %}
+            {% block view_dataset %}
+              <a href="{{ g.site_url }}/dataset/{{ package.id }}" class="seed-dataset-button">View Data</a>
+            {% endblock %}
+            {% block view_on_map %}
+              {% if package.map_type and package.map_service_id and package.layer_id %}
+                {% set mapurl="https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url="+(package.map_type)+":map_service_id="+(package.map_service_id|replace("&", "+"))+";layer_id="+(package.layer_id|replace("&", "+")) -%}
+              <a href="{{ mapurl }}" class="seed-dataset-button">View on Map</a>
               {% endif %}
             {% endblock %}
         </div>
