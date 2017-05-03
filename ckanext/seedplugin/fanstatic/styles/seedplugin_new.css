@@ -2163,27 +2163,27 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-datasets #seed-search-items-from {
   margin-bottom: 10px;
 }
-.seed-datasets .module-content .pagination {
+.module-content .pagination {
   margin: 0 auto;
   border: none;
   margin-bottom: 20px;
 }
-.seed-datasets .module-content .pagination ul li a {
+.module-content .pagination ul li a {
   border: none;
   background-color: #b72fe8;
   color: #fff;
   padding: 11.5px 16px;
 }
-.seed-datasets .module-content .pagination ul li a:hover {
+.module-content .pagination ul li a:hover {
   background-color: #1a63e8;
 }
-.seed-datasets .module-content .pagination ul li.active a {
+.module-content .pagination ul li.active a {
   background-color: #1a63e8;
 }
-.seed-datasets .module-content .pagination ul > li:first-child > a {
+.module-content .pagination ul > li:first-child > a {
   border-radius: 4px 0 0 4px;
 }
-.seed-datasets .module-content .pagination ul > li:last-child > a {
+.module-content .pagination ul > li:last-child > a {
   border-radius: 0 4px 4px 0;
 }
 .seed-datasets #content .seed-dataset-button {
