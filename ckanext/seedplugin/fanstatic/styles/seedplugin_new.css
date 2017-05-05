@@ -2833,10 +2833,10 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 @media (min-width: 1280px) {
   .seed-admin-page #content {
-    width: 852px;
+    width: 832px;
   }
   .seed-admin-page #content .span9 {
-    width: 612px;
+    width: 592px;
   }
   .masthead .container {
     width: 100%;
