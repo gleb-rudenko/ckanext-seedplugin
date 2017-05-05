@@ -63,7 +63,7 @@ hr {
 .btn:hover,
 .btn:focus {
   color: #fff;
-  background-color: #0d4252;
+  background-color: #460a5c;
 }
 .btn-large [class^="icon-"],
 .btn-large [class*=" icon-"] {
@@ -2679,14 +2679,19 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-admin-page #content .secondary.span3 {
   color: #525e74;
+  font-size: 16px;
 }
 .seed-admin-page #content .secondary.span3 .nums dl,
 .seed-admin-page #content .secondary.span3 .info dl {
+  line-height: 1.42857;
   color: #525e74;
 }
 .seed-admin-page #content .secondary.span3 .nums dl code,
 .seed-admin-page #content .secondary.span3 .info dl code {
   color: #525e74;
+}
+.seed-admin-page #content .seed-dataset-item {
+  line-height: 1.42857;
 }
 .seed-admin-page #content .seed-dataset-item .seed-dataset {
   color: #525e74;
