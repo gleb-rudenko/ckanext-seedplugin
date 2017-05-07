@@ -2970,7 +2970,8 @@ section.module.module-narrow.dataset-map .module-heading {
     margin: 0 auto;
   }
 }
-.seed-api-module a {
+.seed-api-module a,
+.module-resource p a {
   color: #b72fe8;
 }
 .seed-search-input .seed-search-input-filters i {
