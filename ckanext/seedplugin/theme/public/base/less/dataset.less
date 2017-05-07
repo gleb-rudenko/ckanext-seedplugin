@@ -1356,7 +1356,68 @@
     }
 }
 
+.seed-admin-page #content {
+    .toolbar {
+        .breadcrumb {
+            li {
+                color: #525e74;
+                a {
+                    color: #525e74;
+                }
+            }
+        }
+    }
+    .span9 {
+        .page-header {
+            .nav-tabs {
+                li {
+                    a {
+                        color: #525e74;
+                        &:hover, &:focus, &:active {
+                            color: #525e74;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .secondary.span3 {
+        color: #525e74;
+        font-size: 16px;
+        .nums, .info {
+            dl {
+                line-height: 1.42857;
+                color: #525e74;
+                code {
+                    color: #525e74;
+                }
+            }
+        }
+    }
+    .seed-dataset-item {
+        line-height: 1.42857;
+        .seed-dataset {
+            color: #525e74;
+        }
+        .dataset-resources {
+            .seed-dataset-resource-item {
+                background-color: #95a5a6;
+            }
+        }
+    }
+}
 
+.seed-module-heading {
+    background-color: #29a8f1;
+    color: #fff;
+    text-align: center;
+    top: 0px;
+    padding: 18px 15px;
+}
+
+.module-content:first-child {
+    padding-top: 16px;
+}
 
 @media (max-width: @mobile-top) {
     .seed-datasets .span11 {
@@ -1393,11 +1454,67 @@
         color: @seedFFF;
         border-radius: 4px;
     }
+    .seed-admin-page {
+        .secondary.span3 {
+            float: left;
+        }
+    }
 }
 
 @media (max-width: @mobile-top + 1px) {
     .seed-filter-title {
         display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .seed-admin-page #content {
+        .toolbar {
+            margin-bottom: 6px;
+            padding: 10px 0;
+            .breadcrumb {
+                font-size: 15px;
+                .home {
+                    a {
+                        i {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+        background-color: #fff;
+        border: 1px solid @seedDatePickerbtn;
+        box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+        border-radius: 4px;
+        padding: 0 10px;
+        .wrapper {
+            .bg_img_url("new-nav.png");
+            border: 1px solid @seedDatePickerbtn;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+            .span9 {
+                .page-header {
+                    border-bottom: 1px solid #ecf0f1;
+                    .nav-tabs {
+                        border-bottom: 1px solid #ecf0f1;
+                        li.active {
+                            a {
+                                border: 1px solid #ecf0f1;
+                                border-bottom-color: transparent;
+                            }
+                        }
+                        li a {
+                            border-bottom: 1px solid #ecf0f1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #content {
+        .toolbar.seed-admin-tool-bar {
+            padding: 7px 0;
+        }
     }
 }
 
@@ -1443,6 +1560,12 @@
 }
 
 @media (min-width: 1280px) {
+    .seed-admin-page #content {
+        width: 832px;
+        .span9 {
+            width: 592px;
+        }
+    }
     .masthead {
         .container {
             width: 100%;
@@ -1490,7 +1613,7 @@
         padding-left: 15px;
         padding-right: 15px;
     }
-    .seed-datasets {
+    .seed-datasets, .seed-admin-page {
         #content {
             width: 1280px;
             .span12 {
@@ -1503,7 +1626,7 @@
                 width: 803px;
             }
             .primary.span9 {
-                width:  950px;
+                width:  948px;
             }
             .secondary.span3 {
                 width: 318px;
@@ -1539,7 +1662,7 @@
     .module .pagination {
         height: auto;
     }
-    .span9 div.module-content {
+    .seed-datasets .span9 div.module-content {
         padding-right: 31px;
         padding-left: 50px;
     }
@@ -1562,6 +1685,20 @@
         a {
             padding: 10px 36px;
             padding-right: 66px;
+        }
+    }
+    .seed-admin-page #content {
+        .wrapper.row {
+            background-position: 92px 0;
+        }
+        .secondary.span3 {
+            width: 312px;
+            margin-left: 0;
+            .image {
+                a img {
+                    margin: 0 auto;
+                }
+            }
         }
     }
 }
@@ -1904,7 +2041,7 @@
             }
         }
     }
-} 
+}
 
 @media (min-width: @mobile-min) and (max-width: @mobile480) {
     .span12.seed-search-main-block {
@@ -2275,11 +2412,6 @@
         @media (min-width: @desktop-1280) and (max-width: @hd-top) {
             .span9.seed-main-block {
                 width: 608px;
-            }
-        }
-        @media (min-width: @width-1500) {
-            .span9.seed-main-block {
-                width: 948px;
             }
         }
     }
