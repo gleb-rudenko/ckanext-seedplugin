@@ -30,6 +30,9 @@
 
   <div class="row wrapper{% block wrapper_class %}{% endblock %}{% if self.secondary()|trim == '' %} no-nav{% endif %}">
 
+    {% block pre_primary %}
+    {% endblock %}
+    
     {% block primary %}
       <div class="primary span9">
 

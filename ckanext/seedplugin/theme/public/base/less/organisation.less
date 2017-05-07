@@ -17,9 +17,16 @@
             }
         }
         .wrapper {
+            .span9 {
+                #organization-search-form {
+                    h2 {
+                        font-weight: 600;
+                    }
+                }
+            }
             .secondary.span3 {
                 .module-heading {
-                    padding: 9px 15px;
+                    padding: 18px 15px;
                     background-color: @seedBlue;
                     color: @seedFFF;
                 }
@@ -34,10 +41,14 @@
 }
 
 .seed-org-read {
+    color: @seedTextColor;
+    line-height: 1.42857;
+    font-size: 16px;
     .container {
         background-color: @seedFFF;
-        padding-left: 10px;
-        padding-right: 10px;
+        .toolbar {
+            margin-left: 10px;
+        }
         .wrapper {
             @media (min-width: @width-768) {
                 .bg_img_url("new-nav.png");
@@ -105,20 +116,22 @@
                 }
             }
         }
+        @media (min-width: @width-768) and (max-width: @hd-top) {
+            .wrapper {
+                background-position: 12px 0px;
+                .secondary.span3 {
+                    width: 232px;
+                }
+            }
+        }
         @media (min-width: @width-980) and (max-width: @wide-top) {
             width: 940px;
         }
         @media (min-width: @desktop-1280) and (max-width: @hd-top) {
             width: 854px;
-            .span9 {
-                width: 614px;
-            }
         }
         @media (min-width: @width-1500) {
             width: 1280px;
-            .span9 {
-                width: 1040px;
-            }
         }
     }
 }
@@ -202,6 +215,44 @@
             .follow_button a {
                 border-radius: 3px;
                 font-weight: 400;
+            }
+        }
+    }
+}
+
+.seed-org-read {
+    .container {
+        .wrapper {
+            @media (min-width: @width-768) and (max-width: @tablet-top) {
+                .span9 {
+                    width: 452px;
+                }
+            }
+            @media (min-width: @width-980) and (max-width: @wide-top) {
+                .span9 {
+                    width: 668px;
+                }
+            }
+            @media (min-width: @desktop-1280) and (max-width: @hd-top) {
+                .span9 {
+                    width: 582px;
+                }
+            }
+            @media (min-width: @hd-top) {
+                background-position: 98px 0px;
+                .span9 {
+                    width: 922px;
+                }
+                .secondary.span3 {
+                    width: 318px;
+                    .context-info {
+                        .image {
+                            img {
+                                margin: 0 auto;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

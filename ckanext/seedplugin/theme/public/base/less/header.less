@@ -60,10 +60,11 @@
     .navbar.masthead {
         min-height: 55px;
         .container {
-            padding: 10px;
+            width: 100%;
             padding-left: 0;
             padding-right: 0;
-            width: 724px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             .header-image {
                 min-height: 55px;
                 a.logo.pull-left {
@@ -102,10 +103,18 @@
     }
 }
 
-@media (min-width: @width-980) {
+@media (min-width: @width-768) and (max-width: @tablet-top) {
     .navbar.masthead {
         .container {
-            width: 940px;
+            padding-left: 39px;
+            .header-image {
+                a.logo.pull-left {
+                    margin-left: 15px;
+                }
+                a.logo.pull-right {
+                    margin-right: 15px;
+                }
+            }
         }
     }
 }
