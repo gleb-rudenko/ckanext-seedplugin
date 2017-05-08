@@ -172,6 +172,36 @@
     </div>
 {% endblock %}
 
-{%- block resource_license -%}
-    {% snippet "snippets/license.html", pkg_dict=pkg %}
+{% block secondary_content %}
+
+    {% block resources_list %}
+    {% snippet "package/snippets/resources.html", pkg=pkg, active=res.id %}
+    {% endblock %}
+
+    {% if pkg.license_id %}
+        {% block license_wrapper %}
+            <section class="module module-narrow module-shallow license">
+                {% block license_title %}
+                    <h2 class="module-heading"><i class="icon-medium icon-lock"></i> {{ _('License') }}</h2>
+                {% endblock %}
+                {% block license_content %}
+                    <p class="module-content">
+                        {% block license_content_inner %}
+                            {% if 'license_url' in pkg %}
+                                <a href="{{ pkg.license_url }}" rel="dc:rights">{{ pkg.license_title }}</a>
+                            {% else %}
+                                <span property="dc:rights">{{ pkg.license_title }}</span>
+                            {% endif %}
+                            {% if pkg.isopen %}
+                                <a href="http://opendefinition.org/okd/" title="{{ _('This dataset satisfies the Open Definition.') }}">
+                                    <img class="open-data" src="{{ h.url_for_static('/base/images/od_80x15_blue.png') }}" alt="[Open Data]" />
+                                </a>
+                        {% endif %}
+                        {% endblock %}
+                    </p>
+                {% endblock %}
+            </section>
+        {% endblock %}
+    {% endif %}
+    
 {% endblock %}
