@@ -3695,13 +3695,11 @@ section.module.module-narrow.dataset-map .module-heading {
     padding-left: 30px;
   }
 }
-.seed-dataset-read .container .wrapper,
-.seed-org-read .container .wrapper {
+.seed-dataset-read .container .wrapper {
   margin-left: 10px;
   margin-right: 10px;
 }
-.seed-dataset-read .container .wrapper .secondary.span3 .module-heading,
-.seed-org-read .container .wrapper .secondary.span3 .module-heading {
+.seed-dataset-read .container .wrapper .secondary.span3 .module-heading {
   padding: 18px 15px;
   background-color: #29a8f1;
   color: #fff;
@@ -3808,14 +3806,6 @@ section.module.module-narrow.dataset-map .module-heading {
   border: none;
   cursor: pointer;
   position: relative;
-}
-@media (min-width: 768px) and (max-width: 1499px) {
-  .seed-org-read .container .wrapper {
-    background-position: 12px 0px;
-  }
-  .seed-org-read .container .wrapper .secondary.span3 {
-    width: 232px;
-  }
 }
 @media (min-width: 980px) and (max-width: 1279px) {
   .seed-org-read .container {
