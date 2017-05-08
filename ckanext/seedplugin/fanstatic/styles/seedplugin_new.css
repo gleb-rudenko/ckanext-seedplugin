@@ -3617,7 +3617,7 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 @media (min-width: 1280px) and (max-width: 1499px) {
   .seed-dataset-read #content.container .wrapper .primary.span9 {
-    width: 594px;
+    width: 606px;
   }
 }
 @media (min-width: 1500px) {
