@@ -106,19 +106,79 @@
 @media (min-width: @width-768) and (max-width: @tablet-top) {
     .navbar.masthead {
         .container {
-            padding-left: 39px;
+            width: 750px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: 0 auto;
             .header-image {
                 a.logo.pull-left {
-                    margin-left: 15px;
+                    margin-left: 30px;
                 }
-                a.logo.pull-right {
-                    margin-right: 15px;
+            }
+        }
+        &.navbar-static-top.sticky {
+            .container {
+                .nav-collapse {
+                    padding-left: 15px;
                 }
             }
         }
     }
 }
 
+@media (min-width: @width-980) and (max-width: @desktop-1199) {
+    .navbar.masthead {
+        .container {
+            width: 970px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: 0 auto;
+            .header-image {
+                a.logo.pull-left {
+                    padding-left: 30px;
+                }
+                a.logo.pull-right {
+                    padding-right: 0px;
+                }
+            }
+        }
+        &.navbar-static-top.sticky {
+            .container {
+                padding-left: 15px;
+                .nav-collapse {
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: @desktop-1200) and (max-width: @wide-top) {
+    .navbar.masthead {
+        .container {
+            width: 1170px;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin: 0 auto;
+            .header-image {
+                a.logo.pull-left {
+                    padding-left: 30px;
+                }
+                a.logo.pull-right {
+                    padding-right: 0px;
+                }
+            }
+        }
+        &.navbar-static-top.sticky {
+            .container {
+                padding-left: 15px;
+                .nav-collapse {
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+}
 @media (min-width: @hd-top) {
     body .navbar.masthead .container {
         width: 1170px;
