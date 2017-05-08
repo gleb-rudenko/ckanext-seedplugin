@@ -2789,17 +2789,17 @@ section.module.module-narrow.dataset-map .module-heading {
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
   }
   .seed-admin-page #content .wrapper .span9 .page-header {
-    border-bottom: 1px solid #ecf0f1;
+    border-bottom: 1px solid #e3e3e3;
   }
   .seed-admin-page #content .wrapper .span9 .page-header .nav-tabs {
-    border-bottom: 1px solid #ecf0f1;
+    border-bottom: 1px solid #e3e3e3;
   }
   .seed-admin-page #content .wrapper .span9 .page-header .nav-tabs li.active a {
-    border: 1px solid #ecf0f1;
+    border: 1px solid #e3e3e3;
     border-bottom-color: transparent;
   }
   .seed-admin-page #content .wrapper .span9 .page-header .nav-tabs li a {
-    border-bottom: 1px solid #ecf0f1;
+    border-bottom: 1px solid #e3e3e3;
   }
   #content .toolbar.seed-admin-tool-bar {
     padding: 7px 0;
