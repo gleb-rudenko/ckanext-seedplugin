@@ -38,7 +38,8 @@ block allows you to replace the content of the page if needed #} {%- block conte
                         {% block search_input %}
                         <div class="seed-search-input">
                             <div class="search-input control-group  span9">
-                                <input type="text" class="search" name="q" value="" autocomplete="off" placeholder="Search for a topic of interest e.g. Soil, Water, Air">
+                                {% set value = request.params.get('q') if request.params.get('q') else '' %}
+                                <input type="text" class="search" name="q" value="{{ value }}" autocomplete="off" placeholder="Search for a topic of interest e.g. Soil, Water, Air">
 
                                 <button type="submit" value="search">
                             <i class="icon-search"></i>

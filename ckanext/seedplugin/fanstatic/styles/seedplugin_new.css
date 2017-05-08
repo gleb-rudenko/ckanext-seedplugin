@@ -2470,22 +2470,26 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-search-input div input::placeholder,
 #ext_startdate::placeholder,
 #ext_enddate::placeholder {
+  color: #acb6c0;
   opacity: 1;
 }
 .seed-search-input div input::-webkit-input-placeholder,
 #ext_startdate::-webkit-input-placeholder,
 #ext_enddate::-webkit-input-placeholder {
   opacity: 0.8;
+  color: #acb6c0;
 }
 .seed-search-input div input::-moz-input-placeholder,
 #ext_startdate::-moz-input-placeholder,
 #ext_enddate::-moz-input-placeholder {
   opacity: 1;
+  color: #acb6c0;
 }
 .seed-search-input div input:-moz-input-placeholder,
 #ext_startdate:-moz-input-placeholder,
 #ext_enddate:-moz-input-placeholder {
   opacity: 1;
+  color: #acb6c0;
 }
 #seed_ext_bbox {
   display: none;
