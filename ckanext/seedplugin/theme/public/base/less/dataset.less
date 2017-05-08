@@ -1773,7 +1773,8 @@
 // OEHXCECF-81
 
 .seed-api-module,
-.module-resource p {
+.module-resource p,
+.seed-dataset-resources .resource-view-filters {
     a {
         color: @seedPink2;
     }
@@ -2517,7 +2518,7 @@
                 .home {
                     .icon-home {
                         vertical-align: 0;
-                        font-size: 15px;
+                        font-size: 18px;
                     }
                 }
             }
@@ -2583,7 +2584,7 @@
                 margin-left: 0;
                 margin-right: 0;
                 .primary.span9 {
-                    width: 512px;
+                    width: 532px;
                     .page-header {
                         margin-left: -23px;
                     }
@@ -2591,7 +2592,7 @@
             }
             @media (min-width: @width-980) and (max-width: @wide-top) {
                 .primary.span9 {
-                    width: 674px;
+                    width: 694px;
                 }
             }
             @media (min-width: @desktop-1280) and (max-width: @hd-top) {
@@ -2729,6 +2730,25 @@
 .seed-dataset-resources {
      .container {
         .wrapper {
+            .module-resource {
+                .page-heading,
+                h3 {
+                    color: @seedTextColor;
+                }
+                .data-viewer-error {
+                  .btn.btn-large.resource-url-analytics {
+                      color: @seedFFF;
+                  }
+                }
+            }
+            .primary.span9 {
+                .module-content {
+                    h2,
+                    table th {
+                        color: @seedTextColor;
+                    }
+                }
+            }
             .secondary.span3 {
                 .module-heading {
                     padding: 18px 15px;
@@ -2738,4 +2758,21 @@
             }
         }
      }
+}
+
+@media (max-width: @mobile-top) {
+    .seed-dataset-resources .primary.span9 {
+        float: none;
+    }
+    .seed-dataset-read {
+        .container {
+            .seed-dataset-info-button {
+                float: none;
+                margin-left: 10px;
+            }
+            .toolbar {
+                width: 100%;
+            }
+        }
+    }
 }
