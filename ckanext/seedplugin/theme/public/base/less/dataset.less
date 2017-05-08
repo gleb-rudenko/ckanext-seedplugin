@@ -2197,8 +2197,16 @@
 }
 
 @media (min-width: @width-768) and (max-width: @desktop-1199) {
+    .seed-datasets {
+        .container {
+            width: 100%;
+        }
+    }
     .seed-main-content-block {
+        padding-left: 10px;
+        padding-right: 10px;
         .seed-search-main-block {
+            width: 100%;
             .seed-search-block-new {
                 .seed-dataset-search-form {
                     .seed-search-filters {
@@ -2215,12 +2223,15 @@
                     }
                 }
             }
+            .span11.seed-search-second-block,
+            .span12.seed-search-main-block-second,
+            .primary.span9.seed-main-block {
+                width: 100%;
+            }
         }
         .span9.seed-main-block {
             .seed-module-content {
-                margin-left: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
+                margin-right: 0;
                 .seed-additional-filters {
                   text-align: left;
                   .seed-order-by-filter {
@@ -2236,6 +2247,7 @@
         }
         .span12.seed-search-main-block-second {
             .span11.seed-search-main-block-third {
+                width: 100%;
                 .seed-selections-box {
                     top: 10px;
                     right: 128px;
@@ -2247,14 +2259,16 @@
         }
         .span12.seed-search-main-block {
         .seed-dataset-search-form {
+            margin-left: 80px;
+            margin-right: 144px;
             .seed-search-input {
                 text-align: left;
                 width: 100%;
-                padding-left: 80px;
                 .div-seed-search-input-filters {
                     display: inline-block;
                 }
                 .search-input {
+                    width: 100%;
                     .div-seed-search-input-filters {
                         .seed-search-input-filters {
                             right: -64px;
