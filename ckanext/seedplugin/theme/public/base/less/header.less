@@ -1,26 +1,4 @@
 @media (min-width: @mobile-min) and (max-width: @mobile-top) {
-    .navbar.masthead {
-        min-height: 45px;
-        .container {
-            padding: 10px 15px;
-            .header-image {
-                min-height: 45px;
-                a.logo.pull-left {
-                    margin-top: 7px;
-                    img {
-                        height: 31px;
-                        width: 232px;
-                    }
-                }
-                a.logo.pull-right {
-                    img {
-                        height: 45px;
-                        width: 44px;
-                    }
-                }
-            }
-        }
-    }
     .navbar.masthead.sticky {
         .container {
             padding: 16px 0;
@@ -51,6 +29,31 @@
     }
 }
 
+@media (min-width: @mobile-min) and (max-width: @mobile599) {
+    .navbar.masthead {
+        min-height: 45px;
+        .container {
+            padding: 10px 15px;
+            .header-image {
+                min-height: 45px;
+                a.logo.pull-left {
+                    margin-top: 7px;
+                    img {
+                        height: 31px;
+                        width: 232px;
+                    }
+                }
+                a.logo.pull-right {
+                    img {
+                        height: 45px;
+                        width: 44px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (min-width: @mobile-min) and (max-width: @mobile360) {
     .account-masthead {
         padding-left: 0;
@@ -59,6 +62,32 @@
     .navbar.masthead {
         .container {
             padding: 10px 10px;
+        }
+    }
+}
+
+@media (min-width: @mobile600) and (max-width: @mobile-top) {
+    .navbar.masthead {
+        .container {
+            width: 100%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            .header-image {
+                min-height: 55px;
+                a.logo.pull-left {
+                    margin-top: 0;
+                    img {
+                        height: 55px;
+                        width: 409px
+                    }
+                }
+                a.logo.pull-right {
+                    img {
+                        height: 55px;
+                        width: auto;
+                    }
+                }
+            }
         }
     }
 }

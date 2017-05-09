@@ -2015,13 +2015,14 @@
         width: 100%;
     }
     .seed-main-content-block {
+        padding-left: 10px;
+        padding-right: 10px;
         box-shadow: none;
         .span9.seed-main-block {
             .seed-module-content {
-                margin-right: 5px;
-                margin-left: 5px;
                 padding-left: 10px;
                 padding-right: 10px;
+                margin-right: 0;
                 .search-form {
                     .seed-additional-filters {
                         text-align: left;
@@ -2065,8 +2066,6 @@
             }
         }
         .span11.seed-search-second-block {
-            padding-left: 30px;
-            padding-right: 30px;
             .seed-search-filters {
                 select,
                 input {
@@ -2110,6 +2109,17 @@
             }
         }
     }
+    .seed-datasets {
+        .span12.seed-search-main-block {
+            .seed-search-second-block {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .seed-search-block-new {
+                padding: 10px 25px 0px;
+            }
+        }
+    }
 }
 
 @media (min-width: @mobile-min) and (max-width: @mobile480) {
@@ -2140,8 +2150,8 @@
     }
   }
   .span12.seed-search-main-block-second {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
     .span11.seed-search-main-block-third {
       padding-left: 0;
       padding-right: 0;
