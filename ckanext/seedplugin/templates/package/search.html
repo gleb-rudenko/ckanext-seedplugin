@@ -109,29 +109,6 @@ block allows you to replace the content of the page if needed #} {%- block conte
                         action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %} {% endif %}
                         </div>
                     {% endif %}
-                    {% block search_title %}
-                        {% if not no_title %}
-                            {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
-                            <h2>{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
-                        {% endif %}
-                        {% if h.check_access('package_create') %}
-                            <div class="page_primary_action page_primary_action-after-979">
-                            {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %} {% if h.check_access('sysadmin') %} {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController',
-                            action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %} {% endif %}
-                            </div>
-                        {% endif %}
-                    <div class="seed-filter-title seed-filter-title-mobile-desktop1199">
-                        {% if rm_facets['got_active'] == True %}
-                        <a href="{{ rm_facets['path'] }}{% if rm_facets['query'] %}?{% endif %}{{ rm_facets['query'] }}" class="seed-facetsq-remove"><span class="icon-remove seed-remove-all-facets-icon"></span></a> {% endif %}
-                        <span>
-                        <i class="icon-list" alt="Filter datasets- icon"></i>
-                      </span>Filters
-                    </div>
-                    <div class="filters seed-filters-collapsing filters-mobile-desktop1199">
-                            {% for facet in c.facet_titles %} {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, prefix_name="mobile") }} {% endfor %}
-                        <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
-                    </div>
-                    {% endblock %}
                     <div class="seed-selections-box">
                         <div class="checkbox-datasets">
                             <input type="checkbox" class="all-datasets-checkbox datasets-not-checked" id="all-datasets-checkbox" name="" />
@@ -157,6 +134,29 @@ block allows you to replace the content of the page if needed #} {%- block conte
                             </div>
                         </div>
                     </div>
+                    {% block search_title %}
+                        {% if not no_title %}
+                            {% set rm_facets = h.seed_all_facets_remove(c.facet_titles) %}
+                            <h2>{% snippet 'snippets/search_result_text.html', query=c.q, count=c.page.item_count, type='dataset' %}</h2>
+                        {% endif %}
+                        {% if h.check_access('package_create') %}
+                            <div class="page_primary_action page_primary_action-after-979">
+                            {% link_for _('Add Dataset'), controller='package', action='new', class_='btn btn-primary seed-add-dataset', icon='plus-sign-alt' %} {% if h.check_access('sysadmin') %} {% link_for _('Download as CSV'), controller='ckanext.seedplugin.controller:SEEDController',
+                            action='download_results', class_='btn btn-primary seed-download-results', icon='plus-sign-alt', params=request.params %} {% endif %}
+                            </div>
+                        {% endif %}
+                    <div class="seed-filter-title seed-filter-title-mobile-desktop1199">
+                        {% if rm_facets['got_active'] == True %}
+                        <a href="{{ rm_facets['path'] }}{% if rm_facets['query'] %}?{% endif %}{{ rm_facets['query'] }}" class="seed-facetsq-remove"><span class="icon-remove seed-remove-all-facets-icon"></span></a> {% endif %}
+                        <span>
+                        <i class="icon-list" alt="Filter datasets- icon"></i>
+                      </span>Filters
+                    </div>
+                    <div class="filters seed-filters-collapsing filters-mobile-desktop1199">
+                            {% for facet in c.facet_titles %} {{ h.snippet('snippets/facet_list.html', title=c.facet_titles[facet], name=facet, prefix_name="mobile") }} {% endfor %}
+                        <a class="close no-text hide-filters"><i class="icon-remove-sign"></i><span class="text">close</span></a>
+                    </div>
+                    {% endblock %}
                 </div>
             </div>
             <div class="primary span9 seed-main-block">
