@@ -3833,6 +3833,44 @@ section.module.module-narrow.dataset-map .module-heading {
     width: 100%;
   }
 }
+@media (max-width: 767px) {
+  .seed-dataset-read {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .seed-org-read {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .seed-org-read #content.container .seed-org-info-button {
+    margin-right: 0;
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .seed-org-read #content.container .toolbar {
+    margin-left: 0;
+  }
+  .seed-org-read #content.container .wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .seed-dataset-resources {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .seed-dataset-resources #content.container .wrapper .module-resource .module-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .seed-dataset-resources #content.container .wrapper .module-resource .module-content .actions {
+    right: 0;
+  }
+  .seed-dataset-resources #content.container .wrapper .primary.span9 .module .module-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 @media (min-width: 1280px) and (max-width: 1499px) {
   .seed-orgs-page .container {
     width: 854px;
