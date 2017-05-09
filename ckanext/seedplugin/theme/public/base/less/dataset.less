@@ -1435,15 +1435,38 @@
     }
 }
 
-#content .wrapper.no-nav {
-    .dataset-resources {
-        p {
-            font-size: 11.844px;
+#content {
+    .toolbar {
+        margin-bottom: 6px;
+        padding: 10px 0;
+        .breadcrumb {
+            font-size: 15px;
+            .home {
+                a {
+                    i {
+                        font-size: 18px;
+                    }
+                }
+            }
         }
     }
-    p {
-        font-size: 15px;
+    .wrapper {
+        .module-content {
+            h1 {
+                color: #525e74;
+            }
+        }
     }
+    .wrapper.no-nav {
+        .dataset-resources {
+            p {
+                font-size: 11.844px;
+            }
+        }
+        p {
+            font-size: 15px;
+        }
+    }    
 }
 
 @media (max-width: @mobile-top) {
@@ -1486,6 +1509,15 @@
             float: left;
         }
     }
+    .wrapper [class*="span"] {
+        float: left;
+    }
+    .stages li .highlight {
+        text-indent: 0;
+    }
+    .actions li {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: @mobile-top + 1px) {
@@ -1502,20 +1534,6 @@
         }
     }
     #content {
-        .toolbar {
-            margin-bottom: 6px;
-            // padding: 10px 0;
-            .breadcrumb {
-                font-size: 15px;
-                .home {
-                    a {
-                        i {
-                            font-size: 18px;
-                        }
-                    }
-                }
-            }
-        }
         background-color: #fff;
         border: 1px solid @seedDatePickerbtn;
         box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
