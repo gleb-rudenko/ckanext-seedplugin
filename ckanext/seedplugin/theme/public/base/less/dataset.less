@@ -1431,15 +1431,38 @@
     }
 }
 
-#content .wrapper.no-nav {
-    .dataset-resources {
-        p {
-            font-size: 11.844px;
+#content {
+    .toolbar {
+        margin-bottom: 6px;
+        padding: 10px 0;
+        .breadcrumb {
+            font-size: 15px;
+            .home {
+                a {
+                    i {
+                        font-size: 18px;
+                    }
+                }
+            }
         }
     }
-    p {
-        font-size: 15px;
+    .wrapper {
+        .module-content {
+            h1 {
+                color: #525e74;
+            }
+        }
     }
+    .wrapper.no-nav {
+        .dataset-resources {
+            p {
+                font-size: 11.844px;
+            }
+        }
+        p {
+            font-size: 15px;
+        }
+    }    
 }
 
 @media (max-width: @mobile-top) {
@@ -1482,6 +1505,15 @@
             float: left;
         }
     }
+    .wrapper [class*="span"] {
+        float: left;
+    }
+    .stages li .highlight {
+        text-indent: 0;
+    }
+    .actions li {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: @mobile-top + 1px) {
@@ -1498,20 +1530,6 @@
         }
     }
     #content {
-        .toolbar {
-            margin-bottom: 6px;
-            padding: 10px 0;
-            .breadcrumb {
-                font-size: 15px;
-                .home {
-                    a {
-                        i {
-                            font-size: 18px;
-                        }
-                    }
-                }
-            }
-        }
         background-color: #fff;
         border: 1px solid @seedDatePickerbtn;
         box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
@@ -1593,62 +1611,6 @@
 }
 
 @media (max-width: @tablet-top) {
-    .seed-dataset-read {
-        margin-left: -20px;
-        margin-right: -20px;
-    }
-    .seed-org-read {
-        margin-left: -10px;
-        margin-right: -10px;
-        #content.container {
-            .seed-org-info-button {
-                margin-right: 0;
-                float: left;
-                margin-top: 10px;
-                margin-bottom: 15px;
-            }
-            .toolbar {
-                margin-left: 0;
-            }
-            .wrapper {
-                margin-left: 0;
-                margin-right: 0;
-                .primary.span9 {
-                    .module {
-                        .module-content {
-                            // padding-left: 10px;
-                            // padding-right: 10px;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .seed-dataset-resources {
-        margin-left: -10px;
-        margin-right: -10px;
-        #content.container {
-            .wrapper {
-                .module-resource {
-                    .module-content {
-                        padding-left: 20px;
-                        padding-right: 20px;
-                        .actions {
-                            right: 0;
-                        }
-                    }
-                }
-                .primary.span9 {
-                    .module {
-                        .module-content {
-                            padding-left: 20px;
-                            padding-right: 20px;
-                        }
-                    }
-                }
-            }
-        }
-    }
     .seed-facet-list-button {
         display: none;
     }
@@ -2082,13 +2044,14 @@
         width: 100%;
     }
     .seed-main-content-block {
+        padding-left: 10px;
+        padding-right: 10px;
         box-shadow: none;
         .span9.seed-main-block {
             .seed-module-content {
-                margin-right: 5px;
-                margin-left: 5px;
                 padding-left: 10px;
                 padding-right: 10px;
+                margin-right: 0;
                 .search-form {
                     .seed-additional-filters {
                         text-align: left;
@@ -2132,8 +2095,6 @@
             }
         }
         .span11.seed-search-second-block {
-            padding-left: 30px;
-            padding-right: 30px;
             .seed-search-filters {
                 select,
                 input {
@@ -2177,6 +2138,23 @@
             }
         }
     }
+    .seed-datasets {
+        #content.container {
+            .seed-main-content-block {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .span12.seed-search-main-block {
+                .seed-search-second-block {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                .seed-search-block-new {
+                    padding: 10px 25px 0px;
+                }
+            }
+        }
+    }
 }
 
 @media (min-width: @mobile-min) and (max-width: @mobile480) {
@@ -2207,8 +2185,8 @@
     }
   }
   .span12.seed-search-main-block-second {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
     .span11.seed-search-main-block-third {
       padding-left: 0;
       padding-right: 0;
@@ -2590,8 +2568,6 @@
             margin-bottom: 0;
             padding-top: 10px;
             padding-bottom: 9px;
-            margin-left: 10px;
-            margin-right: 10px;
             .breadcrumb {
                 font-size: 15px;
                 .home {
@@ -2713,7 +2689,7 @@
     border-radius: 3px;
     font-size: 13px;
     margin-top: 6px;
-    margin-right: 10px;
+    // margin-right: 10px;
     &:hover {
         background-color: @seedBlack;
         border-color: @seedBlackBorder;
@@ -2851,6 +2827,72 @@
             }
             .toolbar {
                 width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: @mobile-top) {
+    .seed-dataset-read {
+        margin-left: -20px;
+        margin-right: -20px;
+        #content.container {
+            .toolbar {
+                .breadcrumb {
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+    .seed-org-read {
+        margin-left: -10px;
+        margin-right: -10px;
+        #content.container {
+            .seed-org-info-button {
+                margin-right: 0;
+                float: none;
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            .toolbar {
+                margin-left: 0;
+            }
+            .wrapper {
+                margin-left: 0;
+                margin-right: 0;
+                .primary.span9 {
+                    .module {
+                        .module-content {
+                            // padding-left: 10px;
+                            // padding-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .seed-dataset-resources {
+        margin-left: -10px;
+        margin-right: -10px;
+        #content.container {
+            .wrapper {
+                .module-resource {
+                    .module-content {
+                        padding-left: 20px;
+                        padding-right: 20px;
+                        .actions {
+                            right: 0;
+                        }
+                    }
+                }
+                .primary.span9 {
+                    .module {
+                        .module-content {
+                            padding-left: 20px;
+                            padding-right: 20px;
+                        }
+                    }
+                }
             }
         }
     }
