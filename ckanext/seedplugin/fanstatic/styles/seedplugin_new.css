@@ -3852,12 +3852,17 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-dataset-resources .primary.span9 {
     float: none;
   }
-  .seed-dataset-read .container .seed-dataset-info-button {
+  .seed-dataset-read #content.container .seed-dataset-info-button {
     float: none;
     margin-left: 10px;
   }
-  .seed-dataset-read .container .toolbar {
+  .seed-dataset-read #content.container .toolbar {
+    margin-left: 0;
+    margin-right: 0;
     width: 100%;
+  }
+  .seed-dataset-read #content.container .toolbar .breadcrumb {
+    padding-left: 10px;
   }
 }
 @media (min-width: 1280px) and (max-width: 1499px) {
