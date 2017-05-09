@@ -612,6 +612,7 @@ footer > * {
   }
   .navbar.masthead .container .header-image a.logo.pull-left {
     margin-top: 0;
+    padding-left: 25px;
   }
   .navbar.masthead .container .header-image a.logo.pull-left img {
     height: 55px;
@@ -2949,42 +2950,6 @@ section.module.module-narrow.dataset-map .module-heading {
   }
 }
 @media (max-width: 979px) {
-  .seed-dataset-read {
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-  .seed-org-read {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  .seed-org-read #content.container .seed-org-info-button {
-    margin-right: 0;
-    float: left;
-    margin-top: 10px;
-    margin-bottom: 15px;
-  }
-  .seed-org-read #content.container .toolbar {
-    margin-left: 0;
-  }
-  .seed-org-read #content.container .wrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .seed-dataset-resources {
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-  .seed-dataset-resources #content.container .wrapper .module-resource .module-content {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-  .seed-dataset-resources #content.container .wrapper .module-resource .module-content .actions {
-    right: 0;
-  }
-  .seed-dataset-resources #content.container .wrapper .primary.span9 .module .module-content {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
   .seed-facet-list-button {
     display: none;
   }
@@ -3328,13 +3293,14 @@ section.module.module-narrow.dataset-map .module-heading {
     width: 100%;
   }
   .seed-main-content-block {
+    padding-left: 10px;
+    padding-right: 10px;
     box-shadow: none;
   }
   .seed-main-content-block .span9.seed-main-block .seed-module-content {
-    margin-right: 5px;
-    margin-left: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-right: 0;
   }
   .seed-main-content-block .span9.seed-main-block .seed-module-content .search-form .seed-additional-filters {
     text-align: left;
@@ -3368,10 +3334,6 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-main-content-block .span9.seed-main-block .seed-module-content .seed-accordion .seed-dataset-items .seed-dataset div {
     margin-top: 15px;
   }
-  .seed-main-content-block .span11.seed-search-second-block {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
   .seed-main-content-block .span11.seed-search-second-block .seed-search-filters select,
   .seed-main-content-block .span11.seed-search-second-block .seed-search-filters input {
     margin-left: 0;
@@ -3401,6 +3363,17 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-search-main-block .seed-search-second-block.seed-filters-block.seed-search-block-new .seed-dataset-search-form .seed-search-filters label.datepicker-button {
     right: 0;
   }
+  .seed-datasets #content.container .seed-main-content-block {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .seed-datasets #content.container .span12.seed-search-main-block .seed-search-second-block {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .seed-datasets #content.container .span12.seed-search-main-block .seed-search-block-new {
+    padding: 10px 25px 0px;
+  }
 }
 @media (min-width: 320px) and (max-width: 480px) {
   .span12.seed-search-main-block .span11.seed-search-second-block.seed-filters-block.seed-search-block-new .seed-dataset-search-form .seed-search-input {
@@ -3419,8 +3392,8 @@ section.module.module-narrow.dataset-map .module-heading {
     display: inline-block;
   }
   .span12.seed-search-main-block-second {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
   .span12.seed-search-main-block-second .span11.seed-search-main-block-third {
     padding-left: 0;
@@ -3690,8 +3663,6 @@ section.module.module-narrow.dataset-map .module-heading {
   margin-bottom: 0;
   padding-top: 10px;
   padding-bottom: 9px;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 .seed-dataset-read #content.container .toolbar .breadcrumb {
   font-size: 15px;
@@ -3786,7 +3757,6 @@ section.module.module-narrow.dataset-map .module-heading {
   border-radius: 3px;
   font-size: 13px;
   margin-top: 6px;
-  margin-right: 10px;
 }
 .seed-org-info-button:hover,
 .seed-dataset-info-button:hover {
@@ -3864,17 +3834,53 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-dataset-resources .primary.span9 {
     float: none;
   }
-  .seed-dataset-read #content.container .seed-dataset-info-button {
+  .seed-dataset-read .container .seed-dataset-info-button {
     float: none;
     margin-left: 10px;
   }
-  .seed-dataset-read #content.container .toolbar {
-    margin-left: 0;
-    margin-right: 0;
+  .seed-dataset-read .container .toolbar {
     width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .seed-dataset-read {
+    margin-left: -20px;
+    margin-right: -20px;
   }
   .seed-dataset-read #content.container .toolbar .breadcrumb {
     padding-left: 10px;
+  }
+  .seed-org-read {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .seed-org-read #content.container .seed-org-info-button {
+    margin-right: 0;
+    float: none;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+  .seed-org-read #content.container .toolbar {
+    margin-left: 0;
+  }
+  .seed-org-read #content.container .wrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .seed-dataset-resources {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .seed-dataset-resources #content.container .wrapper .module-resource .module-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .seed-dataset-resources #content.container .wrapper .module-resource .module-content .actions {
+    right: 0;
+  }
+  .seed-dataset-resources #content.container .wrapper .primary.span9 .module .module-content {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }
 @media (min-width: 1280px) and (max-width: 1499px) {
@@ -3917,9 +3923,6 @@ section.module.module-narrow.dataset-map .module-heading {
 }
 .seed-org-read .container {
   background-color: #fff;
-}
-.seed-org-read .container .toolbar {
-  margin-left: 10px;
 }
 @media (min-width: 768px) {
   .seed-org-read .container .wrapper {
