@@ -3351,15 +3351,15 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-search-main-block .seed-search-second-block.seed-filters-block.seed-search-block-new .seed-dataset-search-form .seed-search-filters label.datepicker-button {
     right: 0;
   }
-  .seed-datasets .seed-main-content-block {
+  .seed-datasets #content.container .seed-main-content-block {
     padding-left: 10px;
     padding-right: 10px;
   }
-  .seed-datasets .span12.seed-search-main-block .seed-search-second-block {
+  .seed-datasets #content.container .span12.seed-search-main-block .seed-search-second-block {
     padding-left: 0;
     padding-right: 0;
   }
-  .seed-datasets .span12.seed-search-main-block .seed-search-block-new {
+  .seed-datasets #content.container .span12.seed-search-main-block .seed-search-block-new {
     padding: 10px 25px 0px;
   }
 }
