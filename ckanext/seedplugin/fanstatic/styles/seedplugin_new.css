@@ -3287,6 +3287,9 @@ section.module.module-narrow.dataset-map .module-heading {
     display: block;
     margin-bottom: 5px;
   }
+  .seed-datasets .wrapper.seed-main-content-block .seed-selections-box {
+    width: 292px;
+  }
 }
 @media (min-width: 320px) and (max-width: 767px) {
   [role=main] .primary.seed-main-block {
@@ -3868,6 +3871,16 @@ section.module.module-narrow.dataset-map .module-heading {
   .seed-dataset-resources #content.container .wrapper .primary.span9 .module .module-content {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .seed-datasets {
+    margin-left: -20px;
+    margin-right: -20px;
+  }
+  .seed-datasets #content.container .wrapper.seed-main-content-block {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 @media (min-width: 1280px) and (max-width: 1499px) {
