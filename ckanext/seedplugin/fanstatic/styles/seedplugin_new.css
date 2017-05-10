@@ -3854,20 +3854,22 @@ section.module.module-narrow.dataset-map .module-heading {
     margin-left: 0;
     margin-right: 0;
   }
-  .seed-dataset-resources {
+  .seed-dataset-resources #content.container .toolbar {
+    width: 100%;
+  }
+  .seed-dataset-resources #content.container .toolbar .breadcrumb {
     margin-left: -10px;
-    margin-right: -10px;
   }
   .seed-dataset-resources #content.container .wrapper .module-resource .module-content {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   .seed-dataset-resources #content.container .wrapper .module-resource .module-content .actions {
     right: 0;
   }
   .seed-dataset-resources #content.container .wrapper .primary.span9 .module .module-content {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 @media (min-width: 1280px) and (max-width: 1499px) {
