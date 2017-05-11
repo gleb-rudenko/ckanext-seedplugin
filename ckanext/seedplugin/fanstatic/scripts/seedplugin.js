@@ -96,8 +96,8 @@ $( function() {
   $( ".view-map-checkbox" ).on( "click", countChecked );
 
   $('.all-datasets-checkbox ').on('change', function(){
-    if($('.all-datasets-checkbox ').hasClass('datasets-not-checked')){
-      $( ".view-map-checkbox:checked" ).prop('checked', false);
+    if(!$('#all-datasets-checkbox').prop('checked')) {
+      $( "input[type='checkbox'].view-map-checkbox" ).prop('checked', false);
       var inputs = $( ".view-map-checkbox:checked" );
       var n = inputs.length;
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
@@ -108,7 +108,7 @@ $( function() {
      //}
     }
     else {
-      $( ".view-map-checkbox:checked" ).prop('checked', true);
+      $( "input[type='checkbox'].view-map-checkbox" ).prop('checked', true);
       var inputs = $( ".view-map-checkbox:checked" );
       var n = inputs.length;
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');

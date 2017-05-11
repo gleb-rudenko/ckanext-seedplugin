@@ -2,11 +2,12 @@
 
 
 {% block styles %}
-    {% resource g.main_css[6:] %}
+	{{ super() }}
     {% resource 'seedplugin/styles' %}
 {% endblock %}
 
 
 {% block scripts %}
+	{{ super() }}
     {% resource 'seedplugin/scripts' %}
 {% endblock %}
