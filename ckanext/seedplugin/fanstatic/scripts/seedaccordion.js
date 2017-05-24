@@ -32,16 +32,16 @@ function change_expand_collapse_btns() {
         return;
     }
     if (get_selected_expand_datasets().length == 0) {
-        $(collapse_selected).attr('disabled', true).addClass('seed-disable');
+        $(collapse_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Select to make available');
     } else {
         // $('.checkbox-datasets span').text('Deselect all');
-        $(collapse_selected).attr('disabled', false).removeClass('seed-disable');
+        $(collapse_selected).attr('disabled', false).removeClass('seed-disable').attr('title', 'Collapse selection');
     }
     if (get_selected_collapse_datasets().length == 0) {
-        $(expand_selected).attr('disabled', true).addClass('seed-disable');
+        $(expand_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Select to make available');
     } else {
         // $('.checkbox-datasets span').text('Deselect all');
-        $(expand_selected).attr('disabled', false).removeClass('seed-disable');
+        $(expand_selected).attr('disabled', false).removeClass('seed-disable').attr('title', 'Expand selection');
     }
 }
 

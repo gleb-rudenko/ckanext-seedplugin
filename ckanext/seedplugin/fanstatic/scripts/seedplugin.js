@@ -35,13 +35,17 @@ $( function() {
 
   var countChecked = function() {
     var inputs = $( ".view-map-checkbox:checked" );
+    var map_datasets = $('.seed-view-on-map-datasets');
+    var view_on_map = $('.seed-view-on-map-all');
+    var expend_button =  $('.seed-datasets-expand-checked');
+    var collapse_button =  $('.seed-datasets-collapse-checked');
     var n = inputs.length;
     $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
     if (n > 0) {
       $('.seed-view-on-map-count').css('opacity', '1');
     };
     if (n > 0) {
-      $('.seed-view-on-map-options').show();
+      // $('.seed-view-on-map-options').show();
       //if ($(window).width() < 979) {
           $('.seed-filter-title-mobile-desktop1199').addClass('seed-filter-title-mobile-320-979');
           $('.seed-selections-box').addClass('seed-selections-box-320-979');
@@ -60,14 +64,19 @@ $( function() {
         paths = paths.substring(1);
         main_link = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='
         main_link = main_link + paths;
-        $('.seed-view-on-map-all').removeClass('seed-disabled');
-        $('.seed-view-on-map-all').attr('href', main_link);
+        view_on_map.removeClass('seed-disabled');
+        view_on_map.attr('href', main_link);
+        view_on_map.attr('title', 'Show selected Dataset on Map');
         $('.seed-view-on-map-count').append('<span title="Number of datasets with View on Map url."> ('+ n_datasets_wom +')</span>')
+        map_datasets.attr('href');
+        map_datasets.attr('data-toggle', 'dropdown');
+        map_datasets.removeClass('seed-disabled');
+        map_datasets.attr('title', 'View selection list');
       }
       else {
         if(!$('.seed-view-on-map-all').hasClass('seed-disabled')){
-          $('.seed-view-on-map-all').removeAttr('href');
-          $('.seed-view-on-map-all').addClass('seed-disabled');
+          view_on_map.removeAttr('href').addClass('seed-disabled').attr('title', 'Select an item with View on Map to make available');
+          map_datasets.removeAttr('href').removeAttr('data-toggle').addClass('seed-disabled').attr('title', 'Select to make available');
         }
       }
       var titles = $('.view-map-checkbox:checked').map(function () {
@@ -80,14 +89,27 @@ $( function() {
 
     }
     else {
-      $('.seed-view-on-map-all').removeAttr('href');
-      $('.seed-view-on-map-all').addClass('seed-disabled');
-      $('.seed-view-on-map-options').hide();
+      view_on_map.removeAttr('href').addClass('seed-disabled').attr('title', 'Select an item with View on Map to make available');
+      map_datasets.removeAttr('href').removeAttr('data-toggle').addClass('seed-disabled').attr('title', 'Select to make available');
+      // $('.seed-view-on-map-options').hide();
       //if ($(window).width() < 979) {
           $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
           $('.seed-selections-box').removeClass('seed-selections-box-320-979');
       //}
       $(".all-datasets-checkbox").removeClass('dataset-plus').removeClass('checked_minus').addClass('datasets-not-checked');
+    };
+
+    if(expend_button.hasClass('seed-disable')){
+      expend_button.attr('title', 'Select to make available');
+    }
+    else {
+      expend_button.attr('title', 'Expand selection');
+    };
+    if(collapse_button.hasClass('seed-disable')){
+      collapse_button.attr('title', 'Select to make available');
+    }
+    else {
+      collapse_button.attr('title', 'Collapse selection');
     };
 
   };
@@ -101,10 +123,11 @@ $( function() {
       var inputs = $( ".view-map-checkbox:checked" );
       var n = inputs.length;
       $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
-      $('.seed-view-on-map-options').hide();
+      // $('.seed-view-on-map-options').hide();
       //if ($(window).width() < 979) {
       $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
       $('.seed-selections-box').removeClass('seed-selections-box-320-979');
+       countChecked();
      //}
     }
     else {

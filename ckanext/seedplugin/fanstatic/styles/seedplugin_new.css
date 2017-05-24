@@ -2272,7 +2272,8 @@ section.module.module-narrow.dataset-map .module-heading {
   color: #fff;
   padding: 11.5px 16px;
 }
-.module-content .pagination ul li a:hover {
+.module-content .pagination ul li a:hover,
+.module-content .pagination ul li a:focus {
   background-color: #1a63e8;
 }
 .module-content .pagination ul li.active a {
@@ -2347,7 +2348,6 @@ section.module.module-narrow.dataset-map .module-heading {
   border-left: 0;
 }
 .seed-main-content-block .seed-search-main-block-third .seed-view-on-map-options {
-  display: none;
   display: block;
   margin: 5px 0;
 }
@@ -2379,11 +2379,13 @@ section.module.module-narrow.dataset-map .module-heading {
 .seed-selections-box .seed-view-on-map-datasets span {
   margin-right: 0;
 }
-.seed-view-on-map-all.seed-disabled {
+.seed-view-on-map-all.seed-disabled,
+.seed-view-on-map-datasets.seed-disabled {
   cursor: default;
   opacity: 0.65;
 }
-.seed-view-on-map-all.seed-disabled:hover {
+.seed-view-on-map-all.seed-disabled:hover,
+.seed-view-on-map-datasets.seed-disabled:hover {
   cursor: default;
   opacity: 0.65;
   background-color: #b72fe8;
