@@ -8,8 +8,8 @@
 {% endblock %}
 
 
-{% if "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_id %}
-    {% set mapurl="http://"+(request.url.split("/")[2]|replace("ckan", "geo")|replace("datasets", "geo"))+"/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url="+(c.pkg_dict.map_type)+":map_service_id="+(c.pkg_dict.map_service_id|replace("&", "+"))+";layer_id="+(c.pkg_dict.layer_id|replace("&", "+")) -%}
+{% if "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_list_name %}
+    {% set mapurl="http://"+(request.url.split("/")[2]|replace("ckan", "geo")|replace("datasets", "geo"))+"/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url="+(c.pkg_dict.map_type)+":map_service_id="+(c.pkg_dict.map_service_id|replace("&", "+"))+";layer_id="+(c.pkg_dict.layer_list_name|replace("&", "+")) -%}
 {% else %}
     {% set mapurl="#" %}
     {% set display_map_text = "" %}
@@ -77,14 +77,14 @@
        <a type="button" class="" data-toggle="modal" data-target="{{"#"+res.position|string }}"><i class="icon-download"></i>
             {{ _('Go To')+' '+res.format }}</a>
        {# only display link if resource is seed web map and is properly configured#}
-       {% elif "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_id %}
+       {% elif "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_list_name %}
        <a href ="{{ mapurl }}" class="resource-url-analytics">
          <i class="icon-external-link"></i>
             {{ _('Go To')+' '+res.format }}
        </a>
        {# if SEED Web Map is not properly configured #}
        {% elif ("SEED Web Map" in res.format and c.pkg_dict.map_type=="") or ("SEED Web Map" in res.format and c.pkg_dict.map_service_id=="") or
-       ("SEED Web Map" in res.format and c.pkg_dict.layer_id=="") %}
+       ("SEED Web Map" in res.format and c.pkg_dict.layer_list_name=="") %}
        {# else open in new tab without popup - metadata not in same domain #}
        {% elif SEEDdomain not in res.url %}
        <a href ="javaScript:void(0)" onclick="window.open({{ "'"+res.url|string+"'"}}, ''); return false"  class="resource-url-analytics">
