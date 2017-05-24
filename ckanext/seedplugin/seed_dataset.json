@@ -181,10 +181,16 @@
       "form_snippet": "text.html"
     },
     {
-      "field_name": "layer_id",
-      "label": "Layer ID",
-      "form_placeholder" : "the corresponding layer ID from geocortex, compulsory for Geoserver WMS layers",
+      "field_name": "layer_list_name",
+      "label": "Layer List Name",
+      "form_placeholder" : "the corresponding layer name from geocortex, compulsory for Geoserver WMS layers",
       "form_snippet": "text.html"
+    },
+    {
+      "field_name": "layer_catalog_name",
+      "label": "Layer Catalog Name",
+      "form_placeholder" : "",
+      "form_snippet": "seed-text.html"
     },
     {
       "field_name": "map_type",

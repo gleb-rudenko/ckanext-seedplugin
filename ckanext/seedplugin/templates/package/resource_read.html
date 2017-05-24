@@ -7,11 +7,11 @@
 {% set res = c.resource %}
 {% set exclude_formats = ['SEED Web Map', 'seed web map', 'PDF', 'pdf', 'DOC', 'doc', 'HTML', 'html', 'URL', 'url', 'TXT', 'txt', 'TEXT', 'text'] %}
 
-{% if "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_id %}
-    {% set mapurl="http://"+(request.url.split("/")[2]|replace("ckan", "geo")|replace("datasets", "geo"))+"/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url="+(c.pkg_dict.map_type)+":map_service_id="+(c.pkg_dict.map_service_id|replace("&", "+"))+";layer_id="+(c.pkg_dict.layer_id|replace("&", "+")) -%}
+{% if "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_list_name %}
+    {% set mapurl="http://"+(request.url.split("/")[2]|replace("ckan", "geo")|replace("datasets", "geo"))+"/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url="+(c.pkg_dict.map_type)+":map_service_id="+(c.pkg_dict.map_service_id|replace("&", "+"))+";layer_id="+(c.pkg_dict.layer_list_name|replace("&", "+")) -%}
     {% set displayurl=mapurl %}
 {% elif ("SEED Web Map" in res.format and c.pkg_dict.map_type=="") or ("SEED Web Map" in res.format and c.pkg_dict.map_service_id)
-    or ( "SEED Web Map" in res.format and c.pkg_dict.layer_id) %}
+    or ( "SEED Web Map" in res.format and c.pkg_dict.layer_list_name) %}
     {% set mapurl="#" %}
     {% set displayurl="This resource has not been configured on SEED Web Map. Please contact the Data Custodian for more information" %}
 {% endif %}
@@ -203,5 +203,5 @@
             </section>
         {% endblock %}
     {% endif %}
-    
+
 {% endblock %}
