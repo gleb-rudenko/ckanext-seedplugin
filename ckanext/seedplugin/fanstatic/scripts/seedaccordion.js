@@ -108,6 +108,7 @@ jQuery(document).ready(function () {
                 $(all_checkbox).prop('checked', false);
             }
             $(all_checkbox).removeClass('checked_minus');
+            sessionStorage.clear();
 
         }
         change_expand_collapse_btns();
