@@ -4152,3 +4152,7 @@ section.module.module-narrow.dataset-map .module-heading {
     margin: 0 auto;
   }
 }
+.tertiary .seed-facet-list-button {
+  top: 4px;
+  right: 10px;
+}
