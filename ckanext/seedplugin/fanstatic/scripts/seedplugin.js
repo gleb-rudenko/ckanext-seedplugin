@@ -77,12 +77,14 @@ $( function() {
     var expend_button =  $('.seed-datasets-expand-checked');
     var collapse_button =  $('.seed-datasets-collapse-checked');
     var n = inputs.length;
-    
+
     $('.seed-view-on-map-count').text( n + ' datasets in selection').css('opacity', '0.6');
     if (n > 0) {
       $('.seed-view-on-map-count').css('opacity', '1');
-    };
-    if (n > 0) {
+      map_datasets.attr('href');
+      map_datasets.attr('data-toggle', 'dropdown');
+      map_datasets.removeClass('seed-disabled');
+      map_datasets.attr('title', 'View selection list');
       // $('.seed-view-on-map-options').show();
       //if ($(window).width() < 979) {
           $('.seed-filter-title-mobile-desktop1199').addClass('seed-filter-title-mobile-320-979');
