@@ -27,13 +27,13 @@
                 </a>
             </div>
             {% block view_add_selection %}
-              {% if package.map_type and package.map_service_id and package.layer_list_name %}
-                {% set view_on_map="/"+package.map_type+":map_service_id="+(package.map_service_id|replace("&", "+"))+";layer_id="+(package.layer_list_name|replace("&", "+")) %}
+              {% if package.map_type and package.map_service_id and package.layer_list_name and package.layer_catalog_name %}
+                {% set view_on_map='http://geo.dev.edptest.info/EDP_DEV_Viewer/Index.html?viewer=EDP_DEV_Viewer&locale=en-AU&runWorkflow=AppendLayerCatalog&CatalogLayer=' + package.layer_catalog_name +'.' + package.map_service_id + '.' + package.layer_list_name|replace(' ', '%20') +'&MapServiceID='+ package.map_service_id + '&LayerListName=' + package.layer_list_name|replace(' ', '%20') %}
               {% else %}
                 {% set view_on_map='' %}
               {% endif %}
                 <div class="checkbox-dataset">
-                  <input type="checkbox" id='{{ package.id }}' value="{{counter}}" class="view-map-checkbox" name='view-on-map' data-link="{{ view_on_map }}" data-title="{{ package.title }}" data-name="{{ package.name }}"></input>
+                  <input type="checkbox" id='{{ package.id }}' value="{{counter}}" class="view-map-checkbox" name='view-on-map' {% if view_on_map %} data-mapservice="{{ package.map_service_id }}" data-listname="{{ package.layer_list_name }}" data-catalogname="{{ package.layer_catalog_name }}" {% endif %} data-title="{{ package.title }}" data-name="{{ package.name }}"></input>
                   <label for="{{ package.id }}" class="view-on-map-label">Add to selection</label>
                 </div>
             {% endblock %}

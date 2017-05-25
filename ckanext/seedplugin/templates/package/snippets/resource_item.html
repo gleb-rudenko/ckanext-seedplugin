@@ -8,8 +8,8 @@
 {% endblock %}
 
 
-{% if "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_list_name %}
-    {% set mapurl="http://"+(request.url.split("/")[2]|replace("ckan", "geo")|replace("datasets", "geo"))+"/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url="+(c.pkg_dict.map_type)+":map_service_id="+(c.pkg_dict.map_service_id|replace("&", "+"))+";layer_id="+(c.pkg_dict.layer_list_name|replace("&", "+")) -%}
+{% if "SEED Web Map" in res.format and c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_list_name and c.pkg_dict.layer_catalog_name %}
+    {% set mapurl='http://geo.dev.edptest.info/EDP_DEV_Viewer/Index.html?viewer=EDP_DEV_Viewer&locale=en-AU&runWorkflow=AppendLayerCatalog&CatalogLayer=' + c.pkg_dict.layer_catalog_name +'.' + c.pkg_dict.map_service_id + '.' + c.pkg_dict.layer_list_name|replace(' ', '%20') +'&MapServiceID='+ c.pkg_dict.map_service_id + '&LayerListName=' + c.pkg_dict.layer_list_name|replace(' ', '%20') -%}
 {% else %}
     {% set mapurl="#" %}
     {% set display_map_text = "" %}

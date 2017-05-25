@@ -256,8 +256,9 @@ class SeedpluginPlugin(plugins.SingletonPlugin):
     def before_show(self, resource_dict):
         pkg = model.Package.get(resource_dict['package_id'])
         seedwebmap = 'SEED Web Map'
-        if resource_dict['format'].lower() == seedwebmap.lower() and 'map_type' in pkg.extras:
-            resource_dict['url'] = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='+pkg.extras['map_type']+":map_service_id="+pkg.extras['map_service_id'].replace("&","+")+";layer_id="+pkg.extras['layer_list_name'].replace("&","+")
+        if resource_dict['format'].lower() == seedwebmap.lower() and 'map_type' in pkg.extras and 'layer_list_name' in pkg.extras and 'layer_catalog_name' in pkg.extras and 'map_service_id' in pkg.extras:
+            # resource_dict['url'] = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='+pkg.extras['map_type']+":map_service_id="+pkg.extras['map_service_id'].replace("&","+")+";layer_id="+pkg.extras['layer_list_name'].replace("&","+")
+            resource_dict['url'] = 'http://geo.dev.edptest.info/EDP_DEV_Viewer/Index.html?viewer=EDP_DEV_Viewer&locale=en-AU&runWorkflow=AppendLayerCatalog&CatalogLayer=' + pkg.extras['layer_catalog_name'] +'.' + pkg.extras['map_service_id'] + '.' + pkg.extras['layer_list_name'].replace(' ', '%20') +'&MapServiceID='+ pkg.extras['map_service_id'] + '&LayerListName=' + pkg.extras['layer_list_name'].replace(' ', '%20')
         return resource_dict
 
     def before_search(self, search_params):
