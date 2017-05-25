@@ -91,17 +91,37 @@ $( function() {
     //       $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
     //       $('.seed-selections-box').removeClass('seed-selections-box-320-979');
     //   }
-      var paths = $('.view-map-checkbox:checked').map(function () {
-        if($(this).data('link') != '') {
-          return $(this).data('link');
+      var map_service_id = $('.view-map-checkbox:checked').map(function () {
+        if($(this).data('mapservice') != '') {
+          return $(this).data('mapservice');
         };
       }).get();
-      if (paths.length > 0) {
-        n_datasets_wom = paths.filter(String).length
-        paths = paths.join('');
-        paths = paths.substring(1);
-        main_link = 'https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url='
-        main_link = main_link + paths;
+      var layer_list_name = $('.view-map-checkbox:checked').map(function () {
+        if($(this).data('listname') != '') {
+          return $(this).data('listname');
+        };
+      }).get();
+      var layer_catalog_name = $('.view-map-checkbox:checked').map(function () {
+        if($(this).data('catalogname') != '') {
+          return $(this).data('catalogname');
+        };
+      }).get();
+      if (map_service_id.length > 0 && layer_list_name.length > 0 && layer_catalog_name.length > 0) {
+        n_datasets_wom = map_service_id.filter(String).length
+        var all_fields = [];
+        var layer_list_name_all = []
+        for (var i = 0; i < n_datasets_wom; i++) {
+          all_fields.push([layer_catalog_name[i], map_service_id[i],layer_list_name[i]])
+        }
+        var cataloglayer = all_fields.map(function(item){
+          return item.join('.');
+        });
+        cataloglayer = cataloglayer.join(',');
+        for (var i = 0; i < n_datasets_wom; i++) {
+          layer_list_name_all.push(layer_list_name[i])
+        }
+        layer_list_name_all = layer_list_name_all.join(',');
+        main_link = 'http://geo.dev.edptest.info/EDP_DEV_Viewer/Index.html?viewer=EDP_DEV_Viewer&locale=en-AU&runWorkflow=AppendLayerCatalog&CatalogLayer=' + cataloglayer + '&MapServiceID=' + map_service_id[0] + '&LayerListName=' + layer_list_name_all;
         view_on_map.removeClass('seed-disabled');
         view_on_map.attr('href', main_link);
         view_on_map.attr('title', 'Show selected Dataset on Map');
