@@ -71,8 +71,8 @@
               <a href="{{ g.site_url }}/dataset/{{ package.id }}" class="seed-dataset-button">View Data</a>
             {% endblock %}
             {% block view_on_map %}
-              {% if package.map_type and package.map_service_id and package.layer_list_name %}
-                {% set mapurl="https://geo.seed.nsw.gov.au/EDP_Public_Viewer/Index.html?viewer=EDP_Public_Viewer&run=ViewMap&url="+(package.map_type)+":map_service_id="+(package.map_service_id|replace("&", "+"))+";layer_id="+(package.layer_list_name|replace("&", "+")) -%}
+              {% if package.map_type and package.map_service_id and package.layer_list_name and package.layer_catalog_name %}
+                {% set mapurl='http://geo.dev.edptest.info/EDP_DEV_Viewer/Index.html?viewer=EDP_DEV_Viewer&locale=en-AU&runWorkflow=AppendLayerCatalog&CatalogLayer=' + package.layer_catalog_name +'.' + package.map_service_id + '.' + package.layer_list_name|replace(' ', '%20') +'&MapServiceID='+ package.map_service_id + '&LayerListName=' + package.layer_list_name|replace(' ', '%20') -%}
               <a href="{{ mapurl }}" class="seed-dataset-button">View on Map</a>
               {% endif %}
             {% endblock %}
