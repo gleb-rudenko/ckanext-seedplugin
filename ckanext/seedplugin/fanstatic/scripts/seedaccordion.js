@@ -26,19 +26,19 @@ function change_expand_collapse_btns() {
     var expand_selected = $('.seed-datasets-expand-checked');
     var collapse_selected = $('.seed-datasets-collapse-checked');
     if ($('.all-datasets-checkbox').hasClass('datasets-not-checked')) {
-        $(expand_selected).attr('disabled', true).addClass('seed-disable');
-        $(collapse_selected).attr('disabled', true).addClass('seed-disable');
+        $(expand_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Select a collapsed item to make available');
+        $(collapse_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Selected an expanded item to make available');
         // $('.checkbox-datasets span').text('Select all');
         return;
     }
     if (get_selected_expand_datasets().length == 0) {
-        $(collapse_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Select to make available');
+        $(collapse_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Selected an expanded item to make available');
     } else {
         // $('.checkbox-datasets span').text('Deselect all');
         $(collapse_selected).attr('disabled', false).removeClass('seed-disable').attr('title', 'Collapse selection');
     }
     if (get_selected_collapse_datasets().length == 0) {
-        $(expand_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Select to make available');
+        $(expand_selected).attr('disabled', true).addClass('seed-disable').attr('title', 'Select a collapsed item to make available');
     } else {
         // $('.checkbox-datasets span').text('Deselect all');
         $(expand_selected).attr('disabled', false).removeClass('seed-disable').attr('title', 'Expand selection');

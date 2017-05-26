@@ -160,13 +160,13 @@ $( function() {
     };
 
     if(expend_button.hasClass('seed-disable')){
-      expend_button.attr('title', 'Select to make available');
+      expend_button.attr('title', 'Select a collapsed item to make available');
     }
     else {
       expend_button.attr('title', 'Expand selection');
     };
     if(collapse_button.hasClass('seed-disable')){
-      collapse_button.attr('title', 'Select to make available');
+      collapse_button.attr('title', 'Selected an expanded item to make available');
     }
     else {
       collapse_button.attr('title', 'Collapse selection');
