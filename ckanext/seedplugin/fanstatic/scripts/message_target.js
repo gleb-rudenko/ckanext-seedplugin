@@ -3,7 +3,6 @@
 // being taken, and disables some confusing and bad JavaScript features.
 "use strict";
 
-console.log("")
 //links to open in new window
 $(document).ready(function () {
                 var localhost = window.location.host;
