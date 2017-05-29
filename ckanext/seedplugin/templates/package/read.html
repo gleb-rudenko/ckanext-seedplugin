@@ -1,4 +1,4 @@
-{% ckan_extends %}
+{% extends "package/read_base.html" %}
 
 {% block primary_content_inner %}
   {{ super() }}
@@ -20,7 +20,7 @@
         {% endif %}
       {% endblock %}
     {% block map_buton %}
-        {% snippet 'ckanext-visualise_on_map/ckanext/visualise_on_map/templates/snippets/visualise_on_map_button.html' %}
+        {% snippet 'snippets/visualise_on_map_button.html' %}
     {% endblock %}
     </h1>
     {% block package_notes %}
