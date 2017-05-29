@@ -12,7 +12,9 @@ def get_seed_helpers():
         'get_datasets_targets': get_datasets_targets,
         'seed_facet_list': seed_facet_list,
         'seed_facet_remove': seed_facet_remove,
-        'seed_all_facets_remove': seed_all_facets_remove
+        'seed_all_facets_remove': seed_all_facets_remove,
+        'visualise_on_map_has_web_map_layer': has_web_map_layer,
+        'visualise_on_map_get_web_map_layer_url': get_web_map_layer_url
     }
 
 
@@ -85,3 +87,25 @@ def seed_pagination(self, *args, **kwargs):
     return super(Page, self).pager(*args, **kwargs)
 
 Page.pager = seed_pagination
+
+
+def has_web_map_layer(package_dict):
+    '''Returns a boolean indicating whether the dataset has a layer in Geocortex'''
+    if package_dict['resources'] is not None:
+        for resource in package_dict['resources']:
+            strFormat = resource['format'].lower().replace(' ', '')
+            if strFormat == 'edpwebmap' or strFormat == 'seedwebmap':
+                return True
+    else:
+        return False
+
+
+def get_web_map_layer_url(package_dict):
+    '''Returns the URL to show the dataset's layer on Geocortex.'''
+    if package_dict['resources'] is not None:
+        for resource in package_dict['resources']:
+            strFormat = resource['format'].lower().replace(' ', '')
+            if strFormat == 'edpwebmap' or strFormat == 'seedwebmap':
+                return resource['url']
+    else:
+        return ''

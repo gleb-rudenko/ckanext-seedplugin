@@ -1,0 +1,15 @@
+{#
+  Generates a button with text and a hyperlink label to show a layer on Geocortex.
+#}
+
+{% set pkg = c.pkg_dict %}
+
+{% if c.pkg_dict.map_type and c.pkg_dict.map_service_id and c.pkg_dict.layer_list_name and c.pkg_dict.layer_catalog_name %}
+    {% set mapurl='http://geo.dev.edptest.info/EDP_DEV_Viewer/Index.html?viewer=EDP_DEV_Viewer&locale=en-AU&runWorkflow=AppendLayerCatalog&CatalogLayer=' + c.pkg_dict.layer_catalog_name +'.' + c.pkg_dict.map_service_id + '.' + c.pkg_dict.layer_list_name|replace(' ', '%20') +'&MapServiceID='+ c.pkg_dict.map_service_id + '&LayerListName=' + c.pkg_dict.layer_list_name|replace(' ', '%20') -%}
+    <section class="module-content">
+        <a href="{{ mapurl }}" class="btn btn-primary" alt="visualise on map">
+            <i class="icon-medium icon-globe"></i>
+            View on Map
+        </a>
+    </section>
+{% endif %}
