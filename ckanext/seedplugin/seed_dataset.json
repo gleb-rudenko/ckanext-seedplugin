@@ -172,7 +172,8 @@
     {
       "field_name": "last_modified",
       "label": "Last updated",
-      "display_snippet": "date.html"
+      "form_placeholder": "yyyy/mm/dd or yyyy-mm-dd",
+      "preset": "seed_date"
     },
     {
       "field_name": "map_service_id",
