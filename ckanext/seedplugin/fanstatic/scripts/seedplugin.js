@@ -151,12 +151,8 @@ $( function() {
     else {
       view_on_map.removeAttr('href').addClass('seed-disabled').attr('title', 'Select an item with View on Map to make available');
       map_datasets.removeAttr('href').removeAttr('data-toggle').addClass('seed-disabled').attr('title', 'Select to make available');
-      // $('.seed-view-on-map-options').hide();
-      //if ($(window).width() < 979) {
-          $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
-          $('.seed-selections-box').removeClass('seed-selections-box-320-979');
-      //}
-      $(".all-datasets-checkbox").removeClass('dataset-plus').removeClass('checked_minus').addClass('datasets-not-checked');
+      $('.seed-filter-title-mobile-desktop1199').removeClass('seed-filter-title-mobile-320-979');
+      $('.seed-selections-box').removeClass('seed-selections-box-320-979');
     };
 
     if(expend_button.hasClass('seed-disable')){
