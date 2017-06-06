@@ -76,6 +76,12 @@ block allows you to replace the content of the page if needed #} {%- block conte
                       </select>
                       <input id="seed_ext_bbox" type="" name="ext_bbox" value="">
                     </div>
+                    <div id="search-top-search-per-page" class="seed-items-per-page search-top-search">
+                        {% set per_page = request.params.get('per_page') if request.params.get('per_page') else 10 %}
+                        {% set sorting = request.params.get('sort', 'score+desc') %}
+                        <input type="hidden" id="per_page" name="per_page" value="{{ per_page }}">
+                        <input type="hidden" id="per_page" name="sort" value="{{ sorting }}">
+                    </div>
                   </form>
                     <div class="seed-loading-message">
                         <div class="seed-loading-popup">

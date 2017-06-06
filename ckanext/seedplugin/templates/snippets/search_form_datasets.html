@@ -15,6 +15,16 @@
   {% endblock %}
 
   {% block search_sortby %}
+    {% block top_form_query %}
+      <div id="seed-sort-queries">
+        {% set query = request.params.get('q', '') %}
+        <input type="hidden" class="search" name="q" value="{{ query }}">
+        {% set ext_startdate = request.params.get('ext_startdate', '') %}
+        <input type="hidden" class="search" name="ext_startdate" value="{{ ext_startdate }}">
+        {% set ext_enddate = request.params.get('ext_enddate', '') %}
+        <input type="hidden" class="search" name="ext_enddate" value="{{ ext_enddate }}">
+      </div>
+    {% endblock %}
     <div class="seed-additional-filters">
       <div class="seed-items-per-page">
         {% set item_per_page = ['10','25','50'] %}
